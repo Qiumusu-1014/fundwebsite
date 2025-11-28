@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Oasis Initiative - UAE ROYAL CAPITAL</title>
+    <!-- Fonts & Bootstrap -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { --primary-gold: #D4AF37; --secondary-blue: #003366; }
+        body { font-family: 'Open Sans', sans-serif; color: #333; }
+        .text-gold { color: var(--primary-gold) !important; }
+        .text-blue { color: var(--secondary-blue) !important; }
+        .bg-blue { background-color: var(--secondary-blue); color: white; }
+        .btn-royal { background: var(--primary-gold); color: var(--secondary-blue); font-weight: 700; border: none; }
+        .btn-royal:hover { background: #b5952f; color: var(--secondary-blue); }
+
+        .navbar { box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar-brand { font-weight: 800; color: var(--secondary-blue); }
+
+        /* Project Header */
+        .project-header {
+            height: 60vh;
+            background: linear-gradient(to bottom, rgba(0,51,102,0.4), rgba(0,51,102,0.9)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+        }
+        .header-content { position: relative; z-index: 2; color: white; }
+        
+        /* Stats & Gallery */
+        .stat-box { border-left: 4px solid var(--primary-gold); padding-left: 15px; margin-bottom: 25px; }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--secondary-blue); line-height: 1; }
+        .stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #666; }
+        
+        .gallery-img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; transition: transform 0.3s; }
+        .gallery-img:hover { transform: scale(1.03); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-arrow-left me-2 text-gold"></i> Back to Home
+            </a>
+            <span class="navbar-text fw-bold text-blue d-none d-sm-block">UAE ROYAL CAPITAL</span>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <div class="container header-content">
+            <span class="badge bg-success text-white mb-3 px-3 py-2">ENVIRONMENT</span>
+            <h1 class="display-4 fw-bold">Green Oasis Initiative</h1>
+            <p class="lead text-white-50">Combating desertification through sustainable reforestation.</p>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 pe-lg-5">
+                <h3 class="text-blue mb-4">Project Overview</h3>
+                <p class="lead">The Green Oasis Initiative is a large-scale afforestation project aimed at creating green belts around arid cities. Our goal is to fight climate change while improving local living conditions.</p>
+                <p>By planting drought-resistant indigenous trees, we reduce dust storms, lower ambient temperatures, and improve air quality. We also collaborate with local farmers to introduce modern drip-irrigation techniques, conserving water resources while increasing agricultural crop yields.</p>
+                <p>This project not only helps the planet but provides employment for local communities in planting and maintaining these new forests.</p>
+
+                <div class="row mt-5 mb-5 p-4 bg-light rounded">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-gold"><i class="fa-solid fa-triangle-exclamation me-2"></i>The Challenge</h5>
+                        <p class="small text-muted mb-0">Rapid desertification threatens food security and makes regions uninhabitable due to extreme heat. Water scarcity is becoming the primary conflict driver in many arid regions.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-gold"><i class="fa-solid fa-lightbulb me-2"></i>Our Solution</h5>
+                        <p class="small text-muted mb-0">We aim to plant 1 million trees by 2025 using treated wastewater. This creates micro-climates that support biodiversity and protects soil from erosion.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-blue mb-4">Gallery</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="gallery-img" alt="Planting Trees">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="gallery-img" alt="Green Field">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <div class="bg-white p-4 rounded shadow-sm border top-border-gold">
+                    <h4 class="mb-4 text-blue">Impact at a Glance</h4>
+                    
+                    <div class="stat-box">
+                        <div class="stat-number">250k</div>
+                        <div class="stat-label">Trees Planted</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Water Usage Reduced</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">2025</div>
+                        <div class="stat-label">Target Completion</div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    <h5 class="mb-3">Plant a Tree</h5>
+                    <p class="small text-muted mb-3">Join us in greening the desert.</p>
+                    <a href="index.html#support" class="btn btn-royal w-100 mb-2">Donate Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <small>&copy; 2023 UAE Royal Capital Funding Investment Co.LLC</small>
+    </footer>
+
+</body>
+</html>
