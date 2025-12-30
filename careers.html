@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - UAE ROYAL CAPITAL</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES & RESET (保持全站统一) --- */
+        :root {
+            --bg-color: #FAFAF5; 
+            --royal-gold: #C5A059;
+            --royal-gold-faint: rgba(197, 160, 89, 0.1); 
+            --deep-navy: #0E1E35;
+            --text-body: #4A5568;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 背景纹理 */
+        body::before {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background-image: 
+                linear-gradient(45deg, var(--royal-gold-faint) 25%, transparent 25%, transparent 75%, var(--royal-gold-faint) 75%, var(--royal-gold-faint)),
+                linear-gradient(45deg, var(--royal-gold-faint) 25%, transparent 25%, transparent 75%, var(--royal-gold-faint) 75%, var(--royal-gold-faint));
+            background-position: 0 0, 20px 20px;
+            background-size: 40px 40px;
+            opacity: 0.4;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); }
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* --- 2. NAVIGATION BAR --- */
+        .navbar {
+            background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2);
+        }
+        .logo { font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; font-weight: 500; }
+        .nav-links a:hover { color: var(--royal-gold); }
+
+        /* --- 3. HERO SECTION --- */
+        .sub-hero {
+            height: 40vh;
+            /* 商务办公背景图 */
+            background: linear-gradient(rgba(14, 30, 53, 0.7), rgba(14, 30, 53, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;
+        }
+        .sub-hero h1 { font-size: 3rem; color: #fff; margin-bottom: 10px; }
+        .sub-hero p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; color: var(--royal-gold); }
+
+        /* --- 4. CULTURE INTRO --- */
+        .culture-section {
+            max-width: 1000px; margin: 4rem auto; padding: 0 20px; text-align: center;
+        }
+        .culture-section p { font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem auto; }
+        .values-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
+        .value-item { flex: 1; min-width: 250px; text-align: center; }
+        .value-item i { font-size: 2rem; color: var(--royal-gold); margin-bottom: 1rem; }
+        .value-item h4 { margin-bottom: 0.5rem; }
+
+        /* --- 5. JOB LISTINGS --- */
+        .jobs-container {
+            max-width: 1000px; margin: 0 auto 5rem auto; padding: 0 20px;
+        }
+        .section-header { margin-bottom: 2rem; border-left: 4px solid var(--royal-gold); padding-left: 15px; }
+        
+        /* 职位卡片 */
+        .job-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        .job-card:hover {
+            border-color: var(--royal-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        /* 卡片头部（点击区域） */
+        .job-header {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #fff;
+        }
+        .job-title h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .job-meta { font-size: 0.9rem; color: #888; display: flex; gap: 20px; }
+        .job-meta span i { color: var(--royal-gold); margin-right: 5px; }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: var(--deep-navy);
+            transition: 0.3s;
+        }
+
+        /* 隐藏的详细内容 */
+        .job-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+        
+        .job-details-inner {
+            padding: 2rem;
+            color: var(--text-body);
+        }
+        
+        .job-details h4 { font-size: 1rem; margin-bottom: 10px; margin-top: 15px; }
+        .job-details ul { margin-left: 20px; margin-bottom: 20px; }
+        .job-details li { margin-bottom: 8px; font-size: 0.95rem; }
+
+        .apply-btn {
+            display: inline-block;
+            background: var(--deep-navy);
+            color: #fff;
+            padding: 10px 30px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-radius: 2px;
+            margin-top: 10px;
+        }
+        .apply-btn:hover { background: var(--royal-gold); }
+
+        /* 展开状态的样式 */
+        .job-card.active .toggle-icon { transform: rotate(180deg); }
+        .job-card.active .job-header { background: rgba(197, 160, 89, 0.05); }
+
+        /* --- 6. GENERAL APPLICATION --- */
+        .general-app {
+            background: var(--deep-navy);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 20px;
+            margin-top: 4rem;
+        }
+        .general-app h2 { color: #fff; margin-bottom: 1rem; }
+        .general-app p { color: #ccc; max-width: 600px; margin: 0 auto 2rem auto; }
+        .mail-link {
+            font-size: 1.5rem;
+            color: var(--royal-gold);
+            font-family: var(--font-serif);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.5);
+            padding-bottom: 5px;
+        }
+        .mail-link:hover { color: #fff; border-color: #fff; }
+
+        /* --- FOOTER --- */
+        footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; }
+        
+        /* Mobile */
+        @media(max-width: 768px) {
+            .job-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .toggle-icon { position: absolute; right: 20px; top: 30px; }
+            .job-card { position: relative; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><i class="fa-solid fa-crown"></i> UAE ROYAL CAPITAL</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="careers.html" style="color: var(--royal-gold);">Careers</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="sub-hero">
+        <div>
+            <h1>Join Our Legacy</h1>
+            <p>Shape the future of global investment with royalty.</p>
+        </div>
+    </div>
+
+    <!-- Culture Section -->
+    <section class="culture-section">
+        <h2>Why Join UAE Royal Capital?</h2>
+        <div style="width: 60px; height: 3px; background: var(--royal-gold); margin: 15px auto;"></div>
+        <p>
+            We are more than an investment fund; we are a bridge between tradition and innovation. Working with us means engaging with high-impact projects that span energy, culture, and technology across the Middle East and the world.
+        </p>
+        
+        <div class="values-grid">
+            <div class="value-item">
+                <i class="fa-solid fa-globe"></i>
+                <h4>Global Impact</h4>
+                <p style="font-size: 0.9rem;">Work on projects that shape economies.</p>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-user-shield"></i>
+                <h4>Prestigious Network</h4>
+                <p style="font-size: 0.9rem;">Collaborate with royal members and leaders.</p>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-gem"></i>
+                <h4>Excellence</h4>
+                <p style="font-size: 0.9rem;">A commitment to the highest standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings -->
+    <div class="jobs-container">
+        <div class="section-header">
+            <h2>Current Openings</h2>
+        </div>
+
+        <!-- Job 1 -->
+        <div class="job-card">
+            <div class="job-header" onclick="toggleJob(this)">
+                <div class="job-title">
+                    <h3>Senior Investment Analyst</h3>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                        <span><i class="fa-solid fa-clock"></i> Full Time</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="job-details">
+                <div class="job-details-inner">
+                    <p>We are seeking a highly experienced Senior Investment Analyst to join our energy sector team. You will be responsible for evaluating high-stakes investment opportunities in renewable energy and oil & gas.</p>
+                    
+                    <h4>Responsibilities:</h4>
+                    <ul>
+                        <li>Conduct financial modeling and due diligence for potential investments.</li>
+                        <li>Prepare investment memorandums for the Board of Directors.</li>
+                        <li>Monitor portfolio performance and market trends in the GCC region.</li>
+                    </ul>
+
+                    <h4>Requirements:</h4>
+                    <ul>
+                        <li>5+ years of experience in Investment Banking or Private Equity.</li>
+                        <li>Master’s degree in Finance, Economics, or related field.</li>
+                        <li>Fluency in English is required; Arabic is a strong plus.</li>
+                    </ul>
+                    
+                    <a href="mailto:recruit@uaeroyal.fund?subject=Application for Senior Investment Analyst" class="apply-btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="job-card">
+            <div class="job-header" onclick="toggleJob(this)">
+                <div class="job-title">
+                    <h3>Public Relations Director</h3>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Abu Dhabi, UAE</span>
+                        <span><i class="fa-solid fa-clock"></i> Full Time</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="job-details">
+                <div class="job-details-inner">
+                    <p>Lead the external communication strategy for the Foundation. You will manage relationships with international media partners and oversee the Foundation's global brand image.</p>
+                    
+                    <h4>Responsibilities:</h4>
+                    <ul>
+                        <li>Develop and execute PR strategies to enhance the Foundation's reputation.</li>
+                        <li>Manage press releases, speeches, and official statements.</li>
+                        <li>Coordinate high-profile events and diplomatic visits.</li>
+                    </ul>
+                    
+                    <a href="mailto:recruit@uaeroyal.fund?subject=Application for PR Director" class="apply-btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="job-card">
+            <div class="job-header" onclick="toggleJob(this)">
+                <div class="job-title">
+                    <h3>Legal Counsel (Corporate Law)</h3>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                        <span><i class="fa-solid fa-clock"></i> Full Time</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="job-details">
+                <div class="job-details-inner">
+                    <p>Provide legal expertise on international joint ventures, compliance, and corporate governance to ensure the Foundation's operations adhere to global standards.</p>
+                    
+                    <h4>Requirements:</h4>
+                    <ul>
+                        <li>Law degree from a recognized university.</li>
+                        <li>7+ years of post-qualification experience in corporate law.</li>
+                        <li>Experience with cross-border transactions.</li>
+                    </ul>
+                    
+                    <a href="mailto:recruit@uaeroyal.fund?subject=Application for Legal Counsel" class="apply-btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job 4 -->
+        <div class="job-card">
+            <div class="job-header" onclick="toggleJob(this)">
+                <div class="job-title">
+                    <h3>Executive Assistant to the Board</h3>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                        <span><i class="fa-solid fa-clock"></i> Full Time</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="job-details">
+                <div class="job-details-inner">
+                    <p>Provide high-level administrative support to Board Members, ensuring efficient operation of the executive office with discretion and professionalism.</p>
+                    
+                    <h4>Responsibilities:</h4>
+                    <ul>
+                        <li>Manage complex calendars and travel itineraries.</li>
+                        <li>Prepare meeting agendas and take minutes.</li>
+                        <li>Act as a point of contact for internal and external stakeholders.</li>
+                    </ul>
+                    
+                    <a href="mailto:recruit@uaeroyal.fund?subject=Application for Executive Assistant" class="apply-btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- General Application -->
+    <div class="general-app">
+        <h2>Don't see a perfect fit?</h2>
+        <p>We are always looking for exceptional talent to join our network. If you believe you can contribute to our vision, please send your CV directly to us.</p>
+        <a href="mailto:recruit@uaeroyal.fund" class="mail-link">recruit@uaeroyal.fund</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 UAE Royal Capital Funding. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script for Accordion -->
+    <script>
+        function toggleJob(header) {
+            const card = header.parentElement;
+            const details = card.querySelector('.job-details');
+            
+            // Toggle active class
+            card.classList.toggle('active');
+
+            // Handle slide animation
+            if (card.classList.contains('active')) {
+                details.style.maxHeight = details.scrollHeight + "px";
+            } else {
+                details.style.maxHeight = null;
+            }
+        }
+    </script>
+
+</body>
+</html>
