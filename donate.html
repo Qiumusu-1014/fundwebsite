@@ -10,30 +10,44 @@
         body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: #333; margin: 0; text-align: center; }
         
         /* 独立的头部，不放过多导航，聚焦捐款 */
-        header { padding: 2rem; border-bottom: 1px solid #e0e0e0; background: #fff; }
-        .logo { 
-        /* --- 新增这两行，强制让图片和文字垂直居中 --- */
-            display: flex;
-            align-items: center;
-        /* --------------------------------------- */
-            font-family: 'Playfair Display', serif; font-weight: 700; color: var(--deep-navy); font-size: 1.5rem; text-decoration: none; }
-        .logo i { color: var(--royal-gold); margin-right: 10px; }
-        /* --- 专门控制 Logo 图片大小的代码 --- */
-        .logo img {
-            height: 40px;      /* 这里控制高度，建议 30px 到 50px 之间 */
-            width: auto;       /* 宽度自动，保持比例不变 */
-            margin-right: 10px;/* 图片和右边文字的间距 */
-            object-fit: contain;
-        }
-        .container { max-width: 700px; margin: 3rem auto; padding: 0 20px; }
+    header { 
+    padding: 2rem; 
+       border-bottom: 1px solid #e0e0e0; 
+       background: #fff; 
+    
+       /* !!! 关键修改：使用 Flex 布局并强制居中 !!! */
+       display: flex;
+       justify-content: center; /* 水平居中 */
+       align-items: center;     /* 垂直居中 */
+   }
+
+   .logo { 
+       /* 让 Logo 内部的 图片 和 文字 也保持对齐 */
+       display: flex;
+       align-items: center;
+       gap: 15px; /* 图片和文字之间的距离 */
+    
+       font-family: 'Playfair Display', serif; 
+       font-weight: 700; 
+       color: var(--deep-navy); 
+       font-size: 1.5rem; 
+       text-decoration: none; 
+   }
+
+   /* 控制图片大小 */
+   .logo img {
+       height: 50px; /* 根据需要调整 */
+       width: auto;
+   }
+           .container { max-width: 700px; margin: 3rem auto; padding: 0 20px; }
         
-        .thank-you-note {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--deep-navy);
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
+           .thank-you-note {
+               font-family: 'Playfair Display', serif;
+               font-size: 1.5rem;
+               color: var(--deep-navy);
+               margin-bottom: 2rem;
+               font-style: italic;
+           }
 
         /* 银行信息卡片 */
         .bank-details-card {
