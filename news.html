@@ -13,6 +13,12 @@
         
         .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
         .logo { font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
+        .logo img {
+            height: 40px;      /* 这里控制高度，建议 30px 到 50px 之间 */
+            width: auto;       /* 宽度自动，保持比例不变 */
+            margin-right: 10px;/* 图片和右边文字的间距 */
+            object-fit: contain;
+        }
         .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
 
         .sub-hero {
@@ -48,7 +54,7 @@
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="logo"><i class="fa-solid fa-crown" style="color:var(--royal-gold)"></i> UAE ROYAL CAPITAL</a>
+        <a href="index.html" class="logo"><!-- 这里的 src="images/logo.png" 对应您第一步存放的位置 --><img src="images/logo.png" alt="Logo"></i> UAE ROYAL CAPITAL</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="news.html" style="color:var(--royal-gold)">News</a>
