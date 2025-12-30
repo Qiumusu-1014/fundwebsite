@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Careers - UAE ROYAL CAPITAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #FAFAF5; --royal-gold: #C5A059; --deep-navy: #0E1E35; --text-body: #4A5568; --font-serif: 'Playfair Display', serif; --font-sans: 'Montserrat', sans-serif; }
+        body { font-family: var(--font-sans); background: var(--bg-color); color: var(--text-body); margin: 0; }
+        
+        .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .logo { font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
+
+        .sub-hero {
+            height: 35vh;
+            background: linear-gradient(rgba(14, 30, 53, 0.8), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex; align-items: center; justify-content: center; color: #fff;
+        }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 2.5rem; color: var(--royal-gold); }
+
+        .container { max-width: 1000px; margin: 4rem auto; padding: 0 20px; }
+        
+        /* 职位列表 */
+        .job-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .job-card:hover { border-color: var(--royal-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        
+        .job-info h3 { font-family: var(--font-serif); color: var(--deep-navy); margin: 0 0 5px 0; }
+        .job-meta { font-size: 0.9rem; color: #888; }
+        .job-meta span { margin-right: 15px; }
+        
+        .apply-btn {
+            background: var(--deep-navy);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .apply-btn:hover { background: var(--royal-gold); }
+
+        .contact-hr {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border: 1px dashed var(--royal-gold);
+        }
+        .email-link { color: var(--deep-navy); font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo"><i class="fa-solid fa-crown" style="color:var(--royal-gold)"></i> UAE ROYAL CAPITAL</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="careers.html" style="color:var(--royal-gold)">Careers</a>
+        </div>
+    </nav>
+
+    <div class="sub-hero">
+        <h1>Join Our Team</h1>
+    </div>
+
+    <div class="container">
+        <h2>Open Positions</h2>
+        
+        <!-- Job 1 -->
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Senior Investment Analyst</h3>
+                <div class="job-meta">
+                    <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                    <span><i class="fa-solid fa-briefcase"></i> Full Time</span>
+                </div>
+            </div>
+            <a href="#" class="apply-btn">View Details</a>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="job-card">
+            <div class="job-info">
+                <h3>International Relations Manager</h3>
+                <div class="job-meta">
+                    <span><i class="fa-solid fa-location-dot"></i> Abu Dhabi, UAE</span>
+                    <span><i class="fa-solid fa-briefcase"></i> Full Time</span>
+                </div>
+            </div>
+            <a href="#" class="apply-btn">View Details</a>
+        </div>
+
+        <div class="contact-hr">
+            <p>Don't see a matching role? Send your CV directly to our HR team:</p>
+            <a href="mailto:recruit@uaeroyal.fund" class="email-link">recruit@uaeroyal.fund</a>
+        </div>
+    </div>
+
+    <footer><p>© 2025 UAE Royal Capital Funding.</p></footer>
+</body>
+</html>

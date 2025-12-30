@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - UAE ROYAL CAPITAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 沿用上一版的核心CSS，增加了子页面特有样式 -->
+    <style>
+        :root {
+            --bg-color: #FAFAF5; 
+            --royal-gold: #C5A059;
+            --deep-navy: #0E1E35;
+            --text-body: #4A5568;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+        body { font-family: var(--font-sans); background: var(--bg-color); color: var(--text-body); margin: 0; line-height: 1.8; }
+        
+        /* 顶部导航 (简化版) */
+        .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .logo { font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
+        
+        /* 子页面 Hero Header */
+        .sub-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(14, 30, 53, 0.7), rgba(14, 30, 53, 0.7)), url('https://images.unsplash.com/photo-1577083288073-40892c0860a4?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); }
+
+        /* 内容区 */
+        .content-container { max-width: 900px; margin: 4rem auto; padding: 0 20px; }
+        h2 { font-family: var(--font-serif); color: var(--deep-navy); margin-bottom: 1rem; border-left: 4px solid var(--royal-gold); padding-left: 15px; }
+        p { margin-bottom: 1.5rem; text-align: justify; }
+        
+        /* 强调文字 */
+        .highlight { color: var(--deep-navy); font-weight: 600; }
+        
+        /* 底部 */
+        footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo"><i class="fa-solid fa-crown" style="color:var(--royal-gold)"></i> UAE ROYAL CAPITAL</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" style="color:var(--royal-gold)">About Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="sub-hero">
+        <h1>About Us</h1>
+    </div>
+
+    <div class="content-container">
+        <!-- Section 1 -->
+        <section>
+            <h2>Foundation Introduction</h2>
+            <p>
+                UAE Royal Capital Funding Investment was initiated in September 2020 by more than ten ruling royal family members, including <span class="highlight">Sheikh Humaid Al Mualla</span>, <span class="highlight">Sheikh Mohammed bin Hamdan Al Nahyan</span>, and <span class="highlight">Sheikh Hamdan bin Ahmed Al Maktoum</span>. 
+            </p>
+            <p>
+                After several years of preparation, the Foundation was officially established in <span class="highlight">2024</span>, coinciding with the 40th anniversary of diplomatic relations between China and the UAE.
+            </p>
+            <p>
+                Today, the Foundation consists of over <span class="highlight">60 royal members</span> from the UAE, Saudi Arabia, Kuwait, Oman, Bahrain, Yemen, and Qatar. UAE Royal Capital Funding Investment works closely with businesses, government entities, and international partners to identify high-quality and sustainable projects, creating a favorable investment environment across the Arab region.
+            </p>
+        </section>
+
+        <hr style="border: 0; border-top: 1px solid rgba(197,160,89,0.3); margin: 3rem 0;">
+
+        <!-- Section 2 -->
+        <section>
+            <h2>Team and Development</h2>
+            <p>
+                We continue to welcome new royal members and partners, conducting in-depth market research and rigorous project evaluation to ensure value and profitability.
+            </p>
+            <p>
+                Our experienced advisory team will conduct thorough due diligence and provide strategic and operational solutions to achieve optimal results.
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 UAE Royal Capital Funding.</p>
+    </footer>
+
+</body>
+</html>

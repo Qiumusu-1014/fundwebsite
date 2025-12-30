@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donation - UAE ROYAL CAPITAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #FAFAF5; --royal-gold: #C5A059; --deep-navy: #0E1E35; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: #333; margin: 0; text-align: center; }
+        
+        /* 独立的头部，不放过多导航，聚焦捐款 */
+        header { padding: 2rem; border-bottom: 1px solid #e0e0e0; background: #fff; }
+        .logo { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--deep-navy); font-size: 1.5rem; text-decoration: none; }
+        .logo i { color: var(--royal-gold); margin-right: 10px; }
+
+        .container { max-width: 700px; margin: 3rem auto; padding: 0 20px; }
+        
+        .thank-you-note {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        /* 银行信息卡片 */
+        .bank-details-card {
+            background: #fff;
+            border: 2px solid var(--royal-gold);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        /* 顶部装饰线 */
+        .bank-details-card::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            pointer-events: none;
+        }
+
+        .bank-title { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; color: var(--deep-navy); margin-bottom: 2rem; font-weight: 600; }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            text-align: left;
+        }
+        .detail-row:last-child { border-bottom: none; }
+        
+        .label { color: #888; font-weight: 500; }
+        .value { color: #000; font-weight: 600; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+
+        .notice { margin-top: 3rem; font-size: 0.85rem; color: #666; line-height: 1.6; text-align: left; background: rgba(0,0,0,0.03); padding: 20px; border-radius: 4px; }
+        
+        .back-link { margin-top: 2rem; display: inline-block; color: var(--deep-navy); text-decoration: none; border-bottom: 1px solid var(--royal-gold); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo"><i class="fa-solid fa-crown"></i> UAE ROYAL CAPITAL FUNDING</a>
+    </header>
+
+    <div class="container">
+        <p class="thank-you-note">"Your contribution supports our vision for a sustainable future."</p>
+
+        <div class="bank-details-card">
+            <div class="bank-title">Official Bank Account Details</div>
+            
+            <div class="detail-row">
+                <span class="label">Beneficiary Name</span>
+                <span class="value">UAE Royal Capital Funding</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Bank Name</span>
+                <span class="value">First Abu Dhabi Bank (FAB)</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Account Number</span>
+                <span class="value">AE00 0000 0000 0000 0000</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">SWIFT / IBAN</span>
+                <span class="value">FABBAEADXXX</span>
+            </div>
+            <div class="detail-row">
+                <span class="label">Branch</span>
+                <span class="value">Dubai Main Branch</span>
+            </div>
+        </div>
+
+        <div class="notice">
+            <strong>Important Notice:</strong><br>
+            Please ensure all transfers utilize the SWIFT network. Kindly include your full name and "Donation" in the reference field. For confirmation of receipt, please forward your transaction slip to info@uaeroyal.fund.
+        </div>
+
+        <a href="index.html" class="back-link">Return to Home</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Center - UAE ROYAL CAPITAL</title>
+    <!-- 引用相同的字体和CSS变量 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 复用基础CSS */
+        :root { --bg-color: #FAFAF5; --royal-gold: #C5A059; --deep-navy: #0E1E35; --text-body: #4A5568; --font-serif: 'Playfair Display', serif; --font-sans: 'Montserrat', sans-serif; }
+        body { font-family: var(--font-sans); background: var(--bg-color); color: var(--text-body); margin: 0; }
+        
+        .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .logo { font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
+
+        .sub-hero {
+            height: 35vh;
+            background: linear-gradient(rgba(14, 30, 53, 0.8), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            display: flex; align-items: center; justify-content: center; color: #fff;
+        }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 2.5rem; color: var(--royal-gold); }
+
+        /* 新闻列表样式 */
+        .news-container { max-width: 1000px; margin: 4rem auto; padding: 0 20px; }
+        
+        .news-item {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--royal-gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .news-item:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        
+        .news-date { color: var(--royal-gold); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .news-title { font-family: var(--font-serif); font-size: 1.5rem; color: var(--deep-navy); margin: 0.5rem 0; }
+        .news-excerpt { margin-bottom: 1rem; }
+        .read-more-btn { color: var(--deep-navy); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--royal-gold); padding-bottom: 2px; }
+        .read-more-btn:hover { color: var(--royal-gold); }
+
+        footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo"><i class="fa-solid fa-crown" style="color:var(--royal-gold)"></i> UAE ROYAL CAPITAL</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="news.html" style="color:var(--royal-gold)">News</a>
+        </div>
+    </nav>
+
+    <div class="sub-hero">
+        <h1>Latest News</h1>
+    </div>
+
+    <div class="news-container">
+        <!-- News Item 1 -->
+        <article class="news-item">
+            <span class="news-date">December 25, 2024</span>
+            <h3 class="news-title">Foundation Expands Investment in Green Energy</h3>
+            <p class="news-excerpt">UAE Royal Capital Funding has officially signed a memorandum of understanding with leading global solar firms...</p>
+            <a href="#" class="read-more-btn">Read Full Article</a>
+        </article>
+
+        <!-- News Item 2 -->
+        <article class="news-item">
+            <span class="news-date">November 10, 2024</span>
+            <h3 class="news-title">Royal Delegation Visits Key Partners in Asia</h3>
+            <p class="news-excerpt">A delegation led by Sheikh Humaid Al Mualla visited several strategic partners to discuss future cooperation...</p>
+            <a href="#" class="read-more-btn">Read Full Article</a>
+        </article>
+
+        <!-- News Item 3 -->
+        <article class="news-item">
+            <span class="news-date">October 01, 2024</span>
+            <h3 class="news-title">Charity Gala raises $10 Million for Education</h3>
+            <p class="news-excerpt">The annual gala dinner was a massive success, bringing together philanthropists from across the GCC region...</p>
+            <a href="#" class="read-more-btn">Read Full Article</a>
+        </article>
+    </div>
+
+    <footer><p>© 2025 UAE Royal Capital Funding.</p></footer>
+</body>
+</html>
