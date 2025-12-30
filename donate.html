@@ -11,7 +11,12 @@
         
         /* 独立的头部，不放过多导航，聚焦捐款 */
         header { padding: 2rem; border-bottom: 1px solid #e0e0e0; background: #fff; }
-        .logo { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--deep-navy); font-size: 1.5rem; text-decoration: none; }
+        .logo { 
+        /* --- 新增这两行，强制让图片和文字垂直居中 --- */
+            display: flex;
+            align-items: center;
+        /* --------------------------------------- */
+            font-family: 'Playfair Display', serif; font-weight: 700; color: var(--deep-navy); font-size: 1.5rem; text-decoration: none; }
         .logo i { color: var(--royal-gold); margin-right: 10px; }
         /* --- 专门控制 Logo 图片大小的代码 --- */
         .logo img {
