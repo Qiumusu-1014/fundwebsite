@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - UAE ROYAL CAPITAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- 沿用上一版的核心CSS，增加了子页面特有样式 -->
     <style>
+        /* --- 1. 核心变量与重置 --- */
         :root {
             --bg-color: #FAFAF5; 
             --royal-gold: #C5A059;
@@ -17,87 +19,255 @@
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Montserrat', sans-serif;
         }
-        body { font-family: var(--font-sans); background: var(--bg-color); color: var(--text-body); margin: 0; line-height: 1.8; }
-        
-        /* 顶部导航 (简化版) */
-        .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
-        .logo { display: flex;align-items: center;font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
-        .logo img {
-            height: 40px;      /* 这里控制高度，建议 30px 到 50px 之间 */
-            width: auto;       /* 宽度自动，保持比例不变 */
-            margin-right: 10px;/* 图片和右边文字的间距 */
-            object-fit: contain;
+
+        body { 
+            font-family: var(--font-sans); 
+            background: var(--bg-color); 
+            color: var(--text-body); 
+            margin: 0; 
+            line-height: 1.8;
+            /* 背景纹理：淡淡的金色点阵 */
+            background-image: radial-gradient(#C5A059 0.5px, transparent 0.5px), radial-gradient(#C5A059 0.5px, #FAFAF5 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
         }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
         
-        /* 子页面 Hero Header */
+        /* --- 2. 导航栏 (固定顶部) --- */
+        .navbar { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            border-bottom: 1px solid rgba(197,160,89,0.2); 
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+        }
+        .logo { 
+            display: flex; align-items: center; 
+            font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); 
+            text-decoration: none; font-size: 1.2rem; gap: 10px;
+        }
+        .logo img { height: 40px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { 
+            text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; 
+            text-transform: uppercase; font-weight: 500; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--royal-gold); }
+        
+        /* --- 3. Hero Header --- */
         .sub-hero {
-            height: 40vh;
-            background: linear-gradient(rgba(14, 30, 53, 0.7), rgba(14, 30, 53, 0.7)), url('https://images.unsplash.com/photo-1577083288073-40892c0860a4?q=80&w=1920&auto=format&fit=crop');
+            height: 50vh;
+            margin-top: 60px; /* 避开固定导航栏 */
+            background: linear-gradient(rgba(14, 30, 53, 0.6), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1577083288073-40892c0860a4?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: #fff; text-align: center;
         }
-        .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); }
+        .sub-hero h1 { 
+            font-family: var(--font-serif); font-size: 3.5rem; color: var(--royal-gold); 
+            margin-bottom: 10px; text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .sub-hero p { font-size: 1.2rem; letter-spacing: 2px; font-weight: 300; opacity: 0.9; }
 
-        /* 内容区 */
-        .content-container { max-width: 900px; margin: 4rem auto; padding: 0 20px; }
-        h2 { font-family: var(--font-serif); color: var(--deep-navy); margin-bottom: 1rem; border-left: 4px solid var(--royal-gold); padding-left: 15px; }
-        p { margin-bottom: 1.5rem; text-align: justify; }
+        /* --- 4. 核心内容容器 --- */
+        .content-container { max-width: 1000px; margin: 0 auto; padding: 4rem 20px; }
+
+        /* 标题样式 */
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { 
+            font-family: var(--font-serif); font-size: 2.2rem; color: var(--deep-navy); 
+            display: inline-block; position: relative; padding-bottom: 15px;
+        }
+        .section-header h2::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 3px; background: var(--royal-gold);
+        }
+
+        /* --- 5. 介绍部分 (文字排版优化) --- */
+        .intro-box {
+            background: #fff; padding: 3rem; border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 4rem; position: relative;
+            border-top: 4px solid var(--royal-gold);
+            animation: fadeUp 1s ease forwards;
+        }
         
-        /* 强调文字 */
-        .highlight { color: var(--deep-navy); font-weight: 600; }
-        
+        .intro-text { font-size: 1.1rem; color: #555; text-align: justify; margin-bottom: 1.5rem; }
+        .highlight { color: var(--deep-navy); font-weight: 700; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
+
+        /* 地区列表样式 */
+        .regions-list {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; justify-content: center;
+        }
+        .region-tag {
+            background: rgba(14, 30, 53, 0.05); color: var(--deep-navy);
+            padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+            border: 1px solid transparent; transition: 0.3s;
+        }
+        .region-tag:hover { border-color: var(--royal-gold); background: #fff; color: var(--royal-gold); }
+
+        /* --- 6. 时间轴样式 (Foundation Introduction) --- */
+        .timeline {
+            position: relative; max-width: 800px; margin: 0 auto 4rem auto;
+            border-left: 2px solid rgba(197, 160, 89, 0.3); padding-left: 30px;
+        }
+        .timeline-item { position: relative; margin-bottom: 3rem; }
+        .timeline-dot {
+            position: absolute; left: -39px; top: 0;
+            width: 16px; height: 16px; background: var(--royal-gold);
+            border-radius: 50%; border: 4px solid #fff; box-shadow: 0 0 0 1px rgba(197, 160, 89, 0.3);
+        }
+        .timeline-year {
+            font-family: var(--font-serif); font-size: 1.5rem; color: var(--royal-gold); font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .timeline-content h3 { font-size: 1.2rem; color: var(--deep-navy); margin-bottom: 0.5rem; }
+
+        /* --- 7. 战略方针 (Team & Development) - 卡片化 --- */
+        .strategy-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;
+        }
+        .strategy-card {
+            background: #fff; padding: 2.5rem; border-radius: 6px; text-align: center;
+            border: 1px solid #eee; transition: 0.3s;
+        }
+        .strategy-card:hover { 
+            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: var(--royal-gold);
+        }
+        .strategy-icon { font-size: 2.5rem; color: var(--deep-navy); margin-bottom: 1.5rem; }
+        .strategy-card h3 { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem; color: var(--deep-navy); }
+        .strategy-card p { font-size: 0.95rem; color: #666; }
+
+        /* 动画 */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* 底部 */
         footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; margin-top: 4rem; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; }
+            .nav-links { display: none; } /* 移动端简化 */
+            .sub-hero h1 { font-size: 2.5rem; }
+            .intro-box { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="index.html" class="logo"><!-- 这里的 src="images/logo.png" 对应您第一步存放的位置 --><img src="images/logo.png" alt="Logo"></i> UAE ROYAL CAPITAL</a>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Logo"> 
+            UAE ROYAL CAPITAL
+        </a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html" style="color:var(--royal-gold)">About Us</a>
+            <a href="news.html">News</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
 
+    <!-- Hero 区域 -->
     <div class="sub-hero">
-        <h1>About Us</h1>
+        <h1>Our Legacy & Vision</h1>
+        <p>Building a Sustainable Future for the Arab Region</p>
     </div>
 
     <div class="content-container">
-        <!-- Section 1 -->
-        <section>
+        
+        <!-- 1. 介绍板块 -->
+        <div class="section-header">
             <h2>Foundation Introduction</h2>
-            <p>
-                UAE Royal Capital Funding Investment was initiated in September 2020 by more than ten ruling royal family members, including <span class="highlight">Sheikh Humaid Al Mualla</span>, <span class="highlight">Sheikh Mohammed bin Hamdan Al Nahyan</span>, and <span class="highlight">Sheikh Hamdan bin Ahmed Al Maktoum</span>. 
-            </p>
-            <p>
-                Today, the Foundation consists of over <span class="highlight">60 royal members</span> from the UAE, Saudi Arabia, Kuwait, Oman, Bahrain, Yemen, and Qatar. UAE Royal Capital Funding Investment works closely with businesses, government entities, and international partners to identify high-quality and sustainable projects, creating a favorable investment environment across the Arab region.
-            </p>
-        </section>
+        </div>
 
-        <hr style="border: 0; border-top: 1px solid rgba(197,160,89,0.3); margin: 3rem 0;">
+        <div class="intro-box">
+            <p class="intro-text">
+                <strong style="font-size: 1.5rem; float: left; line-height: 1; padding-right: 10px; color: var(--royal-gold);">U</strong>AE Royal Capital Funding Investment works closely with businesses, government entities, and international partners to identify high-quality and sustainable projects, creating a favorable investment environment across the Arab region.
+            </p>
+            <p class="intro-text">
+                Today, the Foundation consists of over <span class="highlight">60 royal members</span> representing the most influential families in the region.
+            </p>
+            
+            <!-- 国家标签展示 -->
+            <div class="regions-list">
+                <span class="region-tag"><i class="fa-solid fa-flag"></i> UAE</span>
+                <span class="region-tag"><i class="fa-solid fa-flag"></i> Saudi Arabia</span>
+                <span class="region-tag"><i class="fa-solid fa-flag"></i> Kuwait</span>
+                <span class="region-tag"><i class="fa-solid fa-flag"></i> Oman</span>
+                <span class="region-tag"><i class="fa-solid fa-flag"></i> Bahrain</span>
+                <span class="region-tag"><i class="fa-solid fa-flag"></i> Yemen</span>
+                <span class="region-tag"><i class="fa-solid fa-flag"></i> Qatar</span>
+            </div>
+        </div>
 
-        <!-- Section 2 -->
-        <section>
-            <h2>Team and Development</h2>
-            <p>
-                We continue to welcome new royal members and partners, conducting in-depth market research and rigorous project evaluation to ensure value and profitability.
-            </p>
-            <p>
-                Our experienced advisory team will conduct thorough due diligence and provide strategic and operational solutions to achieve optimal results.
-            </p>
-        </section>
+        <!-- 2. 历史时间轴 -->
+        <div class="timeline">
+            <!-- 节点 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2020</div>
+                <div class="timeline-content">
+                    <h3>The Initiation</h3>
+                    <p>Initiated in September by more than ten ruling royal family members, including <span class="highlight">Sheikh Humaid Al Mualla</span>, <span class="highlight">Sheikh Mohammed bin Hamdan Al Nahyan</span>, and <span class="highlight">Sheikh Hamdan bin Ahmed Al Maktoum</span>.</p>
+                </div>
+            </div>
+
+            <!-- 节点 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h3>Official Establishment</h3>
+                    <p>After years of strategic preparation and aligning with regional economic goals, the Foundation was officially established, marking a new era of unified royal investment.</p>
+                </div>
+            </div>
+            
+            <!-- 节点 3 -->
+            <div class="timeline-item" style="margin-bottom:0;">
+                <div class="timeline-dot" style="background:#fff; border-color:var(--deep-navy);"></div>
+                <div class="timeline-year" style="color:var(--deep-navy);">Future</div>
+                <div class="timeline-content">
+                    <h3>Global Expansion</h3>
+                    <p>Expanding our footprint beyond the GCC to foster international cooperation and sustainable development worldwide.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid rgba(197,160,89,0.2); margin: 4rem 0;">
+
+        <!-- 3. 团队与发展 (卡片式展示) -->
+        <div class="section-header">
+            <h2>Team & Development Strategy</h2>
+        </div>
+
+        <div class="strategy-grid">
+            <div class="strategy-card">
+                <i class="fa-solid fa-users-viewfinder strategy-icon"></i>
+                <h3>Market Research</h3>
+                <p>We welcome new royal members and partners, conducting in-depth market research to identify emerging opportunities in energy and technology.</p>
+            </div>
+
+            <div class="strategy-card">
+                <i class="fa-solid fa-scale-balanced strategy-icon"></i>
+                <h3>Rigorous Evaluation</h3>
+                <p>Our experienced advisory team conducts thorough due diligence and project evaluation to ensure every investment delivers long-term value and profitability.</p>
+            </div>
+
+            <div class="strategy-card">
+                <i class="fa-solid fa-chess strategy-icon"></i>
+                <h3>Strategic Solutions</h3>
+                <p>We provide comprehensive strategic and operational solutions to our portfolio companies to achieve optimal results and sustainable growth.</p>
+            </div>
+        </div>
+
     </div>
 
     <footer>
-        <p>© 2025 UAE Royal Capital Funding.</p>
+        <p>© 2025 UAE Royal Capital Funding. All Rights Reserved.</p>
     </footer>
 
 </body>
