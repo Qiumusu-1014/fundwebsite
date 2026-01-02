@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. CORE VARIABLES & RESET --- */
+        /* --- 1. CORE VARIABLES --- */
         :root {
             --bg-color: #FAFAF5; 
             --royal-gold: #C5A059;
@@ -27,7 +27,6 @@
             color: var(--text-body);
             line-height: 1.6;
             overflow-x: hidden;
-            /* 背景纹理 */
             background-image: radial-gradient(#C5A059 0.5px, transparent 0.5px), radial-gradient(#C5A059 0.5px, #FAFAF5 0.5px);
             background-size: 20px 20px;
             background-position: 0 0, 10px 10px;
@@ -35,10 +34,10 @@
 
         a { text-decoration: none; transition: 0.3s; }
 
-        /* --- 2. NAVIGATION BAR (已修正位置) --- */
+        /* --- 2. NAVBAR (Fixed & Centered) --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 80px;
-            padding: 0 max(5%, calc((100% - 1200px) / 2)); /* 核心居中修正 */
+            padding: 0 max(5%, calc((100% - 1200px) / 2)); 
             display: flex; justify-content: space-between; align-items: center;
             background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
             z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); transition: 0.4s;
@@ -50,7 +49,7 @@
         .nav-links a { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--deep-navy); font-weight: 500; }
         .nav-links a:hover { color: var(--royal-gold); }
 
-        /* --- 3. HERO SECTION --- */
+        /* --- 3. HERO --- */
         .sub-hero {
             height: 45vh; margin-top: 80px;
             background: linear-gradient(rgba(14, 30, 53, 0.7), rgba(14, 30, 53, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop');
@@ -60,12 +59,10 @@
         .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); margin-bottom: 10px; }
         .sub-hero p { font-size: 1.2rem; font-weight: 300; letter-spacing: 2px; }
 
-        /* --- 4. CULTURE INTRO --- */
+        /* --- 4. CULTURE --- */
         .culture-section { max-width: 1000px; margin: 4rem auto; padding: 0 20px; text-align: center; }
         .culture-section p { font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem auto; color: #555; }
-        
         .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        
         .value-item { 
             background: #fff; padding: 2rem; border-radius: 8px; border: 1px solid rgba(197,160,89,0.2);
             box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: 0.3s;
@@ -74,12 +71,11 @@
         .value-item i { font-size: 2.5rem; color: var(--royal-gold); margin-bottom: 1rem; }
         .value-item h4 { font-family: var(--font-serif); margin-bottom: 0.5rem; color: var(--deep-navy); }
 
-        /* --- 5. JOB LISTINGS --- */
+        /* --- 5. JOBS --- */
         .jobs-container { max-width: 1000px; margin: 0 auto 5rem auto; padding: 0 20px; }
         .section-header { margin-bottom: 2rem; text-align: left; border-bottom: 2px solid var(--royal-gold); display: inline-block; padding-bottom: 10px; }
         .section-header h2 { font-family: var(--font-serif); color: var(--deep-navy); }
 
-        /* 职位卡片 */
         .job-card {
             background: #fff; margin-bottom: 1.5rem; border-radius: 6px; overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05); transition: 0.3s;
@@ -96,7 +92,6 @@
         .job-meta span i { color: var(--royal-gold); margin-right: 5px; }
         .toggle-icon { font-size: 1rem; color: var(--royal-gold); transition: 0.3s; border: 1px solid #eee; padding: 10px; border-radius: 50%; }
 
-        /* 详情区域 */
         .job-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: #fdfdfd; border-top: 1px solid #f0f0f0; }
         .job-details-inner { padding: 2.5rem; color: var(--text-body); }
         .job-details h4 { font-family: var(--font-serif); font-size: 1.1rem; margin: 1.5rem 0 0.8rem 0; color: var(--deep-navy); }
@@ -106,10 +101,10 @@
         .apply-btn {
             display: inline-block; background: var(--deep-navy); color: #fff; padding: 12px 35px;
             text-transform: uppercase; font-size: 0.85rem; font-weight: 600; border-radius: 2px; transition: 0.3s;
+            border: none; cursor: pointer;
         }
         .apply-btn:hover { background: var(--royal-gold); }
 
-        /* 激活状态 */
         .job-card.active .toggle-icon { transform: rotate(180deg); background: var(--deep-navy); color: #fff; border-color: var(--deep-navy); }
         .job-card.active .job-header { border-bottom: 1px solid #f0f0f0; }
 
@@ -121,19 +116,67 @@
         }
         .general-app h2 { font-family: var(--font-serif); font-size: 2rem; color: var(--royal-gold); margin-bottom: 1rem; }
         .general-app p { color: #ddd; max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.1rem; }
-        .mail-link { font-size: 1.3rem; color: #fff; font-weight: 600; border-bottom: 2px solid var(--royal-gold); padding-bottom: 5px; }
-        .mail-link:hover { color: var(--royal-gold); }
+        
+        .general-apply-btn {
+            background: transparent; border: 2px solid var(--royal-gold); color: var(--royal-gold);
+            padding: 12px 40px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .general-apply-btn:hover { background: var(--royal-gold); color: #fff; }
 
-        /* --- FOOTER --- */
+        /* --- 7. APPLICATION MODAL (弹出层样式) --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(14, 30, 53, 0.9); overflow: auto;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: #fff; margin: 5% auto; padding: 0; border-radius: 8px;
+            width: 90%; max-width: 600px; position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            animation: slideDown 0.4s ease;
+        }
+
+        .modal-header {
+            background: var(--deep-navy); padding: 1.5rem 2rem; color: #fff;
+            display: flex; justify-content: space-between; align-items: center;
+            border-top-left-radius: 8px; border-top-right-radius: 8px;
+        }
+        .modal-header h3 { font-family: var(--font-serif); color: var(--royal-gold); margin: 0; }
+        .close-btn { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { color: #fff; }
+
+        .modal-body { padding: 2rem; }
+
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--deep-navy); }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;
+            font-family: var(--font-sans); font-size: 1rem; transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--royal-gold); outline: none; background: #fafbfc; }
+        
+        /* 错误提示文字 */
+        .error-message { color: red; font-size: 0.8rem; margin-top: 5px; display: none; }
+
+        .form-submit-btn {
+            width: 100%; padding: 15px; background: var(--deep-navy); color: #fff;
+            border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .form-submit-btn:hover { background: var(--royal-gold); }
+        .form-submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+
         footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; }
 
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
 
         @media(max-width: 768px) {
             .navbar { padding: 0 1.5rem; height: 70px; } .nav-links { display: none; }
             .job-header { flex-direction: column; align-items: flex-start; gap: 15px; }
             .toggle-icon { position: absolute; right: 20px; top: 30px; }
-            .job-card { position: relative; }
         }
     </style>
 </head>
@@ -159,118 +202,134 @@
 
     <section class="culture-section">
         <h2>Why Join UAE Royal Capital?</h2>
-        <p>We are more than an investment fund; we are a bridge between tradition and innovation. Working with us means engaging with high-impact projects that span energy, culture, and technology across the Middle East and the world.</p>
-        
+        <p>We are more than an investment fund; we are a bridge between tradition and innovation.</p>
         <div class="values-grid">
-            <div class="value-item">
-                <i class="fa-solid fa-globe"></i>
-                <h4>Global Impact</h4>
-                <p>Work on projects that shape economies.</p>
-            </div>
-            <div class="value-item">
-                <i class="fa-solid fa-user-shield"></i>
-                <h4>Prestigious Network</h4>
-                <p>Collaborate with royal members and leaders.</p>
-            </div>
-            <div class="value-item">
-                <i class="fa-solid fa-gem"></i>
-                <h4>Excellence</h4>
-                <p>A commitment to the highest standards.</p>
-            </div>
+            <div class="value-item"><i class="fa-solid fa-globe"></i><h4>Global Impact</h4></div>
+            <div class="value-item"><i class="fa-solid fa-user-shield"></i><h4>Prestigious Network</h4></div>
+            <div class="value-item"><i class="fa-solid fa-gem"></i><h4>Excellence</h4></div>
         </div>
     </section>
 
     <div class="jobs-container">
-        <div class="section-header">
-            <h2>Current Openings</h2>
-        </div>
+        <div class="section-header"><h2>Current Openings</h2></div>
 
         <!-- Job 1 -->
         <div class="job-card" style="animation-delay: 0.1s;">
             <div class="job-header" onclick="toggleJob(this)">
-                <div class="job-title">
-                    <h3>Senior Investment Analyst</h3>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
-                        <span><i class="fa-solid fa-clock"></i> Full Time</span>
-                    </div>
-                </div>
+                <div class="job-title"><h3>Senior Investment Analyst</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span></div></div>
                 <i class="fa-solid fa-chevron-down toggle-icon"></i>
             </div>
-            <div class="job-details">
-                <div class="job-details-inner">
-                    <p>We are seeking a highly experienced Senior Investment Analyst to join our energy sector team.</p>
-                    <h4>Responsibilities:</h4>
-                    <ul>
-                        <li>Conduct financial modeling and due diligence for potential investments.</li>
-                        <li>Prepare investment memorandums for the Board of Directors.</li>
-                    </ul>
-                    <h4>Requirements:</h4>
-                    <ul>
-                        <li>5+ years of experience in Investment Banking or Private Equity.</li>
-                        <li>Master’s degree in Finance, Economics, or related field.</li>
-                    </ul>
-                    <a href="mailto:recruit@uaeroyal.fund?subject=Application for Senior Investment Analyst" class="apply-btn">Apply Now</a>
-                </div>
-            </div>
+            <div class="job-details"><div class="job-details-inner">
+                <p>We are seeking a highly experienced Senior Investment Analyst.</p>
+                <h4>Responsibilities:</h4><ul><li>Financial modeling and due diligence.</li><li>Prepare investment memorandums.</li></ul>
+                <button class="apply-btn" onclick="openModal('Senior Investment Analyst')">Apply Now</button>
+            </div></div>
         </div>
 
         <!-- Job 2 -->
         <div class="job-card" style="animation-delay: 0.2s;">
             <div class="job-header" onclick="toggleJob(this)">
-                <div class="job-title">
-                    <h3>Public Relations Director</h3>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Abu Dhabi, UAE</span>
-                        <span><i class="fa-solid fa-clock"></i> Full Time</span>
-                    </div>
-                </div>
+                <div class="job-title"><h3>Public Relations Director</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Abu Dhabi, UAE</span></div></div>
                 <i class="fa-solid fa-chevron-down toggle-icon"></i>
             </div>
-            <div class="job-details">
-                <div class="job-details-inner">
-                    <p>Lead the external communication strategy for the Foundation.</p>
-                    <h4>Responsibilities:</h4>
-                    <ul>
-                        <li>Develop and execute PR strategies to enhance the Foundation's reputation.</li>
-                        <li>Coordinate high-profile events and diplomatic visits.</li>
-                    </ul>
-                    <a href="mailto:recruit@uaeroyal.fund?subject=Application for PR Director" class="apply-btn">Apply Now</a>
-                </div>
-            </div>
+            <div class="job-details"><div class="job-details-inner">
+                <p>Lead the external communication strategy for the Foundation.</p>
+                <h4>Responsibilities:</h4><ul><li>Develop PR strategies.</li><li>Coordinate diplomatic visits.</li></ul>
+                <button class="apply-btn" onclick="openModal('Public Relations Director')">Apply Now</button>
+            </div></div>
         </div>
 
         <!-- Job 3 -->
         <div class="job-card" style="animation-delay: 0.3s;">
             <div class="job-header" onclick="toggleJob(this)">
-                <div class="job-title">
-                    <h3>Legal Counsel (Corporate Law)</h3>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
-                        <span><i class="fa-solid fa-clock"></i> Full Time</span>
-                    </div>
-                </div>
+                <div class="job-title"><h3>Legal Counsel</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span></div></div>
                 <i class="fa-solid fa-chevron-down toggle-icon"></i>
             </div>
-            <div class="job-details">
-                <div class="job-details-inner">
-                    <p>Provide legal expertise on international joint ventures and compliance.</p>
-                    <a href="mailto:recruit@uaeroyal.fund?subject=Application for Legal Counsel" class="apply-btn">Apply Now</a>
-                </div>
-            </div>
+            <div class="job-details"><div class="job-details-inner">
+                <p>Provide legal expertise on international joint ventures.</p>
+                <button class="apply-btn" onclick="openModal('Legal Counsel')">Apply Now</button>
+            </div></div>
         </div>
-
     </div>
 
     <div class="general-app">
         <h2>Don't see a perfect fit?</h2>
-        <p>We are always looking for exceptional talent to join our network. If you believe you can contribute to our vision, please send your CV directly to us.</p>
-        <a href="mailto:recruit@uaeroyal.fund" class="mail-link">recruit@uaeroyal.fund</a>
+        <p>We are always looking for exceptional talent. Submit your CV for future consideration.</p>
+        <button class="general-apply-btn" onclick="openModal('General Application')">Submit General Application</button>
     </div>
 
     <footer><p>© 2026 UAE Royal Capital Funding. All Rights Reserved.</p></footer>
 
+    <!-- 申请弹出框 (MODAL) -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Application Form</h3>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                
+                <!-- 
+                   表单配置：
+                   1. action: 您提供的链接
+                   2. _captcha: "false" (加快速度，防垃圾由 Honeypot 负责)
+                   3. _honey: 隐藏字段，人类看不见，防止机器人提交
+                   4. id="careerForm": 用于JS验证脚本绑定
+                -->
+                <form id="careerForm" action="https://formsubmit.co/el/dafamu" method="POST" enctype="multipart/form-data">
+                    
+                    <!-- 自动跳转回本页 (防止跳转到第三方广告页) -->
+                    <!-- 注意：这里建议改成您网站 careers.html 的真实完整网址 -->
+                    <input type="hidden" name="_next" value="https://uaeroyalcapital.github.io/careers.html"> 
+                    
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Career Application">
+                    
+                    <!-- Honeypot Anti-Spam (防垃圾核心：人类看不见，机器人会填) -->
+                    <input type="text" name="_honey" style="display:none">
+
+                    <input type="hidden" id="job-role" name="Applied For Position">
+
+                    <div class="form-group">
+                        <label for="name">Full Name <span style="color:red">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span style="color:red">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span style="color:red">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+971 50 123 4567">
+                        <div id="phone-error" class="error-message">Please enter a valid phone number.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile (Optional)</label>
+                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="coverletter">Cover Letter / Short Bio</label>
+                        <textarea id="coverletter" name="message" rows="4" placeholder="Briefly introduce yourself..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resume">Upload Resume (PDF/Word, Max 5MB) <span style="color:red">*</span></label>
+                        <input type="file" id="resume" name="attachment" accept=".pdf,.doc,.docx" required>
+                        <div id="file-error" class="error-message">File is too large! Please upload a file smaller than 5MB.</div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="form-submit-btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // 1. 折叠动画
         function toggleJob(header) {
             const card = header.parentElement;
             const details = card.querySelector('.job-details');
@@ -281,6 +340,65 @@
                 details.style.maxHeight = null;
             }
         }
+
+        // 2. 弹窗控制
+        const modal = document.getElementById("applyModal");
+        const jobRoleInput = document.getElementById("job-role");
+
+        function openModal(jobTitle) {
+            modal.style.display = "block";
+            jobRoleInput.value = jobTitle;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // 3. 表单验证脚本 (防止无效信息)
+        const form = document.getElementById('careerForm');
+        const fileInput = document.getElementById('resume');
+        const phoneInput = document.getElementById('phone');
+        const submitBtn = document.getElementById('submitBtn');
+        const fileError = document.getElementById('file-error');
+        const phoneError = document.getElementById('phone-error');
+
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
+
+            // 验证 1: 文件大小限制 (5MB)
+            const fileSize = fileInput.files[0].size / 1024 / 1024; // MB
+            if (fileSize > 5) {
+                fileError.style.display = 'block';
+                isValid = false;
+            } else {
+                fileError.style.display = 'none';
+            }
+
+            // 验证 2: 电话号码简单验证 (至少8位数字)
+            if (phoneInput.value.length < 8 || !/^[0-9+\-\s()]*$/.test(phoneInput.value)) {
+                phoneError.style.display = 'block';
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+            }
+
+            // 如果验证失败，阻止提交
+            if (!isValid) {
+                e.preventDefault();
+                return;
+            }
+
+            // 提交时的按钮状态 (防止重复提交)
+            submitBtn.innerText = "Uploading Application...";
+            submitBtn.style.opacity = "0.7";
+            submitBtn.disabled = true;
+        });
     </script>
 </body>
 </html>
