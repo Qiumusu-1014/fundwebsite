@@ -2,66 +2,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - UAE ROYAL CAPITAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root { --bg-color: #FAFAF5; --royal-gold: #C5A059; --deep-navy: #0E1E35; --text-body: #4A5568; --font-serif: 'Playfair Display', serif; --font-sans: 'Montserrat', sans-serif; }
-        body { font-family: var(--font-sans); background: var(--bg-color); color: var(--text-body); margin: 0; }
-        
-        .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
-        .logo { display: flex;align-items: center;font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
-        /* --- 专门控制 Logo 图片大小的代码 --- */
-        .logo img {
-            height: 40px;      /* 这里控制高度，建议 30px 到 50px 之间 */
-            width: auto;       /* 宽度自动，保持比例不变 */
-            margin-right: 10px;/* 图片和右边文字的间距 */
-            object-fit: contain;
+        /* --- 1. CORE VARIABLES --- */
+        :root { 
+            --bg-color: #FAFAF5; 
+            --royal-gold: #C5A059; 
+            --deep-navy: #0E1E35; 
+            --text-body: #4A5568; 
+            --font-serif: 'Playfair Display', serif; 
+            --font-sans: 'Montserrat', sans-serif; 
         }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
 
+        body { 
+            font-family: var(--font-sans); 
+            background: var(--bg-color); 
+            color: var(--text-body); 
+            margin: 0; 
+            background-image: radial-gradient(#C5A059 0.5px, transparent 0.5px), radial-gradient(#C5A059 0.5px, #FAFAF5 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* --- 2. NAVBAR (Fixed & Centered) --- */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+            padding: 0 max(5%, calc((100% - 1200px) / 2)); 
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
+            z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); transition: 0.4s;
+            box-sizing: border-box;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); font-size: 1.4rem; }
+        .logo img { height: 45px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--deep-navy); font-weight: 500; }
+        .nav-links a:hover { color: var(--royal-gold); }
+
+        /* --- 3. HERO --- */
         .sub-hero {
-            height: 35vh;
+            height: 40vh; margin-top: 80px;
             background: linear-gradient(rgba(14, 30, 53, 0.8), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1512453979798-5ea904ac6605?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
+            background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; color: #fff;
         }
-        .sub-hero h1 { font-family: var(--font-serif); font-size: 2.5rem; color: var(--royal-gold); }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); }
 
+        /* --- 4. CONTACT CONTAINER --- */
         .contact-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 4rem auto;
+            display: flex; flex-wrap: wrap;
+            max-width: 1000px; margin: 4rem auto;
             background: #fff;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(14, 30, 53, 0.1);
+            border-radius: 8px; overflow: hidden;
+            border: 1px solid #eee;
+            animation: fadeUp 1s ease forwards; opacity: 0; transform: translateY(30px);
         }
 
-        .contact-info { flex: 1; padding: 3rem; min-width: 300px; }
-        .contact-map { flex: 1; min-width: 300px; background: #0E1E35; display: flex; align-items: center; justify-content: center; color: #fff; position: relative; }
+        .contact-info { 
+            flex: 1; padding: 4rem; min-width: 350px; 
+            border-right: 1px solid #f0f0f0;
+            position: relative;
+        }
         
-        /* 简单的地图占位图 */
-        .contact-map img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        .map-overlay { position: absolute; z-index: 2; text-align: center; }
+        /* 金色边框装饰 */
+        .contact-info::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--royal-gold);
+        }
 
-        .info-item { margin-bottom: 2rem; }
-        .info-item i { color: var(--royal-gold); font-size: 1.2rem; margin-right: 10px; }
-        .info-item h4 { font-family: var(--font-serif); color: var(--deep-navy); margin-bottom: 5px; font-size: 1.1rem; }
-        .info-item p { margin: 0; color: #666; }
+        .contact-map { 
+            flex: 1; min-width: 350px; background: #0E1E35; 
+            position: relative; overflow: hidden;
+        }
+        
+        .contact-map img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
+        .contact-map:hover img { transform: scale(1.05); opacity: 0.8; }
+        
+        .map-overlay { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            z-index: 2; text-align: center; color: #fff; pointer-events: none;
+        }
+        .map-overlay h3 { font-family: var(--font-serif); font-size: 1.5rem; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        .intro-text { font-size: 1.1rem; color: var(--deep-navy); margin-bottom: 2rem; font-style: italic; border-left: 3px solid var(--royal-gold); padding-left: 15px; }
+        .info-item { margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 20px; }
+        .icon-box { 
+            width: 50px; height: 50px; background: rgba(197, 160, 89, 0.1); 
+            display: flex; align-items: center; justify-content: center; 
+            border-radius: 50%; color: var(--royal-gold); font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 { font-family: var(--font-serif); color: var(--deep-navy); margin-bottom: 5px; font-size: 1.1rem; }
+        .info-content p { margin: 0; color: #666; font-size: 0.95rem; line-height: 1.6; }
+        
+        .intro-text { 
+            font-size: 1.2rem; color: var(--deep-navy); margin-bottom: 3rem; 
+            font-family: var(--font-serif); font-style: italic; line-height: 1.5;
+        }
 
         footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; margin-top: 4rem; }
+
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        @media(max-width: 768px) {
+            .navbar { padding: 0 1.5rem; height: 70px; } .nav-links { display: none; }
+            .contact-info { padding: 2rem; }
+            .contact-map { height: 300px; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="logo"><!-- 这里的 src="images/logo.png" 对应您第一步存放的位置 --><img src="images/logo.png" alt="Logo"></i> UAE ROYAL CAPITAL</a>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Logo"> 
+            UAE ROYAL CAPITAL
+        </a>
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="careers.html">Careers</a>
             <a href="contact.html" style="color:var(--royal-gold)">Contact</a>
         </div>
     </nav>
@@ -73,36 +139,45 @@
     <div class="contact-wrapper">
         <div class="contact-info">
             <p class="intro-text">
-                "We welcome partners worldwide to collaborate with us in achieving prosperity and development."
+                "We welcome partners worldwide to collaborate with us in achieving prosperity and sustainable development."
             </p>
 
             <div class="info-item">
-                <h4><i class="fa-solid fa-user-tie"></i> Office Contact</h4>
-                <p>Mr. Youssuf H</p>
+                <div class="icon-box"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="info-content">
+                    <h4>Office Contact</h4>
+                    <p>Mr. Youssuf H<br><small style="color:#999">Secretary General</small></p>
+                </div>
             </div>
 
             <div class="info-item">
-                <h4><i class="fa-solid fa-building"></i> Address</h4>
-                <p>Business Village</p>
-                <p>Dubai, United Arab Emirates</p>
+                <div class="icon-box"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="info-content">
+                    <h4>Headquarters</h4>
+                    <p>Business Village, Block B<br>Deira, Dubai, United Arab Emirates</p>
+                </div>
             </div>
 
             <div class="info-item">
-                <h4><i class="fa-solid fa-envelope"></i> Email</h4>
-                <p><a href="mailto:info@uaeroyal.fund" style="color: inherit;">info@uaeroyal.fund</a></p>
+                <div class="icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <div class="info-content">
+                    <h4>Official Email</h4>
+                    <p><a href="mailto:info@uaeroyal.fund" style="color: var(--deep-navy); border-bottom: 1px solid var(--royal-gold);">info@uaeroyal.fund</a></p>
+                </div>
             </div>
         </div>
 
         <div class="contact-map">
-            <!-- 静态地图图片占位符 -->
-            <img src="https://images.unsplash.com/photo-1578559099885-3023e9a56c4d?q=80&w=1920&auto=format&fit=crop" alt="Dubai Map">
+            <!-- 静态地图图片 -->
+            <img src="https://images.unsplash.com/photo-1578559099885-3023e9a56c4d?q=80&w=1200&auto=format&fit=crop" alt="Dubai Map">
             <div class="map-overlay">
                 <i class="fa-solid fa-location-dot" style="font-size: 3rem; color: var(--royal-gold);"></i>
-                <h3 style="color:#fff; margin-top:10px;">Dubai HQ</h3>
+                <h3>Dubai HQ</h3>
+                <p style="font-size:0.9rem; opacity:0.8; margin-top:5px;">Business Village</p>
             </div>
         </div>
     </div>
 
-    <footer><p>© 2025 UAE Royal Capital Funding.</p></footer>
+    <footer><p>© 2026 UAE Royal Capital Funding. All Rights Reserved.</p></footer>
 </body>
 </html>
