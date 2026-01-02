@@ -72,7 +72,6 @@
             position: relative;
         }
         
-        /* 金色边框装饰 */
         .contact-info::before {
             content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--royal-gold);
         }
@@ -102,12 +101,20 @@
         .info-content h4 { font-family: var(--font-serif); color: var(--deep-navy); margin-bottom: 5px; font-size: 1.1rem; }
         .info-content p { margin: 0; color: #666; font-size: 0.95rem; line-height: 1.6; }
         
+        /* 邮箱链接样式 */
+        .email-link {
+            display: block; color: var(--deep-navy); text-decoration: none; 
+            border-bottom: 1px solid transparent; transition: 0.3s;
+        }
+        .email-link:hover { color: var(--royal-gold); border-bottom-color: var(--royal-gold); }
+        .email-label { font-size: 0.8rem; color: #999; margin-right: 5px; text-transform: uppercase; }
+
         .intro-text { 
             font-size: 1.2rem; color: var(--deep-navy); margin-bottom: 3rem; 
             font-family: var(--font-serif); font-style: italic; line-height: 1.5;
         }
 
-        /* --- 5. CONTACT FORM (新增) --- */
+        /* --- 5. CONTACT FORM --- */
         .form-section { margin-top: 3rem; border-top: 1px solid #eee; padding-top: 2rem; }
         .form-title { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--deep-navy); }
         
@@ -164,7 +171,6 @@
                 "We welcome partners worldwide to collaborate with us in achieving prosperity and sustainable development."
             </p>
 
-            <!-- 基础联系信息 -->
             <div class="info-item">
                 <div class="icon-box"><i class="fa-solid fa-user-tie"></i></div>
                 <div class="info-content">
@@ -184,32 +190,35 @@
             <div class="info-item">
                 <div class="icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
                 <div class="info-content">
-                    <h4>Official Email</h4>
-                    <p><a href="mailto:info@uaeroyal.fund" style="color: var(--deep-navy); border-bottom: 1px solid var(--royal-gold);">info@uaeroyal.fund</a></p>
+                    <h4>Official Emails</h4>
+                    <!-- 两个邮箱展示 -->
+                    <p>
+                        <span class="email-label">General:</span> 
+                        <a href="mailto:info@uaeroyal.fund" class="email-link">info@uaeroyal.fund</a>
+                    </p>
+                    <p style="margin-top:5px;">
+                        <span class="email-label">Careers:</span> 
+                        <a href="mailto:recruit@uaeroyal.fund" class="email-link">recruit@uaeroyal.fund</a>
+                    </p>
                 </div>
             </div>
 
-            <!-- === 新增：留言表单 === -->
+            <!-- === 简洁留言表单 === -->
             <div class="form-section">
                 <h3 class="form-title">Send a Message</h3>
                 
-                <!-- 
-                   表单配置：
-                   action: 您的 FormSubmit 链接
-                   _captcha: false (关闭验证码，提高速度)
-                   _next: 提交后跳转回联系页面 (请修改为您网站的真实 contact.html 地址)
-                -->
                 <form id="contactForm" class="contact-form" action="https://formsubmit.co/el/riyexi" method="POST">
                     
-                    <!-- 跳转配置 -->
+                    <!-- 跳转回 contact.html -->
                     <input type="hidden" name="_next" value="https://uaeroyalcapital.github.io/contact.html">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="New Inquiry from Website">
-                    <input type="text" name="_honey" style="display:none"> <!-- 防垃圾 -->
+                    <input type="text" name="_honey" style="display:none">
 
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
+                    <!-- 访客的邮箱输入框 -->
                     <div class="form-group">
                         <input type="email" name="email" placeholder="Your Email Address" required>
                     </div>
@@ -225,12 +234,10 @@
                     </button>
                 </form>
             </div>
-            <!-- === 表单结束 === -->
 
         </div>
 
         <div class="contact-map">
-            <!-- 静态地图图片 -->
             <img src="https://images.unsplash.com/photo-1578559099885-3023e9a56c4d?q=80&w=1200&auto=format&fit=crop" alt="Dubai Map">
             <div class="map-overlay">
                 <i class="fa-solid fa-location-dot" style="font-size: 3rem; color: var(--royal-gold);"></i>
@@ -242,16 +249,13 @@
 
     <footer><p>© 2026 UAE Royal Capital Funding. All Rights Reserved.</p></footer>
 
-    <!-- 简单的表单提交反馈脚本 -->
     <script>
         const form = document.getElementById('contactForm');
         const btn = document.getElementById('submitBtn');
 
         form.addEventListener('submit', function() {
-            // 点击后按钮变灰，防止重复提交
             btn.innerHTML = 'Sending...';
             btn.style.opacity = '0.7';
-            // btn.disabled = true; // FormSubmit跳转需要表单保持激活，暂不禁用
         });
     </script>
 </body>
