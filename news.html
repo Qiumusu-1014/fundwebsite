@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Center - UAE ROYAL CAPITAL</title>
+    <!-- 引用相同的字体和CSS变量 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 复用基础CSS */
+        :root { --bg-color: #FAFAF5; --royal-gold: #C5A059; --deep-navy: #0E1E35; --text-body: #4A5568; --font-serif: 'Playfair Display', serif; --font-sans: 'Montserrat', sans-serif; }
+        body { font-family: var(--font-sans); background: var(--bg-color); color: var(--text-body); margin: 0; line-height: 1.7; }
+        
+        .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); position: fixed; top: 0; width: 100%; z-index: 100; }
+        .logo { display: flex;align-items: center;font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
+        .logo img {
+            height: 40px; width: auto; margin-right: 10px; object-fit: contain;
+        }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
+
+        .sub-hero {
+            height: 35vh; margin-top: 60px; /* 避开固定导航栏 */
+            background: linear-gradient(rgba(14, 30, 53, 0.8), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            display: flex; align-items: center; justify-content: center; color: #fff;
+        }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 2.5rem; color: var(--royal-gold); }
+
+        /* 新闻列表样式 */
+        .news-container { max-width: 900px; margin: 4rem auto; padding: 0 20px; }
+        
+        .news-item {
+            background: #fff;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--royal-gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            scroll-margin-top: 100px; /* 确保跳转时不会被导航栏挡住 */
+        }
+        .news-item:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        
+        .news-date { color: var(--royal-gold); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .news-title { font-family: var(--font-serif); font-size: 1.8rem; color: var(--deep-navy); margin: 0.5rem 0 1rem 0; line-height: 1.3; }
+        .news-body { font-size: 1rem; color: #555; margin-bottom: 1.5rem; text-align: justify; }
+        
+        /* 模拟标签 */
+        .tags span {
+            background: #f0f0f0; color: #666; padding: 4px 10px; font-size: 0.75rem; border-radius: 4px; margin-right: 5px;
+        }
+
+        footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="Logo"> UAE ROYAL CAPITAL</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="news.html" style="color:var(--royal-gold)">News</a>
+        </div>
+    </nav>
+
+    <div class="sub-hero">
+        <h1>Latest News & Updates</h1>
+    </div>
+
+    <div class="news-container">
+        
+        <!-- News 1: 绿色能源 (对应主页第1条) -->
+        <article class="news-item" id="news-1">
+            <span class="news-date">December 20, 2024</span>
+            <h3 class="news-title">Strategic $500M Investment in Green Hydrogen Infrastructure</h3>
+            <div class="news-body">
+                <p><strong>DUBAI, UAE</strong> — UAE Royal Capital Funding has officially announced a landmark partnership to invest $500 million in developing sustainable green hydrogen infrastructure across the GCC region. This strategic move aligns with the UAE's "Net Zero by 2050" initiative.</p>
+                <p>The funding will support the construction of two major electrolysis plants and a dedicated export terminal. "This is not just an investment in energy; it is an investment in the future of our planet," stated Sheikh Mohammed bin Hamdan Al Nahyan. The project is expected to create over 2,000 specialized jobs and solidify the UAE's position as a global leader in renewable energy export.</p>
+            </div>
+            <div class="tags">
+                <span>Sustainability</span> <span>Energy</span> <span>Investment</span>
+            </div>
+        </article>
+
+        <!-- News 2: 教育计划 (对应主页第2条) -->
+        <article class="news-item" id="news-2">
+            <span class="news-date">November 15, 2024</span>
+            <h3 class="news-title">Foundation Launches "Future Leaders" Global Education Initiative</h3>
+            <div class="news-body">
+                <p><strong>ABU DHABI, UAE</strong> — In a grand ceremony attended by international dignitaries, the Foundation unveiled the "Future Leaders" scholarship program. This ambitious initiative aims to empower 1,000 students from developing nations over the next five years.</p>
+                <p>The scholarships will cover full tuition and living expenses for degrees in STEM, International Relations, and Sustainable Development at top-tier universities worldwide. "Education is the bedrock of prosperity. By investing in these brilliant young minds, we are planting seeds for a more peaceful and innovative world," remarked Mr. Youssuf, Secretary General of the Foundation.</p>
+            </div>
+            <div class="tags">
+                <span>Education</span> <span>Philanthropy</span> <span>Global</span>
+            </div>
+        </article>
+
+        <!-- News 3: 文化遗产 (对应主页第3条) -->
+        <article class="news-item" id="news-3">
+            <span class="news-date">October 05, 2024</span>
+            <h3 class="news-title">Preserving Heritage: New Partnership with UNESCO</h3>
+            <div class="news-body">
+                <p><strong>PARIS, FRANCE</strong> — UAE Royal Capital Funding has signed a Memorandum of Understanding (MoU) with UNESCO to fund the restoration of historic Islamic art and architecture in the Middle East and North Africa.</p>
+                <p>The project will focus on digitizing ancient manuscripts and physically restoring three endangered heritage sites. This collaboration highlights the Foundation's deep commitment to cultural preservation and intercultural dialogue. "Our history defines our identity. It is our duty to protect these treasures for future generations," said Sheikh Humaid Al Mualla during the signing ceremony.</p>
+            </div>
+            <div class="tags">
+                <span>Culture</span> <span>History</span> <span>UNESCO</span>
+            </div>
+        </article>
+
+        <!-- News 4: AI与科技 (新增) -->
+        <article class="news-item" id="news-4">
+            <span class="news-date">September 12, 2024</span>
+            <h3 class="news-title">Driving the Future: Major Fund Allocated for AI & Tech Startups</h3>
+            <div class="news-body">
+                <p><strong>DUBAI, UAE</strong> — Recognizing the transformative power of technology, the Foundation has launched a specialized venture capital arm dedicated to Artificial Intelligence and Blockchain startups.</p>
+                <p>With an initial corpus of $100 million, the fund will target early-stage companies in Dubai's Internet City and Silicon Oasis that are developing solutions for smart cities and fintech. This initiative supports the vision of His Highness Sheikh Mohammed bin Rashid Al Maktoum to make Dubai the smartest city in the world.</p>
+            </div>
+            <div class="tags">
+                <span>Technology</span> <span>AI</span> <span>Innovation</span>
+            </div>
+        </article>
+
+        <!-- News 5: 中阿关系 (新增，呼应About页面提到的背景) -->
+        <article class="news-item" id="news-5">
+            <span class="news-date">August 01, 2024</span>
+            <h3 class="news-title">Celebrating 40 Years of UAE-China Diplomatic Relations</h3>
+            <div class="news-body">
+                <p><strong>BEIJING, CHINA</strong> — To commemorate the 40th anniversary of diplomatic ties between China and the UAE, UAE Royal Capital Funding sponsored a high-level economic forum in Beijing.</p>
+                <p>The forum brought together business leaders and government officials to discuss the "Belt and Road" initiative and expanding bilateral trade. The Foundation emphasized its role as a key facilitator for Chinese enterprises looking to expand into the Arab region, reinforcing the enduring friendship and economic synergy between the two nations.</p>
+            </div>
+            <div class="tags">
+                <span>Diplomacy</span> <span>China-UAE</span> <span>Trade</span>
+            </div>
+        </article>
+
+    </div>
+
+    <footer><p>© 2025 UAE Royal Capital Funding.</p></footer>
+</body>
+</html>
