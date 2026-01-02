@@ -2,148 +2,293 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Center - UAE ROYAL CAPITAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* 复用基础CSS */
-        :root { --bg-color: #FAFAF5; --royal-gold: #C5A059; --deep-navy: #0E1E35; --text-body: #4A5568; --font-serif: 'Playfair Display', serif; --font-sans: 'Montserrat', sans-serif; }
-        body { font-family: var(--font-sans); background: var(--bg-color); color: var(--text-body); margin: 0; line-height: 1.7; }
-        
-        .navbar { background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); position: fixed; top: 0; width: 100%; z-index: 100; }
-        .logo { display: flex;align-items: center;font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); text-decoration: none; font-size: 1.2rem; }
-        .logo img { height: 40px; width: auto; margin-right: 10px; object-fit: contain; }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--deep-navy); font-size: 0.9rem; text-transform: uppercase; }
-
-        .sub-hero {
-            height: 40vh; margin-top: 60px;
-            background: linear-gradient(rgba(14, 30, 53, 0.7), rgba(14, 30, 53, 0.7)), url('https://images.unsplash.com/photo-1518684079-3c830dcef6c0?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; color: #fff;
+        /* --- 1. CORE VARIABLES & RESET --- */
+        :root { 
+            --bg-color: #FAFAF5; 
+            --royal-gold: #C5A059; 
+            --deep-navy: #0E1E35; 
+            --text-body: #4A5568; 
+            --font-serif: 'Playfair Display', serif; 
+            --font-sans: 'Montserrat', sans-serif; 
         }
-        .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-
-        /* 新闻列表样式 - 增加图片布局 */
-        .news-container { max-width: 1000px; margin: 4rem auto; padding: 0 20px; }
         
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { 
+            font-family: var(--font-sans); 
+            background: var(--bg-color); 
+            color: var(--text-body); 
+            margin: 0; 
+            line-height: 1.7; 
+            /* 背景纹理 */
+            background-image: radial-gradient(#C5A059 0.5px, transparent 0.5px), radial-gradient(#C5A059 0.5px, #FAFAF5 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* --- 2. NAVBAR --- */
+        .navbar { 
+            background: #fff; padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center; 
+            border-bottom: 1px solid rgba(197,160,89,0.2); position: fixed; top: 0; width: 100%; z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { display: flex; align-items: center; font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); font-size: 1.2rem; gap: 10px; }
+        .logo img { height: 40px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-size: 0.9rem; text-transform: uppercase; color: var(--deep-navy); font-weight: 500; position: relative; }
+        .nav-links a:hover { color: var(--royal-gold); }
+
+        /* --- 3. HERO SECTION --- */
+        .sub-hero {
+            height: 45vh; margin-top: 60px;
+            background: linear-gradient(rgba(14, 30, 53, 0.7), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1518684079-3c830dcef6c0?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center;
+        }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 3.5rem; color: var(--royal-gold); margin-bottom: 10px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .sub-hero p { font-size: 1.2rem; font-weight: 300; letter-spacing: 1px; color: #e0e0e0; max-width: 600px; }
+
+        /* --- 4. NEWS CONTAINER --- */
+        .news-container { max-width: 1000px; margin: -50px auto 4rem auto; padding: 0 20px; position: relative; z-index: 2; }
+        
+        /* 筛选栏 (新增) */
+        .news-filter-bar {
+            background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;
+            flex-wrap: wrap; gap: 15px;
+        }
+        .filter-group { display: flex; gap: 20px; }
+        .filter-btn { cursor: pointer; font-weight: 600; color: #888; border-bottom: 2px solid transparent; padding-bottom: 5px; font-size: 0.9rem; }
+        .filter-btn.active, .filter-btn:hover { color: var(--deep-navy); border-color: var(--royal-gold); }
+        
+        .search-box { display: flex; align-items: center; background: #f5f5f5; padding: 8px 15px; border-radius: 20px; }
+        .search-box input { border: none; background: transparent; outline: none; font-size: 0.9rem; width: 150px; }
+        .search-box i { color: #888; }
+
+        /* 新闻卡片列表 */
+        .news-list { display: flex; flex-direction: column; gap: 2rem; }
+
         .news-item {
             background: #fff;
-            margin-bottom: 3rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            display: flex; /* Flex布局 */
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #eee;
+            display: flex; 
+            border-radius: 6px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            
+            /* 初始状态：用于动画 */
+            opacity: 0; transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards;
         }
-        .news-item:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--royal-gold); }
+        .news-item:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 40px rgba(14, 30, 53, 0.1); 
+            border-color: rgba(197, 160, 89, 0.3);
+        }
 
-        .news-thumb { width: 35%; min-width: 250px; position: relative; overflow: hidden; }
-        .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .news-thumb { width: 35%; min-width: 280px; position: relative; overflow: hidden; }
+        .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .news-item:hover .news-thumb img { transform: scale(1.05); }
         
-        .news-content { padding: 2rem; width: 65%; display: flex; flex-direction: column; justify-content: center; }
-        
-        .news-date { color: var(--royal-gold); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
-        .news-title { font-family: var(--font-serif); font-size: 1.5rem; color: var(--deep-navy); margin: 0 0 1rem 0; line-height: 1.3; }
-        .news-title a { text-decoration: none; color: inherit; }
-        .news-excerpt { font-size: 0.95rem; color: #555; margin-bottom: 1.5rem; line-height: 1.6; }
-        
-        .read-more-btn {
-            align-self: flex-start;
-            padding: 8px 20px;
-            border: 1px solid var(--deep-navy);
-            color: var(--deep-navy);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: 0.3s;
+        /* 类别标签 */
+        .category-tag {
+            position: absolute; top: 15px; left: 15px;
+            background: var(--royal-gold); color: #fff;
+            padding: 4px 10px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            border-radius: 2px;
         }
-        .read-more-btn:hover { background: var(--deep-navy); color: #fff; }
 
+        .news-content { padding: 2.5rem; width: 65%; display: flex; flex-direction: column; justify-content: center; }
+        
+        .news-meta { display: flex; gap: 15px; font-size: 0.85rem; color: #999; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .news-meta i { color: var(--royal-gold); margin-right: 5px; }
+
+        .news-title { font-family: var(--font-serif); font-size: 1.6rem; color: var(--deep-navy); margin: 0 0 1rem 0; line-height: 1.3; font-weight: 700; }
+        .news-title:hover { color: var(--royal-gold); }
+        
+        .news-excerpt { font-size: 1rem; color: #555; margin-bottom: 1.5rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .read-more-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--deep-navy); font-weight: 600; font-size: 0.9rem;
+            border-bottom: 1px solid transparent; width: fit-content;
+        }
+        .read-more-link:hover { color: var(--royal-gold); gap: 12px; } /* 悬停时箭头移动 */
+
+        /* 分页器 (新增) */
+        .pagination { display: flex; justify-content: center; gap: 10px; margin-top: 4rem; }
+        .page-btn { 
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            border: 1px solid #ddd; background: #fff; color: var(--text-body); cursor: pointer; transition: 0.3s; font-weight: 600;
+        }
+        .page-btn.active { background: var(--deep-navy); color: #fff; border-color: var(--deep-navy); }
+        .page-btn:hover:not(.active) { border-color: var(--royal-gold); color: var(--royal-gold); }
+
+        /* 页脚 */
         footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; margin-top: 4rem; }
 
+        /* 动画关键帧 */
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* 移动端适配 */
         @media(max-width: 768px) {
+            .navbar { padding: 1rem; } .nav-links { display: none; }
+            .sub-hero h1 { font-size: 2.2rem; }
+            .news-filter-bar { flex-direction: column; align-items: flex-start; }
             .news-item { flex-direction: column; }
-            .news-thumb { width: 100%; height: 200px; }
-            .news-content { width: 100%; }
+            .news-thumb { width: 100%; height: 220px; }
+            .news-content { width: 100%; padding: 1.5rem; }
+            .news-title { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="index.html" class="logo"><img src="images/logo.png" alt="Logo"> UAE ROYAL CAPITAL</a>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Logo"> 
+            UAE ROYAL CAPITAL
+        </a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="news.html" style="color:var(--royal-gold)">News</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
+    <!-- 顶部 Hero -->
     <div class="sub-hero">
-        <h1>Global News & Royal Updates</h1>
+        <h1>Global News & Updates</h1>
+        <p>Stay informed with the latest developments from our investment portfolio and royal initiatives.</p>
     </div>
 
     <div class="news-container">
         
-        <!-- News 1: Musk & Dubai (时效性最强，排第一) -->
-        <article class="news-item">
-            <div class="news-thumb">
-                <!-- 科技/未来感图片 -->
-                <img src="https://images.unsplash.com/photo-1512453979798-5ea904ac6605?q=80&w=1000&auto=format&fit=crop" alt="Dubai Tech">
+        <!-- 1. 筛选栏 (优化点) -->
+        <div class="news-filter-bar">
+            <div class="filter-group">
+                <span class="filter-btn active">All News</span>
+                <span class="filter-btn">Technology</span>
+                <span class="filter-btn">Royal Activities</span>
+                <span class="filter-btn">Economy</span>
             </div>
-            <div class="news-content">
-                <span class="news-date">November 12, 2025</span>
-                <h3 class="news-title"><a href="news_pages/news_new_1.html">Elon Musk Meets Crown Prince Hamdan to Launch "Tesla AI City" in Dubai</a></h3>
-                <p class="news-excerpt">In a historic meeting at Zabeel Palace, Sheikh Hamdan and Elon Musk unveiled a multi-billion dollar roadmap for autonomous transport and AI infrastructure. UAE Royal Capital Funding is confirmed as a key investment partner.</p>
-                <a href="news_pages/news_new_1.html" class="read-more-btn">Read More</a>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search news...">
             </div>
-        </article>
+        </div>
 
-        <!-- News 2: Qatar Summit (卡塔尔) -->
-        <article class="news-item">
-            <div class="news-thumb">
-                <!-- 会议/高端图片 -->
-                <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=1000&auto=format&fit=crop" alt="Qatar Summit">
-            </div>
-            <div class="news-content">
-                <span class="news-date">October 28, 2025</span>
-                <h3 class="news-title"><a href="news_pages/news_new_2.html">Doha Royal Summit: Emir of Qatar Hosts GCC Leaders on Economic Unity</a></h3>
-                <p class="news-excerpt">His Highness Sheikh Tamim bin Hamad Al Thani convened a high-level summit in Doha. The Foundation participated in the closed-door financial roundtable regarding the unified digital currency framework.</p>
-                <a href="news_pages/news_new_2.html" class="read-more-btn">Read More</a>
-            </div>
-        </article>
+        <div class="news-list">
+            
+            <!-- News 1: Musk & Dubai (CNN 图片) -->
+            <article class="news-item" style="animation-delay: 0.1s;">
+                <div class="news-thumb">
+                    <span class="category-tag">Technology</span>
+                    <a href="news_pages/news_new_1.html">
+                        <!-- 使用 CNN 链接 -->
+                        <img src="https://media.cnn.com/api/v1/images/stellar/prod/170214124846-musk-dubai-3.jpg?q=w_800,h_500,x_0,y_0,c_fill" alt="Elon Musk and Hamdan">
+                    </a>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="fa-regular fa-calendar"></i> Nov 12, 2025</span>
+                        <span><i class="fa-regular fa-user"></i> Editorial Team</span>
+                    </div>
+                    <h3 class="news-title">
+                        <a href="news_pages/news_new_1.html">Elon Musk Meets Crown Prince Hamdan to Launch "Tesla AI City" in Dubai</a>
+                    </h3>
+                    <p class="news-excerpt">In a historic meeting at Zabeel Palace, Sheikh Hamdan and Elon Musk unveiled a multi-billion dollar roadmap for autonomous transport and AI infrastructure...</p>
+                    <a href="news_pages/news_new_1.html" class="read-more-link">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
 
-        <!-- News 3: Oman Railway (阿曼) -->
-        <article class="news-item">
-            <div class="news-thumb">
-                <!-- 铁路/沙漠工程图片 -->
-                <img src="https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?q=80&w=1000&auto=format&fit=crop" alt="Oman Railway">
-            </div>
-            <div class="news-content">
-                <span class="news-date">September 15, 2025</span>
-                <h3 class="news-title"><a href="news_pages/news_new_3.html">Sultan Haitham and UAE President Inspect Joint High-Speed Railway</a></h3>
-                <p class="news-excerpt">A landmark moment for regional connectivity as leaders of Oman and UAE reviewed the progress of the $3B railway network. Our Fund has allocated resources to develop logistics hubs along the Sohar-Abu Dhabi route.</p>
-                <a href="news_pages/news_new_3.html" class="read-more-btn">Read More</a>
-            </div>
-        </article>
+            <!-- News 2: Qatar Summit -->
+            <article class="news-item" style="animation-delay: 0.2s;">
+                <div class="news-thumb">
+                    <span class="category-tag">Economy</span>
+                    <a href="news_pages/news_new_2.html">
+                        <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=800&auto=format&fit=crop" alt="Qatar Summit">
+                    </a>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="fa-regular fa-calendar"></i> Oct 28, 2025</span>
+                        <span><i class="fa-regular fa-user"></i> Press Release</span>
+                    </div>
+                    <h3 class="news-title">
+                        <a href="news_pages/news_new_2.html">Doha Royal Summit: Emir of Qatar Hosts GCC Leaders on Economic Unity</a>
+                    </h3>
+                    <p class="news-excerpt">His Highness Sheikh Tamim bin Hamad Al Thani convened a high-level summit in Doha. The Foundation participated in the closed-door financial roundtable...</p>
+                    <a href="news_pages/news_new_2.html" class="read-more-link">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
 
-        <!-- News 4: Space Strategy (阿联酋国庆) -->
-        <article class="news-item">
-            <div class="news-thumb">
-                <!-- 太空/火星图片 -->
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" alt="UAE Space">
-            </div>
-            <div class="news-content">
-                <span class="news-date">December 02, 2025</span>
-                <h3 class="news-title"><a href="news_pages/news_new_4.html">National Day Address: UAE President Announces "Mars 2117" Acceleration</a></h3>
-                <p class="news-excerpt">Celebrating the 54th National Day, the President announced major grants for private space-tech companies. UAE Royal Capital Funding will manage the "Orbital Innovation Grant" starting Q1 2026.</p>
-                <a href="news_pages/news_new_4.html" class="read-more-btn">Read More</a>
-            </div>
-        </article>
+            <!-- News 3: Oman Railway -->
+            <article class="news-item" style="animation-delay: 0.3s;">
+                <div class="news-thumb">
+                    <span class="category-tag">Infrastructure</span>
+                    <a href="news_pages/news_new_3.html">
+                        <img src="https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?q=80&w=800&auto=format&fit=crop" alt="Oman Railway">
+                    </a>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="fa-regular fa-calendar"></i> Sep 15, 2025</span>
+                        <span><i class="fa-regular fa-user"></i> Regional News</span>
+                    </div>
+                    <h3 class="news-title">
+                        <a href="news_pages/news_new_3.html">Sultan Haitham and UAE President Inspect Joint High-Speed Railway</a>
+                    </h3>
+                    <p class="news-excerpt">A landmark moment for regional connectivity as leaders of Oman and UAE reviewed the progress of the $3B railway network...</p>
+                    <a href="news_pages/news_new_3.html" class="read-more-link">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- News 4: Space Strategy -->
+            <article class="news-item" style="animation-delay: 0.4s;">
+                <div class="news-thumb">
+                    <span class="category-tag">Innovation</span>
+                    <a href="news_pages/news_new_4.html">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" alt="UAE Space">
+                    </a>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="fa-regular fa-calendar"></i> Dec 02, 2025</span>
+                        <span><i class="fa-regular fa-user"></i> Royal Decree</span>
+                    </div>
+                    <h3 class="news-title">
+                        <a href="news_pages/news_new_4.html">National Day Address: UAE President Announces "Mars 2117" Acceleration</a>
+                    </h3>
+                    <p class="news-excerpt">Celebrating the 54th National Day, the President announced major grants for private space-tech companies. UAE Royal Capital Funding will manage...</p>
+                    <a href="news_pages/news_new_4.html" class="read-more-link">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- 2. 分页器 (优化点) -->
+        <div class="pagination">
+            <div class="page-btn active">1</div>
+            <div class="page-btn">2</div>
+            <div class="page-btn">3</div>
+            <div class="page-btn"><i class="fa-solid fa-angle-right"></i></div>
+        </div>
 
     </div>
 
-    <footer><p>© 2026 UAE Royal Capital Funding.</p></footer>
+    <footer><p>© 2026 UAE Royal Capital Funding. All Rights Reserved.</p></footer>
 </body>
 </html>
