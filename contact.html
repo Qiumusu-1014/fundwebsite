@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - UAE ROYAL CAPITAL</title>
     
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -31,7 +32,7 @@
         
         a { text-decoration: none; transition: 0.3s; }
 
-        /* --- 2. NAVBAR (统一修正版) --- */
+        /* --- 2. NAVBAR (Unified Version) --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 80px;
             padding: 0 max(5%, calc((100% - 1200px) / 2)); 
@@ -60,18 +61,28 @@
         }
         .nav-links a:hover::after { width: 100%; }
 
+        /* 捐款按钮 */
+        .btn-donate {
+            background: var(--deep-navy); color: #fff; padding: 10px 25px; font-weight: 600;
+            border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--deep-navy);
+            font-size: 0.8rem;
+        }
+        .btn-donate:hover { background: #fff; color: var(--deep-navy); border-color: var(--royal-gold); }
+
         /* 汉堡菜单图标 */
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
         .bar { width: 25px; height: 3px; background-color: var(--deep-navy); transition: 0.4s; }
 
-        /* --- 3. HERO --- */
+        /* --- 3. HERO (New World Map Image) --- */
         .sub-hero {
-            height: 40vh; margin-top: 80px;
-            background: linear-gradient(rgba(14, 30, 53, 0.8), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1512453979798-5ea904ac6605?q=80&w=1920&auto=format&fit=crop');
+            height: 45vh; margin-top: 80px;
+            /* 世界地图连接风格 */
+            background: linear-gradient(rgba(14, 30, 53, 0.8), rgba(14, 30, 53, 0.8)), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1920&auto=format&fit=crop');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; color: #fff;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center;
         }
-        .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); margin-bottom: 10px; }
+        .sub-hero p { font-size: 1.2rem; font-weight: 300; letter-spacing: 2px; }
 
         /* --- 4. CONTACT CONTAINER --- */
         .contact-wrapper {
@@ -86,15 +97,18 @@
 
         .contact-info { 
             flex: 1; padding: 4rem; min-width: 350px; 
-            border-right: 1px solid #f0f0f0; position: relative;
+            border-right: 1px solid #f0f0f0;
+            position: relative;
         }
         .contact-info::before {
             content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--royal-gold);
         }
 
         .contact-map { 
-            flex: 1; min-width: 350px; background: #0E1E35; position: relative; overflow: hidden;
+            flex: 1; min-width: 350px; background: #0E1E35; 
+            position: relative; overflow: hidden;
         }
+        
         .contact-map img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
         .contact-map:hover img { transform: scale(1.05); opacity: 0.8; }
         
@@ -108,18 +122,25 @@
         .icon-box { 
             width: 50px; height: 50px; background: rgba(197, 160, 89, 0.1); 
             display: flex; align-items: center; justify-content: center; 
-            border-radius: 50%; color: var(--royal-gold); font-size: 1.2rem; flex-shrink: 0;
+            border-radius: 50%; color: var(--royal-gold); font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
         .info-content h4 { font-family: var(--font-serif); color: var(--deep-navy); margin-bottom: 5px; font-size: 1.1rem; }
         .info-content p { margin: 0; color: #666; font-size: 0.95rem; line-height: 1.6; }
         
         /* 邮箱链接样式 */
-        .email-link { display: block; color: var(--deep-navy); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .email-link {
+            display: block; color: var(--deep-navy); text-decoration: none; 
+            border-bottom: 1px solid transparent; transition: 0.3s;
+        }
         .email-link:hover { color: var(--royal-gold); border-bottom-color: var(--royal-gold); }
         .email-label { font-size: 0.8rem; color: #999; margin-right: 5px; text-transform: uppercase; }
 
-        .intro-text { font-size: 1.2rem; color: var(--deep-navy); margin-bottom: 3rem; font-family: var(--font-serif); font-style: italic; line-height: 1.5; }
+        .intro-text { 
+            font-size: 1.2rem; color: var(--deep-navy); margin-bottom: 3rem; 
+            font-family: var(--font-serif); font-style: italic; line-height: 1.5;
+        }
 
         /* --- 5. CONTACT FORM --- */
         .form-section { margin-top: 3rem; border-top: 1px solid #eee; padding-top: 2rem; }
@@ -128,9 +149,12 @@
         .contact-form .form-group { margin-bottom: 1rem; }
         .contact-form input, .contact-form textarea {
             width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;
-            font-family: var(--font-sans); font-size: 0.95rem; transition: 0.3s; background: #fafbfc;
+            font-family: var(--font-sans); font-size: 0.95rem; transition: 0.3s;
+            background: #fafbfc;
         }
-        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--royal-gold); outline: none; background: #fff; }
+        .contact-form input:focus, .contact-form textarea:focus { 
+            border-color: var(--royal-gold); outline: none; background: #fff;
+        }
         
         .send-btn {
             background: var(--deep-navy); color: #fff; padding: 12px 30px; border: none; border-radius: 2px;
@@ -149,6 +173,8 @@
             .navbar { padding: 0 1.5rem; height: 70px; }
             .logo { font-size: 1.1rem; }
             .hamburger { display: flex; }
+            
+            /* 手机菜单容器 */
             .nav-container {
                 position: fixed; top: 70px; left: 0; width: 100%; background-color: #fff;
                 flex-direction: column; align-items: center; padding: 2rem 0;
@@ -158,6 +184,8 @@
             .nav-container.active { transform: translateY(0); }
             .nav-links { flex-direction: column; gap: 20px; width: 100%; text-align: center; }
             .nav-links a { font-size: 1rem; display: block; padding: 10px 0; width: 100%; }
+            .btn-donate { width: 80%; text-align: center; margin-top: 20px; }
+            
             .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
@@ -168,23 +196,28 @@
 </head>
 <body>
 
-    <!-- 导航栏 -->
+    <!-- 导航栏 (统一版) -->
     <nav class="navbar">
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Logo"> 
             UAE ROYAL CAPITAL
         </a>
+
         <div class="hamburger" id="hamburger-btn">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
+
         <div class="nav-container" id="nav-menu">
             <div class="nav-links">
                 <a href="index.html" onclick="closeMenu()">Home</a>
+                <a href="about.html" onclick="closeMenu()">About Us</a>
+                <a href="news.html" onclick="closeMenu()">News</a>
                 <a href="careers.html" onclick="closeMenu()">Careers</a>
                 <a href="contact.html" onclick="closeMenu()" style="color:var(--royal-gold)">Contact</a>
             </div>
+            <a href="donate.html" class="btn-donate" onclick="closeMenu()">Donate</a>
         </div>
     </nav>
 
