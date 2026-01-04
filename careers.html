@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers - UAE ROYAL CAPITAL</title>
     
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -34,7 +35,7 @@
 
         a { text-decoration: none; transition: 0.3s; }
 
-        /* --- 2. NAVBAR (统一修正版) --- */
+        /* --- 2. NAVBAR (Unified Version) --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 80px;
             padding: 0 max(5%, calc((100% - 1200px) / 2)); 
@@ -50,7 +51,7 @@
         }
         .logo img { height: 45px; width: auto; object-fit: contain; }
 
-        /* 桌面菜单 */
+        /* 桌面菜单容器 */
         .nav-container { display: flex; align-items: center; gap: 2rem; }
         .nav-links { display: flex; gap: 1.5rem; align-items: center; }
         .nav-links a {
@@ -63,13 +64,22 @@
         }
         .nav-links a:hover::after { width: 100%; }
 
+        /* 捐款按钮 */
+        .btn-donate {
+            background: var(--deep-navy); color: #fff; padding: 10px 25px; font-weight: 600;
+            border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--deep-navy);
+            font-size: 0.8rem;
+        }
+        .btn-donate:hover { background: #fff; color: var(--deep-navy); border-color: var(--royal-gold); }
+
         /* 汉堡菜单图标 */
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
         .bar { width: 25px; height: 3px; background-color: var(--deep-navy); transition: 0.4s; }
 
-        /* --- 3. HERO --- */
+        /* --- 3. HERO (New Image) --- */
         .sub-hero {
             height: 45vh; margin-top: 80px;
+            /* 更高端的办公楼/会议背景 */
             background: linear-gradient(rgba(14, 30, 53, 0.7), rgba(14, 30, 53, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff;
@@ -188,6 +198,8 @@
             .navbar { padding: 0 1.5rem; height: 70px; }
             .logo { font-size: 1.1rem; }
             .hamburger { display: flex; }
+            
+            /* 手机菜单容器 */
             .nav-container {
                 position: fixed; top: 70px; left: 0; width: 100%; background-color: #fff;
                 flex-direction: column; align-items: center; padding: 2rem 0;
@@ -197,6 +209,8 @@
             .nav-container.active { transform: translateY(0); }
             .nav-links { flex-direction: column; gap: 20px; width: 100%; text-align: center; }
             .nav-links a { font-size: 1rem; display: block; padding: 10px 0; width: 100%; }
+            .btn-donate { width: 80%; text-align: center; margin-top: 20px; }
+            
             .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
@@ -207,21 +221,28 @@
 </head>
 <body>
 
+    <!-- 导航栏 (统一版) -->
     <nav class="navbar">
         <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="Logo"> UAE ROYAL CAPITAL
+            <img src="images/logo.png" alt="Logo"> 
+            UAE ROYAL CAPITAL
         </a>
+
         <div class="hamburger" id="hamburger-btn">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
+
         <div class="nav-container" id="nav-menu">
             <div class="nav-links">
                 <a href="index.html" onclick="closeMenu()">Home</a>
-                <a href="careers.html" onclick="closeMenu()" style="color: var(--royal-gold);">Careers</a>
+                <a href="about.html" onclick="closeMenu()">About Us</a>
+                <a href="news.html" onclick="closeMenu()">News</a>
+                <a href="careers.html" onclick="closeMenu()" style="color:var(--royal-gold)">Careers</a>
                 <a href="contact.html" onclick="closeMenu()">Contact</a>
             </div>
+            <a href="donate.html" class="btn-donate" onclick="closeMenu()">Donate</a>
         </div>
     </nav>
 
@@ -245,6 +266,7 @@
     <div class="jobs-container">
         <div class="section-header"><h2>Current Openings</h2></div>
 
+        <!-- Job 1 -->
         <div class="job-card" style="animation-delay: 0.1s;">
             <div class="job-header" onclick="toggleJob(this)">
                 <div class="job-title"><h3>Senior Investment Analyst</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span></div></div>
@@ -257,6 +279,7 @@
             </div></div>
         </div>
 
+        <!-- Job 2 -->
         <div class="job-card" style="animation-delay: 0.2s;">
             <div class="job-header" onclick="toggleJob(this)">
                 <div class="job-title"><h3>Public Relations Director</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Abu Dhabi, UAE</span></div></div>
@@ -269,6 +292,7 @@
             </div></div>
         </div>
 
+        <!-- Job 3 -->
         <div class="job-card" style="animation-delay: 0.3s;">
             <div class="job-header" onclick="toggleJob(this)">
                 <div class="job-title"><h3>Legal Counsel</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span></div></div>
