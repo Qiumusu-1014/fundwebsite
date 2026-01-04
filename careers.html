@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers - UAE ROYAL CAPITAL</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -34,7 +34,7 @@
 
         a { text-decoration: none; transition: 0.3s; }
 
-        /* --- 2. NAVBAR (Fixed & Centered) --- */
+        /* --- 2. NAVBAR (统一修正版) --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 80px;
             padding: 0 max(5%, calc((100% - 1200px) / 2)); 
@@ -43,11 +43,29 @@
             z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); transition: 0.4s;
             box-sizing: border-box;
         }
-        .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); font-size: 1.4rem; }
+
+        .logo {
+            font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--deep-navy);
+            letter-spacing: 1px; display: flex; align-items: center; gap: 10px; z-index: 1001;
+        }
         .logo img { height: 45px; width: auto; object-fit: contain; }
-        .nav-links { display: flex; gap: 1.5rem; }
-        .nav-links a { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--deep-navy); font-weight: 500; }
-        .nav-links a:hover { color: var(--royal-gold); }
+
+        /* 桌面菜单 */
+        .nav-container { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--deep-navy);
+            font-weight: 500; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--royal-gold); transition: 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* 汉堡菜单图标 */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
+        .bar { width: 25px; height: 3px; background-color: var(--deep-navy); transition: 0.4s; }
 
         /* --- 3. HERO --- */
         .sub-hero {
@@ -124,20 +142,17 @@
         }
         .general-apply-btn:hover { background: var(--royal-gold); color: #fff; }
 
-        /* --- 7. APPLICATION MODAL (弹出层样式) --- */
+        /* --- 7. MODAL --- */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
             background-color: rgba(14, 30, 53, 0.9); overflow: auto;
             backdrop-filter: blur(5px);
         }
-        
         .modal-content {
             background-color: #fff; margin: 5% auto; padding: 0; border-radius: 8px;
             width: 90%; max-width: 600px; position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            animation: slideDown 0.4s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: slideDown 0.4s ease;
         }
-
         .modal-header {
             background: var(--deep-navy); padding: 1.5rem 2rem; color: #fff;
             display: flex; justify-content: space-between; align-items: center;
@@ -146,9 +161,7 @@
         .modal-header h3 { font-family: var(--font-serif); color: var(--royal-gold); margin: 0; }
         .close-btn { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .close-btn:hover { color: #fff; }
-
         .modal-body { padding: 2rem; }
-
         .form-group { margin-bottom: 1.5rem; text-align: left; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--deep-navy); }
         .form-group input, .form-group textarea, .form-group select {
@@ -156,10 +169,7 @@
             font-family: var(--font-sans); font-size: 1rem; transition: 0.3s;
         }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--royal-gold); outline: none; background: #fafbfc; }
-        
-        /* 错误提示文字 */
         .error-message { color: red; font-size: 0.8rem; margin-top: 5px; display: none; }
-
         .form-submit-btn {
             width: 100%; padding: 15px; background: var(--deep-navy); color: #fff;
             border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;
@@ -173,8 +183,23 @@
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media(max-width: 768px) {
-            .navbar { padding: 0 1.5rem; height: 70px; } .nav-links { display: none; }
+        /* Mobile */
+        @media(max-width: 900px) {
+            .navbar { padding: 0 1.5rem; height: 70px; }
+            .logo { font-size: 1.1rem; }
+            .hamburger { display: flex; }
+            .nav-container {
+                position: fixed; top: 70px; left: 0; width: 100%; background-color: #fff;
+                flex-direction: column; align-items: center; padding: 2rem 0;
+                border-bottom: 2px solid var(--royal-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                transform: translateY(-150%); transition: transform 0.5s ease; z-index: 1000;
+            }
+            .nav-container.active { transform: translateY(0); }
+            .nav-links { flex-direction: column; gap: 20px; width: 100%; text-align: center; }
+            .nav-links a { font-size: 1rem; display: block; padding: 10px 0; width: 100%; }
+            .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
             .job-header { flex-direction: column; align-items: flex-start; gap: 15px; }
             .toggle-icon { position: absolute; right: 20px; top: 30px; }
         }
@@ -186,10 +211,17 @@
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Logo"> UAE ROYAL CAPITAL
         </a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="careers.html" style="color: var(--royal-gold);">Careers</a>
-            <a href="contact.html">Contact</a>
+        <div class="hamburger" id="hamburger-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="nav-container" id="nav-menu">
+            <div class="nav-links">
+                <a href="index.html" onclick="closeMenu()">Home</a>
+                <a href="careers.html" onclick="closeMenu()" style="color: var(--royal-gold);">Careers</a>
+                <a href="contact.html" onclick="closeMenu()">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -213,7 +245,6 @@
     <div class="jobs-container">
         <div class="section-header"><h2>Current Openings</h2></div>
 
-        <!-- Job 1 -->
         <div class="job-card" style="animation-delay: 0.1s;">
             <div class="job-header" onclick="toggleJob(this)">
                 <div class="job-title"><h3>Senior Investment Analyst</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span></div></div>
@@ -226,7 +257,6 @@
             </div></div>
         </div>
 
-        <!-- Job 2 -->
         <div class="job-card" style="animation-delay: 0.2s;">
             <div class="job-header" onclick="toggleJob(this)">
                 <div class="job-title"><h3>Public Relations Director</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Abu Dhabi, UAE</span></div></div>
@@ -239,7 +269,6 @@
             </div></div>
         </div>
 
-        <!-- Job 3 -->
         <div class="job-card" style="animation-delay: 0.3s;">
             <div class="job-header" onclick="toggleJob(this)">
                 <div class="job-title"><h3>Legal Counsel</h3><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span></div></div>
@@ -260,7 +289,7 @@
 
     <footer><p>© 2026 UAE Royal Capital Funding. All Rights Reserved.</p></footer>
 
-    <!-- 申请弹出框 (MODAL) -->
+    <!-- MODAL -->
     <div id="applyModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -268,60 +297,39 @@
                 <span class="close-btn" onclick="closeModal()">&times;</span>
             </div>
             <div class="modal-body">
-                
-                <!-- 
-                   表单配置：
-                   1. action: 您提供的链接
-                   2. _captcha: "false" (加快速度，防垃圾由 Honeypot 负责)
-                   3. _honey: 隐藏字段，人类看不见，防止机器人提交
-                   4. id="careerForm": 用于JS验证脚本绑定
-                -->
                 <form id="careerForm" action="https://formsubmit.co/el/dafamu" method="POST" enctype="multipart/form-data">
-                    
-                    <!-- 自动跳转回本页 (防止跳转到第三方广告页) -->
-                    <!-- 注意：这里建议改成您网站 careers.html 的真实完整网址 -->
                     <input type="hidden" name="_next" value="https://uaeroyalcapital.github.io/careers.html"> 
-                    
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="New Career Application">
-                    
-                    <!-- Honeypot Anti-Spam (防垃圾核心：人类看不见，机器人会填) -->
                     <input type="text" name="_honey" style="display:none">
-
                     <input type="hidden" id="job-role" name="Applied For Position">
 
                     <div class="form-group">
                         <label for="name">Full Name <span style="color:red">*</span></label>
                         <input type="text" id="name" name="name" required placeholder="Your full name">
                     </div>
-
                     <div class="form-group">
                         <label for="email">Email Address <span style="color:red">*</span></label>
                         <input type="email" id="email" name="email" required placeholder="name@example.com">
                     </div>
-
                     <div class="form-group">
                         <label for="phone">Phone Number <span style="color:red">*</span></label>
                         <input type="tel" id="phone" name="phone" required placeholder="+971 50 123 4567">
                         <div id="phone-error" class="error-message">Please enter a valid phone number.</div>
                     </div>
-
                     <div class="form-group">
                         <label for="linkedin">LinkedIn Profile (Optional)</label>
                         <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
                     </div>
-
                     <div class="form-group">
                         <label for="coverletter">Cover Letter / Short Bio</label>
                         <textarea id="coverletter" name="message" rows="4" placeholder="Briefly introduce yourself..."></textarea>
                     </div>
-
                     <div class="form-group">
                         <label for="resume">Upload Resume (PDF/Word, Max 5MB) <span style="color:red">*</span></label>
                         <input type="file" id="resume" name="attachment" accept=".pdf,.doc,.docx" required>
                         <div id="file-error" class="error-message">File is too large! Please upload a file smaller than 5MB.</div>
                     </div>
-
                     <button type="submit" id="submitBtn" class="form-submit-btn">Submit Application</button>
                 </form>
             </div>
@@ -329,38 +337,29 @@
     </div>
 
     <script>
-        // 1. 折叠动画
+        // Navbar Logic
+        const hamburger = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
+        function closeMenu() { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }
+
+        // Accordion
         function toggleJob(header) {
             const card = header.parentElement;
             const details = card.querySelector('.job-details');
             card.classList.toggle('active');
-            if (card.classList.contains('active')) {
-                details.style.maxHeight = details.scrollHeight + "px";
-            } else {
-                details.style.maxHeight = null;
-            }
+            if (card.classList.contains('active')) { details.style.maxHeight = details.scrollHeight + "px"; } 
+            else { details.style.maxHeight = null; }
         }
 
-        // 2. 弹窗控制
+        // Modal
         const modal = document.getElementById("applyModal");
         const jobRoleInput = document.getElementById("job-role");
+        function openModal(jobTitle) { modal.style.display = "block"; jobRoleInput.value = jobTitle; }
+        function closeModal() { modal.style.display = "none"; }
+        window.onclick = function(event) { if (event.target == modal) { closeModal(); } }
 
-        function openModal(jobTitle) {
-            modal.style.display = "block";
-            jobRoleInput.value = jobTitle;
-        }
-
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        // 3. 表单验证脚本 (防止无效信息)
+        // Validation
         const form = document.getElementById('careerForm');
         const fileInput = document.getElementById('resume');
         const phoneInput = document.getElementById('phone');
@@ -370,31 +369,10 @@
 
         form.addEventListener('submit', function(e) {
             let isValid = true;
-
-            // 验证 1: 文件大小限制 (5MB)
-            const fileSize = fileInput.files[0].size / 1024 / 1024; // MB
-            if (fileSize > 5) {
-                fileError.style.display = 'block';
-                isValid = false;
-            } else {
-                fileError.style.display = 'none';
-            }
-
-            // 验证 2: 电话号码简单验证 (至少8位数字)
-            if (phoneInput.value.length < 8 || !/^[0-9+\-\s()]*$/.test(phoneInput.value)) {
-                phoneError.style.display = 'block';
-                isValid = false;
-            } else {
-                phoneError.style.display = 'none';
-            }
-
-            // 如果验证失败，阻止提交
-            if (!isValid) {
-                e.preventDefault();
-                return;
-            }
-
-            // 提交时的按钮状态 (防止重复提交)
+            const fileSize = fileInput.files[0].size / 1024 / 1024;
+            if (fileSize > 5) { fileError.style.display = 'block'; isValid = false; } else { fileError.style.display = 'none'; }
+            if (phoneInput.value.length < 8 || !/^[0-9+\-\s()]*$/.test(phoneInput.value)) { phoneError.style.display = 'block'; isValid = false; } else { phoneError.style.display = 'none'; }
+            if (!isValid) { e.preventDefault(); return; }
             submitBtn.innerText = "Uploading Application...";
             submitBtn.style.opacity = "0.7";
             submitBtn.disabled = true;
