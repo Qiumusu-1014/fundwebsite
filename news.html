@@ -255,79 +255,79 @@
     <script>
         // --- 1. 新闻数据源 (在此处添加新新闻) ---
         // 格式: date: "YYYY-MM-DD" (用于排序), displayDate: "Nov 12, 2025" (用于显示)
-        const newsData = [
+        // --- 更新后的 news.html 数据源 ---
+    const newsData = [
             {
-                title: "National Day Address: UAE President Announces \"Mars 2117\" Acceleration",
-                date: "2025-12-02",
-                displayDate: "Dec 02, 2025",
-                category: "Technology", 
-                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
-                excerpt: "Celebrating the 54th National Day, the President announced major grants for private space-tech companies. UAE Royal Capital Funding will manage the Orbital Innovation Grant...",
-                link: "news_pages/news_new_4.html"
+            title: "Sheikh Mohammed Inaugurates Phase 1 of New Al Maktoum Airport Expansion",
+            date: "2026-01-02",
+            displayDate: "Jan 02, 2026",
+            category: "Infrastructure", 
+            image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=800&auto=format&fit=crop", 
+            excerpt: "His Highness Sheikh Mohammed bin Rashid Al Maktoum opens the new terminal wing, reinforcing Dubai's position as the world's aviation capital. The Foundation is a key investor in the adjacent logistics corridor.",
+            link: "news_pages/news_new_5.html" // 指向新页面 5
             },
             {
-                title: "Elon Musk Meets Crown Prince Hamdan to Launch \"Tesla AI City\" in Dubai",
-                date: "2025-11-12",
-                displayDate: "Nov 12, 2025",
-                category: "Technology",
-                image: "images/musk_dubai.jpg",
-                excerpt: "In a historic meeting at Zabeel Palace, Sheikh Hamdan and Elon Musk unveiled a multi-billion dollar roadmap for autonomous transport and AI infrastructure in Dubai South.",
-                link: "news_pages/news_new_1.html"
+            title: "Abu Dhabi Hosts Historic \"Global South\" Economic Forum",
+            date: "2025-12-15",
+            displayDate: "Dec 15, 2025",
+            category: "Royal Activities",
+            image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
+            excerpt: "Royals and Heads of State from 50 nations gathered in Abu Dhabi to discuss sustainable trade. UAE Royal Capital Funding pledged $1B towards sustainable agriculture projects in developing nations.",
+            link: "news_pages/news_new_6.html" // 指向新页面 6
             },
             {
-                title: "Doha Royal Summit: Emir of Qatar Hosts GCC Leaders on Economic Unity",
-                date: "2025-10-28",
-                displayDate: "Oct 28, 2025",
-                category: "Economy",
-                image: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=800&auto=format&fit=crop",
-                excerpt: "His Highness Sheikh Tamim bin Hamad Al Thani convened a high-level summit in Doha. The Foundation participated in the closed-door financial roundtable regarding digital currency.",
-                link: "news_pages/news_new_2.html"
+            title: "National Day Address: UAE President Announces \"Mars 2117\" Acceleration",
+            date: "2025-12-02",
+            displayDate: "Dec 02, 2025",
+            category: "Technology", 
+            image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
+            excerpt: "Celebrating the 54th National Day, the President announced major grants for private space-tech companies. UAE Royal Capital Funding will manage the Orbital Innovation Grant...",
+            link: "news_pages/news_new_4.html" // 已存在
             },
             {
-                title: "Sultan Haitham and UAE President Inspect Joint High-Speed Railway",
-                date: "2025-09-15",
-                displayDate: "Sep 15, 2025",
-                category: "Infrastructure",
-                image: "https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?q=80&w=800&auto=format&fit=crop",
-                excerpt: "A landmark moment for regional connectivity as leaders of Oman and UAE reviewed the progress of the $3B railway network. Our Fund has allocated resources to logistics hubs.",
-                link: "news_pages/news_new_3.html"
-            },
-            // --- 以下是模拟新闻，用于演示翻页功能 (Total 8 items) ---
-            {
-                title: "Royal Delegation Visits Singapore for Green Tech Symposium",
-                date: "2025-08-20",
-                displayDate: "Aug 20, 2025",
-                category: "Royal Activities",
-                image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop",
-                excerpt: "A strategic visit to Southeast Asia to explore partnerships in sustainable urban planning and vertical farming technologies.",
-                link: "#"
+            title: "UAE Central Bank Launches \"Digital Dirham\" for Cross-Border Trade",
+            date: "2025-11-20",
+            displayDate: "Nov 20, 2025",
+            category: "Economy",
+            image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=800&auto=format&fit=crop",
+            excerpt: "A milestone in fintech: The Central Bank unveils the CBDC (Central Bank Digital Currency) strategy. Our Fund will pilot the first large-scale blockchain settlement using the new currency.",
+            link: "news_pages/news_new_7.html" // 指向新页面 7
             },
             {
-                title: "Q3 Financial Report: Sustainable Assets Outperform Traditional Energy",
-                date: "2025-07-10",
-                displayDate: "Jul 10, 2025",
-                category: "Economy",
-                image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop",
-                excerpt: "The quarterly report indicates a 15% ROI on green bonds, validating the Foundation's shift towards ESG-compliant investment portfolios.",
-                link: "#"
+            title: "Elon Musk Meets Crown Prince Hamdan to Launch \"Tesla AI City\" in Dubai",
+            date: "2025-11-12",
+            displayDate: "Nov 12, 2025",
+            category: "Technology",
+            image: "images/musk_dubai.jpg",
+            excerpt: "In a historic meeting at Zabeel Palace, Sheikh Hamdan and Elon Musk unveiled a multi-billion dollar roadmap for autonomous transport and AI infrastructure in Dubai South.",
+            link: "news_pages/news_new_1.html" // 已存在
             },
             {
-                title: "New AI Research Center Inaugurated in Abu Dhabi",
-                date: "2025-06-05",
-                displayDate: "Jun 05, 2025",
-                category: "Technology",
-                image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop",
-                excerpt: "Partnering with global universities to establish a state-of-the-art research facility dedicated to Arabic Natural Language Processing (NLP).",
-                link: "#"
+            title: "Foundation Announces Strategic $10B Partnership with OpenAI",
+            date: "2025-10-15",
+            displayDate: "Oct 15, 2025",
+            category: "Technology",
+            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
+            excerpt: "To solidify the UAE's status as a global AI hub, the Foundation leads a consortium to fund next-gen computing infrastructure, bringing OpenAI's regional HQ to Abu Dhabi.",
+            link: "news_pages/news_new_8.html" // 指向新页面 8
             },
             {
-                title: "Foundation Donates $50M for Global Clean Water Initiatives",
-                date: "2025-05-15",
-                displayDate: "May 15, 2025",
-                category: "Royal Activities",
-                image: "https://images.unsplash.com/photo-1538300342682-cf57afb97285?q=80&w=800&auto=format&fit=crop",
-                excerpt: "In line with the Year of Sustainability, the Board approves a significant grant to support water infrastructure in developing regions.",
-                link: "#"
+            title: "Doha Royal Summit: Emir of Qatar Hosts GCC Leaders on Economic Unity",
+            date: "2025-10-28",
+            displayDate: "Oct 28, 2025",
+            category: "Economy",
+            image: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=800&auto=format&fit=crop",
+            excerpt: "His Highness Sheikh Tamim bin Hamad Al Thani convened a high-level summit in Doha. The Foundation participated in the closed-door financial roundtable regarding digital currency.",
+            link: "news_pages/news_new_2.html" // 已存在
+            },
+            {
+            title: "Sultan Haitham and UAE President Inspect Joint High-Speed Railway",
+            date: "2025-09-15",
+            displayDate: "Sep 15, 2025",
+            category: "Infrastructure",
+            image: "https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?q=80&w=800&auto=format&fit=crop",
+            excerpt: "A landmark moment for regional connectivity as leaders of Oman and UAE reviewed the progress of the $3B railway network. Our Fund has allocated resources to logistics hubs.",
+            link: "news_pages/news_new_3.html" // 已存在
             }
         ];
 
