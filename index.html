@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UAE ROYAL CAPITAL FUNDING</title>
     
-    <!-- 网站图标 -->
     <link rel="icon" type="image/png" href="images/logo.png">
     
     <!-- Google Fonts -->
@@ -40,38 +39,51 @@
             position: relative;
         }
 
+        /* --- PRELOADER (加载动画) --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: var(--bg-color); /* 与网页背景一致 */
+            z-index: 9999;
+            display: flex; flex-direction: column; /* 垂直排列 */
+            justify-content: center; align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        /* Logo 动画 */
+        #preloader img {
+            width: 120px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* 欢迎语文字样式 */
+        .welcome-msg {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--deep-navy);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0; /* 初始隐藏 */
+            transform: translateY(10px);
+            animation: textFadeUp 1s ease forwards 0.5s; /* 延迟0.5秒后出现 */
+        }
+
+        #preloader.hidden { opacity: 0; visibility: hidden; }
+
         /* 背景纹理 */
         body::before {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background-image: 
                 linear-gradient(45deg, var(--royal-gold-faint) 25%, transparent 25%, transparent 75%, var(--royal-gold-faint) 75%, var(--royal-gold-faint)),
                 linear-gradient(45deg, var(--royal-gold-faint) 25%, transparent 25%, transparent 75%, var(--royal-gold-faint) 75%, var(--royal-gold-faint));
-            background-position: 0 0, 20px 20px;
-            background-size: 40px 40px;
-            opacity: 0.4;
+            background-position: 0 0, 20px 20px; background-size: 40px 40px; opacity: 0.4;
         }
 
         h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        /* --- PRELOADER ANIMATION --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: var(--bg-color); z-index: 9999;
-            display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.7s ease, visibility 0.7s ease;
-        }
-        #preloader img { width: 150px; animation: pulse 2s infinite ease-in-out; }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
-        @keyframes pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.2)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.5)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.2)); }
-        }
-
-        /* --- 2. NAVIGATION BAR (Unified) --- */
+        /* --- 2. NAVIGATION BAR --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 80px;
             padding: 0 max(5%, calc((100% - 1200px) / 2)); 
@@ -102,7 +114,6 @@
         .btn-donate {
             background: var(--deep-navy); color: #fff; padding: 10px 25px; font-weight: 600;
             border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--deep-navy);
-            font-size: 0.8rem;
         }
         .btn-donate:hover { background: #fff; color: var(--deep-navy); border-color: var(--royal-gold); }
 
@@ -155,7 +166,7 @@
         .counter-number { font-size: 3rem; font-family: var(--font-serif); color: var(--deep-navy); font-weight: 700; display: block; }
         .counter-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; color: var(--royal-gold); font-weight: 600; }
 
-        /* --- INVESTMENT AREAS (Flex & Animated) --- */
+        /* --- INVESTMENT AREAS --- */
         .investment-grid {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
             max-width: 1200px; margin: 0 auto;
@@ -176,11 +187,10 @@
         .invest-card h3 { font-size: 1rem; font-family: var(--font-sans); font-weight: 600; color: var(--deep-navy); }
         .invest-card.visible { animation: fadeUp 0.8s ease forwards; }
 
-        /* --- LEADERSHIP (Ticker) & GALLERY --- */
+        /* --- LEADERSHIP & GALLERY (Ticker) --- */
         .ticker-wrapper {
             width: 100%; overflow: hidden; padding: 2rem 0; position: relative; margin-bottom: 2rem;
         }
-        /* Fade edges */
         .ticker-wrapper::before, .ticker-wrapper::after {
             content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2;
         }
@@ -201,7 +211,6 @@
         .leader-info span { display: block; font-size: 0.8rem; color: var(--royal-gold); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
 
         .gallery-wrapper { width: 100%; overflow: hidden; padding-bottom: 2rem; }
-        /* 滚动速度优化为 60s */
         .gallery-track { display: flex; width: max-content; gap: 1.5rem; animation: scrollGallery 60s linear infinite; }
         .gallery-track:hover, .ticker-track:hover { animation-play-state: paused; }
         
@@ -211,8 +220,7 @@
         }
         .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .gallery-card:hover img { transform: scale(1.1); }
-        
-        /* 隐藏底部说明文字 */
+        /* 隐藏照片文字 */
         .gallery-card .overlay { display: none !important; }
 
         /* --- NEWS PREVIEW --- */
@@ -249,7 +257,9 @@
         .footer-info p { color: #8892b0; margin-bottom: 0.5rem; }
         .copyright { margin-top: 4rem; font-size: 0.8rem; color: #444; border-top: 1px solid #1a1a1a; padding-top: 2rem; }
 
-        /* --- ANIMATIONS --- */
+        /* --- ANIMATIONS & PRELOADER --- */
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes textFadeUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scrollGallery { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -283,12 +293,13 @@
 </head>
 <body>
 
-    <!-- 1. Preloader -->
+    <!-- 1. Preloader (新增：含文字) -->
     <div id="preloader">
         <img src="images/logo.png" alt="UAE Royal Capital Funding">
+        <p class="welcome-msg">Welcome to UAE Royal Capital</p>
     </div>
 
-    <!-- 2. Navigation -->
+    <!-- Navigation -->
     <nav class="navbar">
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Logo"> 
@@ -315,7 +326,7 @@
         </div>
     </nav>
 
-    <!-- 3. Hero Section -->
+    <!-- Hero Section -->
     <header class="hero" id="home">
         <div class="hero-bg"></div>
         <h1>UAE ROYAL CAPITAL FUNDING</h1>
@@ -325,7 +336,7 @@
         </div>
     </header>
 
-    <!-- 4. About Section -->
+    <!-- About Section -->
     <section id="about">
         <div class="section-title">
             <h2>About Us</h2>
@@ -355,7 +366,7 @@
         </div>
     </section>
 
-    <!-- 5. Investment Areas -->
+    <!-- Investment Areas -->
     <section id="investment">
         <div class="section-title">
             <h2>Our Investment Areas</h2>
@@ -375,7 +386,7 @@
         </div>
     </section>
 
-    <!-- 6. Leadership & Royal Gallery (Updated: 8 Images Loop) -->
+    <!-- Leadership & Royal Engagements Section -->
     <section id="team" style="background: linear-gradient(to bottom, #FAFAF5, #fff); overflow: hidden;">
         <div class="section-title">
             <h2>Leadership & Royal Engagements</h2>
@@ -383,15 +394,14 @@
             <p style="margin-top: 1rem; color: #666;">Guided by Visionary Leadership, committed to Global Prosperity.</p>
         </div>
 
-        <!-- Leadership Ticker -->
+        <!-- Ticker -->
         <div class="ticker-wrapper">
             <div class="ticker-track">
-                <!-- Group 1 -->
                 <div class="ticker-item"><div class="leader-info"><h3>Sheikh Humaid Al Mualla</h3><span>Board Member</span></div></div>
                 <div class="ticker-item"><div class="leader-info"><h3>Sheikh Mohammed bin Hamdan Al Nahyan</h3><span>Board Chairman</span></div></div>
                 <div class="ticker-item"><div class="leader-info"><h3>Mr. Youssuf</h3><span>Secretary General</span></div></div>
                 <div class="ticker-item"><div class="leader-info"><h3>Sheikh Hamdan bin Ahmed Al Maktoum</h3><span>Strategic Advisor</span></div></div>
-                <!-- Group 2 (Clone) -->
+                <!-- Clone -->
                 <div class="ticker-item"><div class="leader-info"><h3>Sheikh Humaid Al Mualla</h3><span>Board Member</span></div></div>
                 <div class="ticker-item"><div class="leader-info"><h3>Sheikh Mohammed bin Hamdan Al Nahyan</h3><span>Board Chairman</span></div></div>
                 <div class="ticker-item"><div class="leader-info"><h3>Mr. Youssuf</h3><span>Secretary General</span></div></div>
@@ -399,41 +409,39 @@
             </div>
         </div>
 
-        <!-- Royal Gallery Ticker -->
+        <!-- Gallery -->
         <div class="gallery-wrapper">
             <div class="gallery-track">
-                <!-- Group 1: 8 Images -->
-                <div class="gallery-card"><img src="images/royal1.jpg" alt="Royal Event 1"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal2.jpg" alt="Royal Event 2"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal3.jpg" alt="Royal Event 3"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal4.jpg" alt="Royal Event 4"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal5.jpg" alt="Royal Event 5"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal6.jpg" alt="Royal Event 6"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal7.jpg" alt="Royal Event 7"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal8.jpg" alt="Royal Event 8"><div class="overlay"></div></div>
+                <!-- 原图片组 -->
+                <div class="gallery-card"><img src="images/royal1.jpg" alt="Event 1"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal2.jpg" alt="Event 2"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal3.jpg" alt="Event 3"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal4.jpg" alt="Event 4"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal5.jpg" alt="Event 5"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal6.jpg" alt="Event 6"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal7.jpg" alt="Event 7"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal8.jpg" alt="Event 8"><div class="overlay">Event</div></div>
                 
-                <!-- Group 2: Clone of 8 Images -->
-                <div class="gallery-card"><img src="images/royal1.jpg" alt="Royal Event 1"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal2.jpg" alt="Royal Event 2"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal3.jpg" alt="Royal Event 3"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal4.jpg" alt="Royal Event 4"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal5.jpg" alt="Royal Event 5"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal6.jpg" alt="Royal Event 6"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal7.jpg" alt="Royal Event 7"><div class="overlay"></div></div>
-                <div class="gallery-card"><img src="images/royal8.jpg" alt="Royal Event 8"><div class="overlay"></div></div>
+                <!-- 复制图片组 (无缝滚动) -->
+                <div class="gallery-card"><img src="images/royal1.jpg" alt="Event 1"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal2.jpg" alt="Event 2"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal3.jpg" alt="Event 3"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal4.jpg" alt="Event 4"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal5.jpg" alt="Event 5"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal6.jpg" alt="Event 6"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal7.jpg" alt="Event 7"><div class="overlay">Event</div></div>
+                <div class="gallery-card"><img src="images/royal8.jpg" alt="Event 8"><div class="overlay">Event</div></div>
             </div>
         </div>
     </section>
 
-    <!-- 7. News Preview (Updated Links & Images) -->
+    <!-- News Preview -->
     <section id="news-preview">
         <div class="section-title">
             <h2>Latest News</h2>
             <div class="gold-line"></div>
         </div>
         <div class="news-grid">
-            
-            <!-- News 1: Musk -->
             <div class="news-card">
                 <img src="images/musk_dubai.jpg" class="news-card-img" alt="Elon Musk and Sheikh Hamdan">
                 <div class="news-card-content">
@@ -443,8 +451,6 @@
                     <a href="news_pages/news_new_1.html" class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
-
-            <!-- News 2: Qatar -->
             <div class="news-card">
                 <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt="Qatar Summit">
                 <div class="news-card-content">
@@ -454,8 +460,6 @@
                     <a href="news_pages/news_new_2.html" class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
-
-            <!-- News 3: Oman -->
             <div class="news-card">
                 <img src="https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?q=80&w=600&auto=format&fit=crop" class="news-card-img" alt="Oman Railway">
                 <div class="news-card-content">
@@ -466,13 +470,12 @@
                 </div>
             </div>
         </div>
-        
         <div class="view-all-btn-container">
             <a href="news.html" class="btn-outline">View All News</a>
         </div>
     </section>
 
-    <!-- 8. Footer -->
+    <!-- Footer -->
     <footer>
         <span class="footer-logo"><img src="images/logo.png" alt="Logo"> UAE ROYAL CAPITAL FUNDING</span>
         <div class="footer-info">
@@ -484,18 +487,18 @@
 
     <!-- JavaScript -->
     <script>
-        // Preloader Logic
+        // 1. Preloader Control (加载动画逻辑)
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             if (preloader) {
                 preloader.classList.add('hidden');
-                setTimeout(() => { preloader.style.display = 'none'; }, 700);
+                setTimeout(() => { preloader.style.display = 'none'; }, 800);
             }
         });
 
-        // Counters (Speed Optimized to 40)
+        // 2. Counters (速度已加快 Speed=40)
         const counters = document.querySelectorAll('.counter-number');
-        const speed = 40; 
+        const speed = 40;
         const animateCounters = () => {
             counters.forEach(counter => {
                 const updateCount = () => {
@@ -515,14 +518,14 @@
         const countersSection = document.querySelector('.counters-container');
         if(countersSection) { counterObserver.observe(countersSection); }
 
-        // Navbar Scroll
+        // 3. Navbar Scroll
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) { navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)'; } 
             else { navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)'; }
         });
 
-        // Investment Animation
+        // 4. Investment Animation
         const investObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -535,13 +538,13 @@
         const investGrid = document.querySelector('.investment-grid');
         if (investGrid) { investObserver.observe(investGrid); }
 
-        // Mobile Menu
+        // 5. Mobile Menu Logic
         const hamburger = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
 
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active'); 
-            navMenu.classList.toggle('active');   
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
 
         function closeMenu() {
