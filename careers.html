@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - UAE Royal Foundation for Friendship</title>
+
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #FAFAF5;
+            --royal-gold: #C5A059;
+            --deep-navy: #0E1E35;
+            --text-body: #4A5568;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(#C5A059 0.5px, transparent 0.5px), radial-gradient(#C5A059 0.5px, #FAFAF5 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+            padding: 0 max(5%, calc((100% - 1200px) / 2));
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
+            z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); transition: 0.4s;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--deep-navy);
+            letter-spacing: 0.6px; display: flex; align-items: center; gap: 10px; z-index: 1001;
+        }
+        .logo img { height: 45px; width: auto; object-fit: contain; }
+
+        .nav-container { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--deep-navy);
+            font-weight: 500; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--royal-gold); transition: 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .btn-donate {
+            background: var(--deep-navy); color: #fff; padding: 10px 25px; font-weight: 600;
+            border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--deep-navy);
+            font-size: 0.8rem;
+        }
+        .btn-donate:hover { background: #fff; color: var(--deep-navy); border-color: var(--royal-gold); }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
+        .bar { width: 25px; height: 3px; background-color: var(--deep-navy); transition: 0.4s; }
+
+        .sub-hero {
+            height: 45vh; margin-top: 80px;
+            background: linear-gradient(rgba(14, 30, 53, 0.72), rgba(14, 30, 53, 0.72)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff;
+            padding: 0 20px;
+        }
+        .sub-hero h1 { font-family: var(--font-serif); font-size: 3rem; color: var(--royal-gold); margin-bottom: 10px; }
+        .sub-hero p { font-size: 1.05rem; font-weight: 300; letter-spacing: 1.5px; max-width: 900px; }
+
+        .culture-section { max-width: 1000px; margin: 4rem auto; padding: 0 20px; text-align: center; }
+        .culture-section p { font-size: 1.08rem; max-width: 860px; margin: 0 auto 3rem auto; color: #555; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .value-item {
+            background: #fff; padding: 2rem; border-radius: 8px; border: 1px solid rgba(197,160,89,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: 0.3s;
+        }
+        .value-item:hover { transform: translateY(-5px); border-color: var(--royal-gold); }
+        .value-item i { font-size: 2.5rem; color: var(--royal-gold); margin-bottom: 1rem; }
+        .value-item h4 { font-family: var(--font-serif); margin-bottom: 0.6rem; color: var(--deep-navy); }
+        .value-item p { font-size: 0.95rem; color: #666; }
+
+        .jobs-container { max-width: 1000px; margin: 0 auto 5rem auto; padding: 0 20px; }
+        .section-header { margin-bottom: 2rem; text-align: left; border-bottom: 2px solid var(--royal-gold); display: inline-block; padding-bottom: 10px; }
+        .section-header h2 { font-family: var(--font-serif); color: var(--deep-navy); }
+
+        .job-card {
+            background: #fff; margin-bottom: 1.5rem; border-radius: 6px; overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05); transition: 0.3s;
+            animation: fadeUp 0.8s ease forwards; opacity: 0;
+        }
+        .job-card:hover { border-color: var(--royal-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+        .job-header {
+            padding: 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #fff; transition: 0.3s;
+            position: relative;
+        }
+        .job-header:hover { background: #fafafa; }
+        .job-title h3 { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 5px; color: var(--deep-navy); }
+        .job-meta { font-size: 0.82rem; color: #888; display: flex; gap: 18px; text-transform: uppercase; letter-spacing: 0.9px; flex-wrap: wrap; }
+        .job-meta span i { color: var(--royal-gold); margin-right: 5px; }
+        .toggle-icon { font-size: 1rem; color: var(--royal-gold); transition: 0.3s; border: 1px solid #eee; padding: 10px; border-radius: 50%; }
+
+        .job-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: #fdfdfd; border-top: 1px solid #f0f0f0; }
+        .job-details-inner { padding: 2.5rem; color: var(--text-body); }
+        .job-details p { font-size: 0.98rem; margin-bottom: 1rem; }
+        .job-details h4 { font-family: var(--font-serif); font-size: 1.08rem; margin: 1.4rem 0 0.8rem 0; color: var(--deep-navy); }
+        .job-details ul { margin-left: 20px; margin-bottom: 1.7rem; }
+        .job-details li { margin-bottom: 8px; font-size: 0.95rem; }
+
+        .apply-btn {
+            display: inline-block; background: var(--deep-navy); color: #fff; padding: 12px 35px;
+            text-transform: uppercase; font-size: 0.85rem; font-weight: 600; border-radius: 2px; transition: 0.3s;
+            border: none; cursor: pointer;
+        }
+        .apply-btn:hover { background: var(--royal-gold); }
+
+        .job-card.active .toggle-icon { transform: rotate(180deg); background: var(--deep-navy); color: #fff; border-color: var(--deep-navy); }
+        .job-card.active .job-header { border-bottom: 1px solid #f0f0f0; }
+
+        .general-app {
+            background: linear-gradient(rgba(14, 30, 53, 0.95), rgba(14, 30, 53, 0.95)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            color: #fff; text-align: center; padding: 5rem 20px;
+        }
+        .general-app h2 { font-family: var(--font-serif); font-size: 2rem; color: var(--royal-gold); margin-bottom: 1rem; }
+        .general-app p { color: #ddd; max-width: 840px; margin: 0 auto 1.2rem auto; font-size: 1.05rem; }
+        .application-list {
+            list-style: none; max-width: 700px; margin: 1rem auto 2rem auto; padding: 0;
+            color: #f3f3f3; font-size: 1rem;
+        }
+        .application-list li { margin-bottom: 0.5rem; }
+
+        .general-apply-btn {
+            background: transparent; border: 2px solid var(--royal-gold); color: var(--royal-gold);
+            padding: 12px 40px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .general-apply-btn:hover { background: var(--royal-gold); color: #fff; }
+
+        .modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(14, 30, 53, 0.9); overflow: auto;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #fff; margin: 5% auto; padding: 0; border-radius: 8px;
+            width: 90%; max-width: 640px; position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: slideDown 0.4s ease;
+        }
+        .modal-header {
+            background: var(--deep-navy); padding: 1.5rem 2rem; color: #fff;
+            display: flex; justify-content: space-between; align-items: center;
+            border-top-left-radius: 8px; border-top-right-radius: 8px;
+        }
+        .modal-header h3 { font-family: var(--font-serif); color: var(--royal-gold); margin: 0; }
+        .close-btn { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { color: #fff; }
+        .modal-body { padding: 2rem; }
+        .modal-body p { margin-bottom: 1rem; }
+        .modal-body strong { color: var(--deep-navy); }
+        .modal-docs { margin: 1rem 0 1.5rem 1.2rem; }
+        .modal-docs li { margin-bottom: 0.5rem; }
+        .mail-link {
+            color: var(--royal-gold); font-weight: 600; word-break: break-word;
+        }
+        .form-submit-btn {
+            width: 100%; padding: 15px; background: var(--deep-navy); color: #fff;
+            border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center;
+        }
+        .form-submit-btn:hover { background: var(--royal-gold); }
+
+        footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media(max-width: 900px) {
+            .navbar { padding: 0 1.5rem; height: 70px; }
+            .logo { font-size: 0.95rem; }
+            .hamburger { display: flex; }
+            .nav-container {
+                position: fixed; top: 70px; left: 0; width: 100%; background-color: #fff;
+                flex-direction: column; align-items: center; padding: 2rem 0;
+                border-bottom: 2px solid var(--royal-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                transform: translateY(-150%); transition: transform 0.5s ease; z-index: 1000;
+            }
+            .nav-container.active { transform: translateY(0); }
+            .nav-links { flex-direction: column; gap: 20px; width: 100%; text-align: center; }
+            .nav-links a { font-size: 1rem; display: block; padding: 10px 0; width: 100%; }
+            .btn-donate { width: 80%; text-align: center; margin-top: 20px; }
+            .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            .job-header { flex-direction: column; align-items: flex-start; gap: 15px; padding-right: 70px; }
+            .toggle-icon { position: absolute; right: 20px; top: 28px; }
+            .sub-hero h1 { font-size: 2.25rem; }
+            .sub-hero p { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Logo">
+            UAE ROYAL FOUNDATION FOR FRIENDSHIP
+        </a>
+
+        <div class="hamburger" id="hamburger-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <div class="nav-container" id="nav-menu">
+            <div class="nav-links">
+                <a href="index.html" onclick="closeMenu()">Home</a>
+                <a href="about.html" onclick="closeMenu()">About Us</a>
+                <a href="news.html" onclick="closeMenu()">News</a>
+                <a href="careers.html" onclick="closeMenu()" style="color:var(--royal-gold)">Careers</a>
+                <a href="contact.html" onclick="closeMenu()">Contact</a>
+            </div>
+            <a href="donate.html" class="btn-donate" onclick="closeMenu()">Donate</a>
+        </div>
+    </nav>
+
+    <div class="sub-hero">
+        <div>
+            <h1>Global Talent Recruitment 2026</h1>
+            <p>Join the UAE Royal Foundation for Friendship in Dubai to advance research on global strategy, regional development, international cooperation and global governance.</p>
+        </div>
+    </div>
+
+    <section class="culture-section">
+        <h2>Why Join the Foundation?</h2>
+        <p>Rooted in the Gulf region and connected to global intellectual networks, the UAE Royal Foundation for Friendship is committed to delivering high-quality intellectual support on global strategic issues, international cooperation, regional development and global governance through independent research and cross-domain resource integration.</p>
+        <div class="values-grid">
+            <div class="value-item">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <h4>Competitive Global Package</h4>
+                <p>Salary aligned with leading international think tanks, including base salary, research subsidies, project bonuses and year-end incentives.</p>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-earth-americas"></i>
+                <h4>Research & Global Access</h4>
+                <p>Dedicated research funding and direct access to academic forums, field research, international cooperation and high-level global networks.</p>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-briefcase"></i>
+                <h4>Flexible Collaboration</h4>
+                <p>Flexible remote or part-time working models, supported by a professional administrative team, plus visa and medical insurance for eligible candidates.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="jobs-container">
+        <div class="section-header"><h2>Open Positions</h2></div>
+
+        <div class="job-card" style="animation-delay: 0.1s;">
+            <div class="job-header" onclick="toggleJob(this)">
+                <div class="job-title">
+                    <h3>Honorary Director</h3>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Global Recruitment</span>
+                        <span><i class="fa-solid fa-user-tie"></i> 15+ Years</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="job-details">
+                <div class="job-details-inner">
+                    <p>Provide top-level intellectual support for the Foundation's development and help shape its strategic academic and international influence.</p>
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Provide insights and recommendations on the global political and economic landscape and regional cooperation trends.</li>
+                        <li>Participate in planning and guiding major academic conferences and international forums.</li>
+                        <li>Connect global high-end academic resources and government networks to deepen cooperation with think tanks, international organizations and government agencies.</li>
+                        <li>Supervise research quality and academic norms to ensure professionalism and authority in the Foundation's intellectual outputs.</li>
+                    </ul>
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>More than 15 years of senior government management experience or experience as a senior scholar at a world-renowned university or research institution.</li>
+                        <li>Broad reputation in international politics, international relations, global economy or related fields.</li>
+                        <li>Strong strategic vision, cross-cultural communication skills, and familiarity with global governance systems and regional development dynamics.</li>
+                        <li>Preference for candidates who have led or deeply participated in major policy formulation or international cooperation projects.</li>
+                        <li>Commitment to academic integrity, neutrality and social responsibility, with willingness to support the Foundation's development.</li>
+                        <li>Excellent written and spoken English, Arabic and Persian, with the ability to clearly present complex research findings.</li>
+                    </ul>
+                    <button class="apply-btn" onclick="openModal('Honorary Director')">Apply Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card" style="animation-delay: 0.2s;">
+            <div class="job-header" onclick="toggleJob(this)">
+                <div class="job-title">
+                    <h3>Policy Advisor</h3>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                        <span><i class="fa-solid fa-globe"></i> Middle East & Global Policy</span>
+                        <span><i class="fa-solid fa-user-tie"></i> 10+ Years</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="job-details">
+                <div class="job-details-inner">
+                    <p>Lead in-depth policy research on key Middle East and international issues and translate research into actionable analysis for partners and decision-makers.</p>
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Research political and economic policy, cross-regional cooperation mechanisms and geopolitical risks in the Middle East and beyond.</li>
+                        <li>Prepare high-quality policy briefings and thematic reports that provide accurate analysis and decision-making references.</li>
+                        <li>Participate in major project risk assessment and feasibility studies, forecasting implementation effects and potential policy risks.</li>
+                        <li>Join academic seminars and policy dialogue activities to disseminate research outcomes and strengthen policy communication.</li>
+                    </ul>
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>More than 10 years of policy formulation experience in government departments, international organizations or think tanks, or experience as a professor or senior researcher at a well-known university.</li>
+                        <li>Strong achievements in relevant research and policy fields.</li>
+                        <li>Deep understanding of the global political economy and the policy environment and development needs of the Middle East and surrounding regions.</li>
+                        <li>Excellent written and spoken English, Arabic and Persian, with the ability to clearly present complex research findings.</li>
+                    </ul>
+                    <button class="apply-btn" onclick="openModal('Policy Advisor')">Apply Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card" style="animation-delay: 0.3s;">
+            <div class="job-header" onclick="toggleJob(this)">
+                <div class="job-title">
+                    <h3>Senior Research Fellow</h3>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
+                        <span><i class="fa-solid fa-microscope"></i> Research & Analysis</span>
+                        <span><i class="fa-solid fa-user-tie"></i> 5+ Years</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="job-details">
+                <div class="job-details-inner">
+                    <p>Conduct high-value thematic research with practical relevance across economic cooperation, governance, public policy and risk assessment.</p>
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Conduct thematic research in economic cooperation, political governance, public policy and risk assessment, producing results with practical guiding significance.</li>
+                        <li>Compile high-quality policy briefings and thematic reports for the Foundation's partners.</li>
+                        <li>Track global policy dynamics and academic frontiers, build research databases and support the Foundation's research system.</li>
+                        <li>Participate in academic seminars and policy dialogues, and support policy advisors on major research topics.</li>
+                    </ul>
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>More than 5 years of experience in government policy research institutions, renowned think tanks or well-known universities.</li>
+                        <li>Published high-level academic achievements or policy reports in relevant target fields.</li>
+                        <li>Solid theoretical foundation, systematic research methods, and proficiency in policy analysis and risk assessment models.</li>
+                        <li>Ability to independently carry out interdisciplinary and cross-domain thematic research.</li>
+                        <li>In-depth research expertise on the political economy of the Middle East and international cooperation mechanisms.</li>
+                        <li>Excellent written and spoken English, Arabic and Persian, with the ability to clearly present complex research findings.</li>
+                    </ul>
+                    <button class="apply-btn" onclick="openModal('Senior Research Fellow')">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="general-app">
+        <h2>Application Method</h2>
+        <p>Please send your application to <strong>info@uaeroyal.fund</strong> with the subject line: <strong>UAE Royal Foundation for Friendship - Position Applied + Full Name</strong>.</p>
+        <ul class="application-list">
+            <li>Personal resume</li>
+            <li>Cover letter (including your research interests)</li>
+            <li>Representative works</li>
+        </ul>
+        <p>We uphold openness, inclusiveness and merit-based admission, and welcome global talents to help promote cooperation, common development and a more sustainable future.</p>
+        <button class="general-apply-btn" onclick="openModal('General Application')">View Submission Details</button>
+    </div>
+
+    <footer><p>© 2026 UAE Royal Foundation for Friendship. All Rights Reserved.</p></footer>
+
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Application Submission</h3>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Position:</strong> <span id="modal-position">General Application</span></p>
+                <p>Please email the following documents to <a class="mail-link" id="application-email" href="mailto:info@uaeroyal.fund">info@uaeroyal.fund</a>:</p>
+                <ul class="modal-docs">
+                    <li>Personal resume</li>
+                    <li>Cover letter elaborating on your personal research interests</li>
+                    <li>Representative works</li>
+                </ul>
+                <p><strong>Email subject:</strong> <span id="mail-subject-text">UAE Royal Foundation for Friendship - Position Applied + Full Name</span></p>
+                <p>Eligible candidates may also receive supporting benefits such as visa processing and medical insurance.</p>
+                <a id="email-cta" class="form-submit-btn" href="mailto:info@uaeroyal.fund?subject=UAE%20Royal%20Foundation%20for%20Friendship%20-%20Position%20Applied%20%2B%20Full%20Name">Email Your Application</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+
+        function toggleJob(header) {
+            const card = header.parentElement;
+            const details = card.querySelector('.job-details');
+            card.classList.toggle('active');
+            if (card.classList.contains('active')) {
+                details.style.maxHeight = details.scrollHeight + 'px';
+            } else {
+                details.style.maxHeight = null;
+            }
+        }
+
+        const modal = document.getElementById('applyModal');
+        const modalPosition = document.getElementById('modal-position');
+        const emailCTA = document.getElementById('email-cta');
+        const subjectText = document.getElementById('mail-subject-text');
+        const applicationEmail = document.getElementById('application-email');
+
+        function openModal(jobTitle) {
+            const subject = `UAE Royal Foundation for Friendship - ${jobTitle} - Full Name`;
+            modal.style.display = 'block';
+            modalPosition.textContent = jobTitle;
+            subjectText.textContent = subject;
+            emailCTA.href = `mailto:info@uaeroyal.fund?subject=${encodeURIComponent(subject)}`;
+            applicationEmail.href = `mailto:info@uaeroyal.fund?subject=${encodeURIComponent(subject)}`;
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
