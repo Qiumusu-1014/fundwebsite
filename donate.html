@@ -35,45 +35,140 @@
 
         a { color: inherit; text-decoration: none; transition: 0.3s; }
 
-        .navbar {
-            position: sticky; top: 0; left: 0; width: 100%; height: 80px;
-            padding: 0 max(5%, calc((100% - 1200px) / 2));
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
+        .donation-header {
+            position: sticky; top: 0; left: 0; width: 100%; min-height: 86px;
+            padding: 0 20px;
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(14px);
             z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
-        .logo {
-            font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--deep-navy);
-            letter-spacing: 0; display: flex; align-items: center; gap: 10px; z-index: 1001;
+        .brand-home {
+            font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: var(--deep-navy);
+            letter-spacing: 0; display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+            padding: 10px 16px;
         }
-        .logo img { height: 45px; width: auto; object-fit: contain; margin-right: 10px; }
-
-        .nav-container { display: flex; align-items: center; gap: 2rem; }
-        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-        .nav-links a {
-            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--deep-navy);
-            font-weight: 500; position: relative;
-        }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background-color: var(--royal-gold); transition: 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
-
-        .btn-donate {
-            background: var(--deep-navy); color: #fff; padding: 10px 25px; font-weight: 600;
-            border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--deep-navy);
-        }
-        .btn-donate:hover { background: #fff; color: var(--deep-navy); border-color: var(--royal-gold); }
-
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
-        .bar { width: 25px; height: 3px; background-color: var(--deep-navy); transition: 0.4s; }
+        .brand-home img { height: 48px; width: auto; object-fit: contain; }
+        .brand-home:hover { color: #9b6f1f; }
 
         .page-wrap {
             width: min(980px, calc(100% - 40px));
             margin: 0 auto;
             padding: 3rem 0 3.5rem;
+            animation: pageReveal 0.9s ease 1.55s both;
+        }
+
+        .ceremony {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: grid;
+            place-items: center;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 50% 38%, rgba(229, 196, 126, 0.18), transparent 28%),
+                linear-gradient(135deg, rgba(6, 14, 24, 0.96), rgba(14, 30, 53, 0.93));
+            animation: ceremonyFade 0.65s ease 1.55s forwards;
+        }
+
+        .envelope {
+            position: relative;
+            width: min(420px, 78vw);
+            aspect-ratio: 1.55;
+            filter: drop-shadow(0 28px 42px rgba(0,0,0,0.28));
+            transform-style: preserve-3d;
+            animation: envelopeLift 1.25s cubic-bezier(.2,.75,.2,1) 0.1s both;
+        }
+
+        .envelope-back,
+        .envelope-front,
+        .envelope-flap,
+        .envelope-letter {
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+        }
+
+        .envelope-back {
+            background: linear-gradient(145deg, #fff9ee, #d8b778);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .envelope-letter {
+            inset: 16px 24px 58px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(180deg, #fffdf8, #f4ead8);
+            border: 1px solid rgba(197,160,89,0.45);
+            transform: translateY(52px);
+            animation: letterRise 0.9s cubic-bezier(.2,.75,.2,1) 0.62s forwards;
+        }
+
+        .envelope-letter img {
+            width: 58px;
+            height: auto;
+            opacity: 0.95;
+        }
+
+        .envelope-front {
+            clip-path: polygon(0 34%, 50% 72%, 100% 34%, 100% 100%, 0 100%);
+            background: linear-gradient(145deg, #f8edda, #c69c55 80%);
+            border: 1px solid rgba(124, 87, 30, 0.25);
+        }
+
+        .envelope-flap {
+            clip-path: polygon(0 0, 100% 0, 50% 58%);
+            background: linear-gradient(180deg, #fff8eb, #d5a451);
+            transform-origin: 50% 2%;
+            animation: flapOpen 0.85s cubic-bezier(.16,.78,.3,1) 0.28s forwards;
+            z-index: 4;
+        }
+
+        .wax-seal {
+            position: absolute;
+            left: 50%;
+            top: 46%;
+            width: 74px;
+            height: 74px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff8e8;
+            background: radial-gradient(circle at 35% 30%, #f0c36c, #9d6a20 72%);
+            border: 1px solid rgba(255,255,255,0.42);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 5;
+            animation: sealRelease 0.55s ease 0.38s forwards;
+        }
+
+        .wax-seal i { font-size: 1.45rem; }
+
+        @keyframes flapOpen {
+            to { transform: rotateX(178deg); opacity: 0.94; }
+        }
+
+        @keyframes letterRise {
+            to { transform: translateY(-34px); }
+        }
+
+        @keyframes sealRelease {
+            to { transform: translate(-50%, -50%) scale(0.72); opacity: 0; }
+        }
+
+        @keyframes envelopeLift {
+            0% { opacity: 0; transform: translateY(26px) scale(0.96); }
+            18% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 1; transform: translateY(-16px) scale(1.02); }
+        }
+
+        @keyframes ceremonyFade {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        @keyframes pageReveal {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .intro {
@@ -308,60 +403,52 @@
         footer p { color: #9aa4b5; }
 
         @media(max-width: 980px) {
-            .navbar { padding: 0 1.5rem; height: 70px; }
-            .logo { font-size: 1.1rem; }
-            .hamburger { display: flex; }
-            .nav-container {
-                position: fixed; top: 70px; left: 0; width: 100%; background-color: #fff;
-                flex-direction: column; align-items: center; padding: 2rem 0;
-                border-bottom: 2px solid var(--royal-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                transform: translateY(-150%); transition: transform 0.5s ease; z-index: 1000;
-            }
-            .nav-container.active { transform: translateY(0); }
-            .nav-links { flex-direction: column; gap: 20px; width: 100%; text-align: center; }
-            .nav-links a { font-size: 1rem; display: block; padding: 10px 0; width: 100%; }
-            .btn-donate { width: 80%; text-align: center; margin-top: 20px; }
-            .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-            .hamburger.active .bar:nth-child(2) { opacity: 0; }
-            .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            .donation-header { min-height: 72px; }
+            .brand-home { font-size: 1.1rem; }
+            .brand-home img { height: 42px; }
             .donation-layout { grid-template-columns: 1fr; }
         }
 
         @media(max-width: 620px) {
             .page-wrap { width: min(100% - 28px, 980px); padding-top: 2rem; }
+            .brand-home { font-size: 1rem; gap: 10px; }
+            .brand-home img { height: 38px; }
             .bank-card { padding: 1.8rem 1.4rem; }
             .info-row { grid-template-columns: 1fr; gap: 7px; }
             .copy-btn { width: fit-content; }
             .quick-amounts { grid-template-columns: 1fr 1fr 1fr; }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ceremony { display: none; }
+            .page-wrap { animation: none; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="index.html" class="logo">
+    <div class="ceremony" aria-hidden="true">
+        <div class="envelope">
+            <div class="envelope-back"></div>
+            <div class="envelope-letter">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+            <div class="wax-seal"><i class="fa-regular fa-envelope-open"></i></div>
+        </div>
+    </div>
+
+    <header class="donation-header">
+        <a href="index.html" class="brand-home" aria-label="Return to UAE Royal Capital homepage">
             <img src="images/logo.png" alt="Logo">
             UAE ROYAL CAPITAL
         </a>
-
-        <div class="hamburger" id="hamburger-btn">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <div class="nav-container" id="nav-menu">
-            <div class="nav-links">
-                <a href="index.html" onclick="closeMenu()">Home</a>
-                <a href="about.html" onclick="closeMenu()">About Us</a>
-                <a href="index.html#investment" onclick="closeMenu()">Investment</a>
-                <a href="index.html#team" onclick="closeMenu()">Leadership</a>
-                <a href="news.html" onclick="closeMenu()">News Center</a>
-                <a href="careers.html" onclick="closeMenu()">Careers</a>
-                <a href="contact.html" onclick="closeMenu()">Contact</a>
-            </div>
-            <a href="donate.html" class="btn-donate" onclick="closeMenu()">Donate</a>
-        </div>
-    </nav>
+    </header>
 
     <main class="page-wrap">
         <section class="intro">
@@ -449,21 +536,9 @@
             gatewayMerchantId: 'exampleGatewayMerchantId'
         };
 
-        const hamburger = document.getElementById('hamburger-btn');
-        const navMenu = document.getElementById('nav-menu');
         const amountInput = document.getElementById('donation-amount');
         const payStatus = document.getElementById('pay-status');
         let paymentsClient = null;
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        function closeMenu() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }
 
         document.querySelectorAll('.quick-amounts button').forEach((button) => {
             button.addEventListener('click', () => {
