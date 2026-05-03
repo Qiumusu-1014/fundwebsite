@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2200" preserveAspectRatio="xMidYMin slice">
+  <defs>
+    <pattern id="geometry" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M32 0 64 32 32 64 0 32Z M32 12 52 32 32 52 12 32Z" fill="none" stroke="#d7b56b" stroke-width="1" opacity=".16"/>
+      <circle cx="32" cy="32" r="4" fill="#d7b56b" opacity=".12"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset=".52" stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#f8f1e2"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="30%" r="58%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#fffaf1" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#f3e6cf" stop-opacity=".55"/>
+    </radialGradient>
+    <linearGradient id="navy" x1="0" x2="1">
+      <stop offset="0" stop-color="#001f3c"/>
+      <stop offset=".55" stop-color="#062f57"/>
+      <stop offset="1" stop-color="#001a31"/>
+    </linearGradient>
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="2200" fill="url(#fade)"/>
+  <rect width="1600" height="1700" fill="url(#geometry)"/>
+  <rect width="1600" height="1700" fill="url(#centerGlow)"/>
+
+  <path d="M210 790 Q210 530 430 530 Q470 380 625 380 Q680 250 800 180 Q920 250 975 380 Q1130 380 1170 530 Q1390 530 1390 790"
+        fill="none" stroke="#d7b56b" stroke-width="8" opacity=".36"/>
+  <path d="M235 800 Q235 555 448 555 Q488 412 640 410 Q690 285 800 220 Q910 285 960 410 Q1112 412 1152 555 Q1365 555 1365 800"
+        fill="none" stroke="#d7b56b" stroke-width="3" opacity=".55"/>
+  <path d="M262 808 Q262 582 468 582 Q505 442 656 442 Q705 328 800 270 Q895 328 944 442 Q1095 442 1132 582 Q1338 582 1338 808"
+        fill="none" stroke="#f4db9d" stroke-width="2" opacity=".75"/>
+
+  <g transform="translate(800 210)" opacity=".72">
+    <path d="M0-52 12-17 48-30 30 0 48 30 12 17 0 52-12 17-48 30-30 0-48-30-12-17Z"
+          fill="none" stroke="#c59437" stroke-width="4"/>
+    <circle r="18" fill="none" stroke="#c59437" stroke-width="3"/>
+  </g>
+
+  <g fill="#d8c7a3" opacity=".26" filter="url(#softBlur)">
+    <path d="M64 692h92v170H64zM84 630h52v62H84zM100 560h20v70h-20z"/>
+    <path d="M36 862h150v60H36zM56 840q83-90 110 0z"/>
+    <path d="M220 738h70v124h-70zM236 696h38v42h-38zM248 628h14v68h-14z"/>
+    <path d="M1310 692h92v170h-92zM1330 630h52v62h-52zM1346 560h20v70h-20z"/>
+    <path d="M1280 862h150v60h-150zM1300 840q83-90 110 0z"/>
+    <path d="M1450 738h70v124h-70zM1466 696h38v42h-38zM1478 628h14v68h-14z"/>
+  </g>
+
+  <rect y="1820" width="1600" height="380" fill="url(#navy)"/>
+  <rect y="1820" width="1600" height="4" fill="#c59437" opacity=".85"/>
+  <rect x="1160" y="1820" width="440" height="380" fill="url(#geometry)" opacity=".15"/>
+</svg>

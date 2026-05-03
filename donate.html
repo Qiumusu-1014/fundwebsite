@@ -3,200 +3,759 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donation Details - UAE ROYAL CAPITAL</title>
-    
+    <title>Donate - UAE ROYAL CAPITAL</title>
+
     <link rel="icon" type="image/png" href="images/logo.png">
-    
-    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <script async src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script>
+
     <style>
-        :root { 
-            --bg-color: #FAFAF5; 
-            --royal-gold: #C5A059; 
-            --deep-navy: #0E1E35; 
-            --font-serif: 'Playfair Display', serif; 
+        :root {
+            --bg-color: #fffaf0;
+            --panel: rgba(255, 255, 255, 0.92);
+            --royal-gold: #C5A059;
+            --gold-dark: #A8751A;
+            --deep-navy: #0E1E35;
+            --muted: #667085;
+            --border: rgba(197, 160, 89, 0.32);
+            --font-serif: 'Playfair Display', serif;
             --font-sans: 'Montserrat', sans-serif;
         }
 
-        body { 
-            font-family: var(--font-sans); 
-            background: var(--bg-color); 
-            color: var(--deep-navy); 
-            margin: 0; 
-            /* 背景纹理 */
-            background-image: radial-gradient(#C5A059 0.5px, transparent 0.5px), radial-gradient(#C5A059 0.5px, #FAFAF5 0.5px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-        }
-        
-        /* 头部样式 */
-        header { 
-            padding: 1.5rem; 
-            background: #fff; 
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: var(--font-sans);
+            color: var(--deep-navy);
+            background: var(--bg-color) url('images/donation-bg.svg') top center / cover no-repeat fixed;
+            min-height: 100vh;
         }
 
-        .logo { 
-            display: flex; align-items: center; gap: 12px;
-            font-family: var(--font-serif); font-weight: 700; color: var(--deep-navy); 
-            font-size: 1.4rem; text-decoration: none; 
-        }
-        .logo img { height: 45px; width: auto; }
+        a { color: inherit; text-decoration: none; }
 
-        /* 主容器 */
-        .container { max-width: 600px; margin: 5rem auto; padding: 0 20px; text-align: center; }
-
-        .intro-text {
-            font-family: var(--font-serif); font-size: 2rem; margin-bottom: 3rem;
-            animation: fadeIn 1s ease-out;
+        .donation-shell {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* 银行卡片 (精简版) */
-        .bank-card {
+        header {
+            height: 86px;
+            padding: 0 max(6vw, calc((100vw - 1240px) / 2));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.88);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.22);
+            box-shadow: 0 8px 30px rgba(14, 30, 53, 0.06);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--font-serif);
+            font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .logo img { width: 56px; height: 56px; object-fit: contain; }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-family: var(--font-serif);
+            font-weight: 600;
+        }
+
+        .top-nav a { color: var(--deep-navy); }
+
+        .nav-donate {
+            background: linear-gradient(135deg, #d9ad52, #9d6b18);
+            color: #fff !important;
+            padding: 13px 22px;
+            border-radius: 6px;
+            box-shadow: 0 10px 24px rgba(157, 107, 24, 0.22);
+        }
+
+        main {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 68px 0 54px;
+        }
+
+        .ornament {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 14px;
+            display: grid;
+            place-items: center;
+            color: var(--royal-gold);
+            font-size: 2.1rem;
+        }
+
+        .hero-copy { text-align: center; margin-bottom: 28px; }
+        .hero-copy h1 {
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4.25rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+        .hero-copy p {
+            margin: 14px 0 0;
+            font-family: var(--font-serif);
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            color: #52637a;
+        }
+
+        .donation-card {
+            width: min(720px, 100%);
+            margin: 0 auto 34px;
+            padding: 28px;
+            background: var(--panel);
+            border: 1px solid rgba(197, 160, 89, 0.22);
+            border-radius: 20px;
+            box-shadow: 0 24px 70px rgba(14, 30, 53, 0.12);
+            backdrop-filter: blur(18px);
+        }
+
+        .donation-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            padding: 3px;
+            border: 1px solid #e4dfd6;
+            border-radius: 999px;
             background: #fff;
-            padding: 3rem;
-            text-align: left;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(14, 30, 53, 0.1);
-            border-radius: 8px;
-            border: 1px solid #eee;
-            
-            /* 动画：向上浮现 */
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s ease-out forwards 0.3s;
+            margin-bottom: 24px;
         }
 
-        /* 金色边框装饰 */
-        .bank-card::after {
-            content: ''; position: absolute;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
+        .tab-btn {
+            border: 0;
+            background: transparent;
+            padding: 13px 14px;
+            border-radius: 999px;
+            color: var(--deep-navy);
+            font-family: var(--font-serif);
+            font-size: 1.04rem;
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #002949, #004b7e);
+            color: #fff;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+        }
+
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .amount-btn {
+            min-height: 76px;
+            border: 1px solid #e2ded6;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.92);
+            color: var(--deep-navy);
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            cursor: pointer;
+            transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+        }
+
+        .amount-btn span {
+            display: block;
+            margin-top: 2px;
+            font-family: var(--font-sans);
+            color: #5e6b80;
+            font-size: .72rem;
+            text-transform: uppercase;
+        }
+
+        .amount-btn:hover,
+        .amount-btn.active {
+            border-color: var(--gold-dark);
+            color: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(197, 160, 89, 0.15);
+        }
+
+        .custom-amount {
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            align-items: center;
+            border: 1px solid #e2ded6;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            margin-bottom: 18px;
+        }
+
+        .currency-box {
+            height: 54px;
+            display: grid;
+            place-items: center;
+            color: var(--gold-dark);
+            border-right: 1px solid #e2ded6;
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+        }
+
+        .custom-amount input {
+            height: 54px;
+            border: 0;
+            padding: 0 16px;
+            font: 500 1rem var(--font-sans);
+            color: var(--deep-navy);
+            outline: none;
+            background: transparent;
+        }
+
+        .payment-stack { display: grid; gap: 12px; }
+
+        .google-pay-panel {
+            min-height: 54px;
+            display: grid;
+            place-items: center;
+        }
+
+        .donate-now {
+            width: 100%;
+            min-height: 58px;
+            border: 0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #e5b95c, #a9761d);
+            color: #fff;
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            cursor: pointer;
+            box-shadow: 0 16px 34px rgba(169, 118, 29, 0.22);
+        }
+
+        .secure-note,
+        .pay-status {
+            margin: 8px 0 0;
+            color: #5d6b80;
+            text-align: center;
+            font-size: .9rem;
+        }
+
+        .pay-status { min-height: 20px; color: var(--gold-dark); }
+
+        .ways-title {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            width: min(560px, 100%);
+            margin: 28px auto 16px;
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            justify-content: center;
+        }
+
+        .ways-title::before,
+        .ways-title::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, var(--royal-gold));
+        }
+        .ways-title::after { background: linear-gradient(90deg, var(--royal-gold), transparent); }
+
+        .ways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-bottom: 24px;
+        }
+
+        .way-card {
+            min-height: 118px;
+            display: grid;
+            grid-template-columns: 68px 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: rgba(255,255,255,0.82);
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(14, 30, 53, 0.05);
+        }
+
+        .way-card i:first-child {
+            color: var(--gold-dark);
+            font-size: 2.2rem;
+        }
+
+        .way-card h3 {
+            margin: 0 0 6px;
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+        }
+        .way-card p { margin: 0; color: #52637a; font-size: .88rem; line-height: 1.45; }
+        .way-card .fa-chevron-right { color: var(--gold-dark); }
+
+        .bank-panel {
+            position: relative;
+            padding: 26px 40px;
+            background: rgba(255,255,255,0.86);
             border: 1px solid var(--royal-gold);
-            pointer-events: none;
-            border-radius: 4px;
+            border-radius: 18px;
+            box-shadow: inset 0 0 0 5px rgba(255,255,255,0.62), 0 16px 40px rgba(14, 30, 53, 0.07);
+        }
+
+        .bank-panel h2 {
+            margin: 0 0 22px;
+            text-align: center;
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
         }
 
         .info-row {
-            margin-bottom: 2rem;
-            border-bottom: 1px dashed rgba(0,0,0,0.05);
-            padding-bottom: 1rem;
+            display: grid;
+            grid-template-columns: 250px 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px dashed rgba(197, 160, 89, 0.35);
         }
-        .info-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-        .label { 
-            display: block; font-size: 0.8rem; text-transform: uppercase; 
-            letter-spacing: 1px; color: #888; margin-bottom: 8px; 
-        }
-        .value { 
-            font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600; color: var(--deep-navy); 
-            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-        }
-        
-        .value span { word-break: break-all; }
+        .info-row:last-child { border-bottom: 0; }
 
-        /* 复制按钮 */
+        .label { color: var(--deep-navy); font-weight: 500; }
+        .value { color: var(--deep-navy); font-weight: 500; word-break: break-word; }
+
         .copy-btn {
-            background: transparent; border: 1px solid var(--royal-gold); cursor: pointer;
-            color: var(--royal-gold); padding: 5px 12px; border-radius: 30px; font-size: 0.75rem;
-            text-transform: uppercase; font-weight: 600; transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--royal-gold);
+            background: rgba(255,255,255,0.75);
+            color: var(--gold-dark);
+            padding: 8px 13px;
+            border-radius: 7px;
+            cursor: pointer;
+            font: 600 .84rem var(--font-sans);
         }
-        .copy-btn:hover { background: var(--royal-gold); color: #fff; }
 
-        .notice-box {
-            margin-top: 2rem; 
-            text-align: center; font-size: 0.85rem; color: #777;
-            animation: fadeIn 1s ease-out 0.8s forwards; opacity: 0;
+        .impact-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin: 28px auto 0;
+            background: rgba(255,255,255,0.78);
+            border: 1px solid rgba(197, 160, 89, 0.32);
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(14, 30, 53, 0.05);
         }
 
-        .back-link {
-            display: inline-block; margin-top: 3rem; color: var(--deep-navy); 
-            text-decoration: none; border-bottom: 1px solid var(--royal-gold);
-            font-weight: 600; padding-bottom: 2px;
-            transition: 0.3s;
+        .impact-item {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            align-items: center;
+            gap: 16px;
+            padding: 22px 30px;
+            border-right: 1px solid rgba(197, 160, 89, 0.32);
         }
-        .back-link:hover { color: var(--royal-gold); border-bottom-color: var(--deep-navy); }
+        .impact-item:last-child { border-right: 0; }
 
-        /* 动画定义 */
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { to { opacity: 1; } }
+        .impact-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--deep-navy);
+            background: #f1eadc;
+            font-size: 1.65rem;
+        }
+
+        .impact-item strong {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .impact-item span { color: #52637a; font-size: .86rem; }
+
+        footer {
+            margin-top: auto;
+            background: linear-gradient(135deg, #001f3c, #043962);
+            color: #fff;
+            border-top: 3px solid var(--royal-gold);
+        }
+
+        .footer-inner {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 34px 0;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1.4fr;
+            gap: 48px;
+        }
+
+        .footer-brand {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 12px;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .footer-brand img { width: 44px; height: 44px; object-fit: contain; }
+        .footer-inner p, .footer-inner a { color: rgba(255,255,255,0.82); font-size: .92rem; line-height: 1.7; }
+        .footer-inner h3 { margin: 0 0 14px; font-family: var(--font-serif); color: #fff; }
+        .footer-links { display: grid; gap: 8px; }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.16);
+            padding: 16px 0;
+            text-align: center;
+            color: rgba(255,255,255,0.64);
+            font-size: .82rem;
+        }
+
+        @media (max-width: 850px) {
+            header { height: auto; padding: 18px 22px; align-items: flex-start; gap: 18px; }
+            .top-nav { gap: 14px; flex-wrap: wrap; justify-content: flex-end; font-size: .92rem; }
+            main { padding-top: 42px; }
+            .donation-card { padding: 20px; }
+            .amount-grid, .ways-grid, .impact-row, .footer-inner { grid-template-columns: 1fr; }
+            .info-row { grid-template-columns: 1fr; gap: 8px; }
+            .impact-item { border-right: 0; border-bottom: 1px solid rgba(197, 160, 89, 0.32); }
+            .impact-item:last-child { border-bottom: 0; }
+        }
+
+        @media (max-width: 540px) {
+            .logo { font-size: 1.2rem; }
+            .logo img { width: 46px; height: 46px; }
+            .top-nav a:not(.nav-donate) { display: none; }
+            .donation-tabs { grid-template-columns: 1fr; border-radius: 14px; }
+            .tab-btn { border-radius: 12px; }
+            .amount-grid { grid-template-columns: 1fr 1fr; }
+            .bank-panel { padding: 22px; }
+        }
     </style>
 </head>
 <body>
+    <div class="donation-shell">
+        <header>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="UAE Royal Capital logo">
+                UAE ROYAL CAPITAL
+            </a>
+            <nav class="top-nav" aria-label="Donation page navigation">
+                <a href="about.html">About</a>
+                <a href="index.html#investment">Initiatives</a>
+                <a href="news.html">Impact</a>
+                <a href="contact.html">Contact</a>
+                <a href="#donate" class="nav-donate">Donate</a>
+            </nav>
+        </header>
 
-    <header>
-        <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="Logo"> 
-            UAE ROYAL CAPITAL
-        </a>
-    </header>
+        <main id="donate">
+            <div class="ornament" aria-hidden="true"><i class="fa-regular fa-gem"></i></div>
+            <section class="hero-copy">
+                <h1>Support Our Mission</h1>
+                <p>Make a secure contribution to create lasting impact.</p>
+            </section>
 
-    <div class="container">
-        <h1 class="intro-text">Official Banking Details</h1>
-        
-        <!-- 精简版信息卡片 -->
-        <div class="bank-card">
-            
-            <!-- 1. 收款人 -->
-            <div class="info-row">
-                <span class="label">Beneficiary Name</span>
-                <span class="value">
-                    UAE Royal Capital Funding Investment L.L.C
-                </span>
+            <section class="donation-card" aria-labelledby="donation-form-title">
+                <div class="donation-tabs" role="tablist" aria-label="Donation frequency">
+                    <button class="tab-btn active" type="button" data-frequency="one-time"><i class="fa-regular fa-heart"></i> One-Time Donation</button>
+                    <button class="tab-btn" type="button" data-frequency="monthly"><i class="fa-regular fa-calendar-days"></i> Monthly Giving</button>
+                </div>
+
+                <h2 id="donation-form-title" class="sr-only" style="position:absolute;left:-9999px;">Donation amount</h2>
+                <div class="amount-grid">
+                    <button class="amount-btn" type="button" data-amount="100">100 <span>USD</span></button>
+                    <button class="amount-btn active" type="button" data-amount="500">500 <span>USD</span></button>
+                    <button class="amount-btn" type="button" data-amount="1000">1000 <span>USD</span></button>
+                    <button class="amount-btn" type="button" data-amount="custom"><i class="fa-solid fa-pen"></i> <span>Custom Amount</span></button>
+                </div>
+
+                <label class="custom-amount" for="donation-amount">
+                    <span class="currency-box">$</span>
+                    <input id="donation-amount" type="number" min="1" step="1" value="500" placeholder="Enter amount">
+                </label>
+
+                <div class="payment-stack">
+                    <div id="google-pay-button" class="google-pay-panel" aria-live="polite"></div>
+                    <button class="donate-now" type="button" id="bank-transfer-focus">Donate Now</button>
+                </div>
+
+                <p class="secure-note"><i class="fa-solid fa-lock"></i> 100% Secure & Trusted</p>
+                <p class="pay-status" id="pay-status">Google Pay is prepared in test mode. Live payment requires merchant gateway credentials.</p>
+            </section>
+
+            <div class="ways-title">Other Ways to Give</div>
+            <section class="ways-grid" aria-label="Other ways to give">
+                <a class="way-card" href="#bank-transfer">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div><h3>Bank Transfer</h3><p>Direct bank transfer for secure giving</p></div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                <a class="way-card" href="#google-pay-button">
+                    <i class="fa-brands fa-google-pay"></i>
+                    <div><h3>Google Pay</h3><p>Online giving, ready for live merchant activation</p></div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                <a class="way-card" href="contact.html">
+                    <i class="fa-solid fa-moon"></i>
+                    <div><h3>Zakat / Sadaqah</h3><p>Fulfill your duty and support others</p></div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </section>
+
+            <section class="bank-panel" id="bank-transfer" aria-labelledby="bank-details-title">
+                <h2 id="bank-details-title">Bank Transfer Details</h2>
+                <div class="info-row">
+                    <span class="label">Beneficiary Name</span>
+                    <span class="value">UAE Royal Capital Funding Investment L.L.C</span>
+                    <span></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Bank Name</span>
+                    <span class="value">Wio Bank PJSC</span>
+                    <span></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">IBAN (Account Number)</span>
+                    <span class="value">AE81 0860 0000 0909 7668 867</span>
+                    <button class="copy-btn" type="button" onclick="copyToClipboard('AE810860000009097668867')"><i class="fa-regular fa-copy"></i> Copy</button>
+                </div>
+                <div class="info-row">
+                    <span class="label">SWIFT / BIC Code</span>
+                    <span class="value">WIOBAEADXXX</span>
+                    <button class="copy-btn" type="button" onclick="copyToClipboard('WIOBAEADXXX')"><i class="fa-regular fa-copy"></i> Copy</button>
+                </div>
+                <div class="info-row">
+                    <span class="label">Currency</span>
+                    <span class="value">USD (United States Dollar)</span>
+                    <span></span>
+                </div>
+            </section>
+
+            <section class="impact-row" aria-label="Donation impact">
+                <div class="impact-item">
+                    <div class="impact-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <div><strong>100+</strong><span>Projects creating meaningful impact</span></div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-icon"><i class="fa-solid fa-globe"></i></div>
+                    <div><strong>20</strong><span>Countries reaching communities worldwide</span></div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div><strong>Secure</strong><span>Your giving is safe and accountable</span></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="footer-brand"><img src="images/logo.png" alt=""> UAE ROYAL CAPITAL</div>
+                    <p>We are committed to ethical investments and sustainable impact, guided by trust, transparency, and purpose.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="about.html">About</a>
+                        <a href="index.html#investment">Initiatives</a>
+                        <a href="news.html">Impact</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p><i class="fa-solid fa-envelope"></i> info@uaeroyal.fund</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Business Village, Dubai, UAE</p>
+                    <p><i class="fa-regular fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM (GST)</p>
+                </div>
             </div>
-
-            <!-- 2. 银行 -->
-            <div class="info-row">
-                <span class="label">Bank Name</span>
-                <span class="value">
-                    Wio Bank PJSC
-                </span>
-            </div>
-
-            <!-- 3. IBAN (核心) -->
-            <div class="info-row">
-                <span class="label">IBAN (Account Number)</span>
-                <span class="value">
-                    <span>AE81 0860 0000 0909 7668 867</span>
-                    <button class="copy-btn" onclick="copyToClipboard('AE810860000009097668867')">Copy</button>
-                </span>
-            </div>
-
-            <!-- 4. SWIFT (核心) -->
-            <div class="info-row">
-                <span class="label">SWIFT / BIC Code</span>
-                <span class="value">
-                    <span>WIOBAEADXXX</span>
-                    <button class="copy-btn" onclick="copyToClipboard('WIOBAEADXXX')">Copy</button>
-                </span>
-            </div>
-
-            <!-- 5. 币种 -->
-            <div class="info-row">
-                <span class="label">Currency</span>
-                <span class="value">USD (United States Dollar)</span>
-            </div>
-
-        </div>
-
-        <div class="notice-box">
-            <i class="fa-solid fa-circle-info"></i> Please ensure all transfers utilize the SWIFT network.
-        </div>
-
-        <a href="index.html" class="back-link">← Return to Home Page</a>
+            <div class="copyright">© 2026 UAE Royal Capital Funding. All Rights Reserved.</div>
+        </footer>
     </div>
 
-    <!-- 复制功能脚本 -->
     <script>
+        const GOOGLE_PAY_CONFIG = {
+            environment: 'TEST',
+            merchantName: 'UAE Royal Capital Funding',
+            merchantId: '',
+            countryCode: 'AE',
+            currencyCode: 'USD',
+            gateway: 'example',
+            gatewayMerchantId: 'exampleGatewayMerchantId'
+        };
+
+        let selectedFrequency = 'one-time';
+        let selectedAmount = '500';
+        let paymentsClient = null;
+
+        const amountInput = document.getElementById('donation-amount');
+        const payStatus = document.getElementById('pay-status');
+
+        document.querySelectorAll('.tab-btn').forEach((button) => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach((item) => item.classList.remove('active'));
+                button.classList.add('active');
+                selectedFrequency = button.dataset.frequency;
+                updatePaymentStatus();
+            });
+        });
+
+        document.querySelectorAll('.amount-btn').forEach((button) => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.amount-btn').forEach((item) => item.classList.remove('active'));
+                button.classList.add('active');
+                if (button.dataset.amount !== 'custom') {
+                    selectedAmount = button.dataset.amount;
+                    amountInput.value = selectedAmount;
+                } else {
+                    amountInput.focus();
+                    amountInput.select();
+                }
+                updatePaymentStatus();
+            });
+        });
+
+        amountInput.addEventListener('input', () => {
+            selectedAmount = amountInput.value || '0';
+            document.querySelectorAll('.amount-btn').forEach((item) => item.classList.remove('active'));
+            updatePaymentStatus();
+        });
+
+        document.getElementById('bank-transfer-focus').addEventListener('click', () => {
+            document.getElementById('bank-transfer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        function getDonationAmount() {
+            const value = Number(amountInput.value || selectedAmount || 0);
+            return Math.max(value, 1).toFixed(2);
+        }
+
+        function updatePaymentStatus() {
+            const mode = selectedFrequency === 'monthly' ? 'monthly giving' : 'one-time donation';
+            payStatus.textContent = `Selected ${mode}: USD ${getDonationAmount()}. Google Pay live processing requires merchant activation.`;
+        }
+
+        function getGooglePaymentsClient() {
+            if (!paymentsClient) {
+                paymentsClient = new google.payments.api.PaymentsClient({
+                    environment: GOOGLE_PAY_CONFIG.environment,
+                    paymentDataCallbacks: {
+                        onPaymentAuthorized: onPaymentAuthorized
+                    }
+                });
+            }
+            return paymentsClient;
+        }
+
+        function getBaseCardPaymentMethod() {
+            return {
+                type: 'CARD',
+                parameters: {
+                    allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                    allowedCardNetworks: ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA']
+                }
+            };
+        }
+
+        function getCardPaymentMethod() {
+            return {
+                ...getBaseCardPaymentMethod(),
+                tokenizationSpecification: {
+                    type: 'PAYMENT_GATEWAY',
+                    parameters: {
+                        gateway: GOOGLE_PAY_CONFIG.gateway,
+                        gatewayMerchantId: GOOGLE_PAY_CONFIG.gatewayMerchantId
+                    }
+                }
+            };
+        }
+
+        function getPaymentDataRequest() {
+            return {
+                apiVersion: 2,
+                apiVersionMinor: 0,
+                allowedPaymentMethods: [getCardPaymentMethod()],
+                transactionInfo: {
+                    totalPriceStatus: 'FINAL',
+                    totalPrice: getDonationAmount(),
+                    currencyCode: GOOGLE_PAY_CONFIG.currencyCode,
+                    countryCode: GOOGLE_PAY_CONFIG.countryCode
+                },
+                merchantInfo: {
+                    merchantName: GOOGLE_PAY_CONFIG.merchantName,
+                    merchantId: GOOGLE_PAY_CONFIG.merchantId || undefined
+                },
+                callbackIntents: ['PAYMENT_AUTHORIZATION']
+            };
+        }
+
+        function onGooglePayLoaded() {
+            const client = getGooglePaymentsClient();
+            client.isReadyToPay({
+                apiVersion: 2,
+                apiVersionMinor: 0,
+                allowedPaymentMethods: [getBaseCardPaymentMethod()]
+            })
+            .then((response) => {
+                if (!response.result) {
+                    payStatus.textContent = 'Google Pay is not available in this browser. Please use bank transfer.';
+                    return;
+                }
+                const button = client.createButton({
+                    buttonColor: 'black',
+                    buttonType: 'donate',
+                    buttonSizeMode: 'fill',
+                    onClick: onGooglePaymentButtonClicked
+                });
+                const container = document.getElementById('google-pay-button');
+                container.innerHTML = '';
+                container.appendChild(button);
+                updatePaymentStatus();
+            })
+            .catch(() => {
+                payStatus.textContent = 'Google Pay could not be initialized. Please use bank transfer.';
+            });
+        }
+
+        function onGooglePaymentButtonClicked() {
+            if (GOOGLE_PAY_CONFIG.gateway === 'example') {
+                payStatus.textContent = 'Google Pay is in test mode. Add live gateway credentials before accepting online donations.';
+            }
+            getGooglePaymentsClient().loadPaymentData(getPaymentDataRequest()).catch(() => {
+                payStatus.textContent = 'Google Pay was cancelled or unavailable. Bank transfer details remain available below.';
+            });
+        }
+
+        function onPaymentAuthorized() {
+            return new Promise((resolve) => {
+                payStatus.textContent = 'Google Pay test authorization completed. Connect a server-side payment processor before live launch.';
+                resolve({ transactionState: 'SUCCESS' });
+            });
+        }
+
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                // 简单的提示反馈
-                alert("Copied to clipboard!");
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
+                payStatus.textContent = 'Copied to clipboard.';
+            }).catch(() => {
+                payStatus.textContent = 'Copy failed. Please copy the value manually.';
             });
         }
     </script>

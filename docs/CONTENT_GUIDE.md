@@ -63,3 +63,17 @@ https://formsubmit.co/ajax/recruit@uaeroyal.fund
 ```
 
 FormSubmit may require first-time email activation for `recruit@uaeroyal.fund`. The modal also keeps a mailto fallback link so applicants can still send by email if the form endpoint has not been activated.
+
+## Google Pay Donations
+
+The donation page includes a Google Pay-ready frontend in `donate.html`.
+
+Current mode:
+
+```js
+environment: 'TEST'
+gateway: 'example'
+gatewayMerchantId: 'exampleGatewayMerchantId'
+```
+
+To accept live online donations, replace the test values in `GOOGLE_PAY_CONFIG` with the payment processor gateway values and merchant ID issued for UAE Royal Capital Funding. A server-side payment processor endpoint is also required before live launch because the browser should not directly complete settlement.
