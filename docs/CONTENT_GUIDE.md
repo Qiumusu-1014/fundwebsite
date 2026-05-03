@@ -34,6 +34,17 @@ Example:
 
 The homepage duplicates the list in JavaScript so the scrolling wall stays seamless.
 
+## Update Page Hero Images
+
+The About, Careers, Contact, and News pages use local hero images in `images/`.
+
+- `images/about-hero-ai.svg`: UAE architecture, skyline, and institutional vision
+- `images/careers-hero-ai.svg`: empty executive workspace for recruitment
+- `images/contact-hero-ai.svg`: UAE headquarters / location style
+- `images/news-hero-ai.svg`: UAE economy, aviation, trade, and energy landscape
+
+Keep these page hero images free of people, faces, readable text, logos, and watermarks so headings remain clear and the site keeps a formal institutional style.
+
 ## Update Leadership Names
 
 Edit `window.siteLeaders` in `data/gallery-data.js`.
