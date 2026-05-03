@@ -182,7 +182,7 @@
             border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;
             transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; display: inline-block; text-align: center;
         }
-        .form-submit-btn:hover { background: var(--royal-gold); }
+        .form-submit-btn:hover { background: var(--royal-gold); } .form-submit-btn.secondary { margin-top: 12px; background: transparent; color: var(--deep-navy); border: 1px solid var(--deep-navy); } .form-submit-btn.secondary:hover { background: var(--deep-navy); color: #fff; } .application-form { margin: 1rem 0; } .application-form .form-group { margin-bottom: 0.8rem; } .application-form input, .application-form textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: var(--font-sans); } .application-form input:focus, .application-form textarea:focus { border-color: var(--royal-gold); outline: none; } .form-status { margin-top: 10px; font-size: 0.9rem; color: var(--deep-navy); }
 
         footer { background: #050A10; color: #fff; text-align: center; padding: 2rem; }
 
@@ -270,117 +270,12 @@
 
     <div class="jobs-container">
         <div class="section-header"><h2>Open Positions</h2></div>
-
-        <div class="job-card" style="animation-delay: 0.1s;">
-            <div class="job-header" onclick="toggleJob(this)">
-                <div class="job-title">
-                    <h3>Honorary Director</h3>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
-                        <span><i class="fa-solid fa-briefcase"></i> Global Recruitment</span>
-                        <span><i class="fa-solid fa-user-tie"></i> 15+ Years</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-down toggle-icon"></i>
-            </div>
-            <div class="job-details">
-                <div class="job-details-inner">
-                    <p>Provide top-level intellectual support for the Foundation's development and help shape its strategic academic and international influence.</p>
-                    <h4>Responsibilities</h4>
-                    <ul>
-                        <li>Provide insights and recommendations on the global political and economic landscape and regional cooperation trends.</li>
-                        <li>Participate in planning and guiding major academic conferences and international forums.</li>
-                        <li>Connect global high-end academic resources and government networks to deepen cooperation with think tanks, international organizations and government agencies.</li>
-                        <li>Supervise research quality and academic norms to ensure professionalism and authority in the Foundation's intellectual outputs.</li>
-                    </ul>
-                    <h4>Requirements</h4>
-                    <ul>
-                        <li>More than 15 years of senior government management experience or experience as a senior scholar at a world-renowned university or research institution.</li>
-                        <li>Broad reputation in international politics, international relations, global economy or related fields.</li>
-                        <li>Strong strategic vision, cross-cultural communication skills, and familiarity with global governance systems and regional development dynamics.</li>
-                        <li>Preference for candidates who have led or deeply participated in major policy formulation or international cooperation projects.</li>
-                        <li>Commitment to academic integrity, neutrality and social responsibility, with willingness to support the Foundation's development.</li>
-                        <li>Excellent written and spoken English, Arabic and Persian, with the ability to clearly present complex research findings.</li>
-                    </ul>
-                    <button class="apply-btn" onclick="openModal('Honorary Director')">Apply Now</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="job-card" style="animation-delay: 0.2s;">
-            <div class="job-header" onclick="toggleJob(this)">
-                <div class="job-title">
-                    <h3>Policy Advisor</h3>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
-                        <span><i class="fa-solid fa-globe"></i> Middle East & Global Policy</span>
-                        <span><i class="fa-solid fa-user-tie"></i> 10+ Years</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-down toggle-icon"></i>
-            </div>
-            <div class="job-details">
-                <div class="job-details-inner">
-                    <p>Lead in-depth policy research on key Middle East and international issues and translate research into actionable analysis for partners and decision-makers.</p>
-                    <h4>Responsibilities</h4>
-                    <ul>
-                        <li>Research political and economic policy, cross-regional cooperation mechanisms and geopolitical risks in the Middle East and beyond.</li>
-                        <li>Prepare high-quality policy briefings and thematic reports that provide accurate analysis and decision-making references.</li>
-                        <li>Participate in major project risk assessment and feasibility studies, forecasting implementation effects and potential policy risks.</li>
-                        <li>Join academic seminars and policy dialogue activities to disseminate research outcomes and strengthen policy communication.</li>
-                    </ul>
-                    <h4>Requirements</h4>
-                    <ul>
-                        <li>More than 10 years of policy formulation experience in government departments, international organizations or think tanks, or experience as a professor or senior researcher at a well-known university.</li>
-                        <li>Strong achievements in relevant research and policy fields.</li>
-                        <li>Deep understanding of the global political economy and the policy environment and development needs of the Middle East and surrounding regions.</li>
-                        <li>Excellent written and spoken English, Arabic and Persian, with the ability to clearly present complex research findings.</li>
-                    </ul>
-                    <button class="apply-btn" onclick="openModal('Policy Advisor')">Apply Now</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="job-card" style="animation-delay: 0.3s;">
-            <div class="job-header" onclick="toggleJob(this)">
-                <div class="job-title">
-                    <h3>Senior Research Fellow</h3>
-                    <div class="job-meta">
-                        <span><i class="fa-solid fa-location-dot"></i> Dubai, UAE</span>
-                        <span><i class="fa-solid fa-microscope"></i> Research & Analysis</span>
-                        <span><i class="fa-solid fa-user-tie"></i> 5+ Years</span>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-down toggle-icon"></i>
-            </div>
-            <div class="job-details">
-                <div class="job-details-inner">
-                    <p>Conduct high-value thematic research with practical relevance across economic cooperation, governance, public policy and risk assessment.</p>
-                    <h4>Responsibilities</h4>
-                    <ul>
-                        <li>Conduct thematic research in economic cooperation, political governance, public policy and risk assessment, producing results with practical guiding significance.</li>
-                        <li>Compile high-quality policy briefings and thematic reports for the Foundation's partners.</li>
-                        <li>Track global policy dynamics and academic frontiers, build research databases and support the Foundation's research system.</li>
-                        <li>Participate in academic seminars and policy dialogues, and support policy advisors on major research topics.</li>
-                    </ul>
-                    <h4>Requirements</h4>
-                    <ul>
-                        <li>More than 5 years of experience in government policy research institutions, renowned think tanks or well-known universities.</li>
-                        <li>Published high-level academic achievements or policy reports in relevant target fields.</li>
-                        <li>Solid theoretical foundation, systematic research methods, and proficiency in policy analysis and risk assessment models.</li>
-                        <li>Ability to independently carry out interdisciplinary and cross-domain thematic research.</li>
-                        <li>In-depth research expertise on the political economy of the Middle East and international cooperation mechanisms.</li>
-                        <li>Excellent written and spoken English, Arabic and Persian, with the ability to clearly present complex research findings.</li>
-                    </ul>
-                    <button class="apply-btn" onclick="openModal('Senior Research Fellow')">Apply Now</button>
-                </div>
-            </div>
-        </div>
+        <div id="jobs-list"></div>
     </div>
 
     <div class="general-app">
         <h2>Application Method</h2>
-        <p>Please send your application to <strong>info@uaeroyal.fund</strong> with the subject line: <strong>UAE Royal Foundation for Friendship - Position Applied + Full Name</strong>.</p>
+        <p>Use the application form below for automatic routing to the recruitment mailbox. Email submission remains available as a backup.</p>
         <ul class="application-list">
             <li>Personal resume</li>
             <li>Cover letter (including your research interests)</li>
@@ -400,19 +295,36 @@
             </div>
             <div class="modal-body">
                 <p><strong>Position:</strong> <span id="modal-position">General Application</span></p>
-                <p>Please email the following documents to <a class="mail-link" id="application-email" href="mailto:info@uaeroyal.fund">info@uaeroyal.fund</a>:</p>
-                <ul class="modal-docs">
-                    <li>Personal resume</li>
-                    <li>Cover letter elaborating on your personal research interests</li>
-                    <li>Representative works</li>
-                </ul>
+                <p>Submit the form for automatic routing to the recruitment mailbox. If upload attachments are needed, use the email fallback and attach your documents there.</p>
+                <form id="application-form" class="contact-form application-form">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_subject" id="application-subject-input" value="">
+                    <input type="hidden" name="position" id="application-position-input" value="General Application">
+                    <input type="text" name="_honey" style="display:none">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" placeholder="Phone / WhatsApp (Optional)">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="Briefly introduce your background and the documents you can provide." required></textarea>
+                    </div>
+                    <button type="submit" id="application-submit" class="form-submit-btn">Submit Application</button>
+                    <p id="application-status" class="form-status" aria-live="polite"></p>
+                </form>
+                <ul class="modal-docs" id="modal-docs-list"></ul>
                 <p><strong>Email subject:</strong> <span id="mail-subject-text">UAE Royal Foundation for Friendship - Position Applied + Full Name</span></p>
-                <p>Eligible candidates may also receive supporting benefits such as visa processing and medical insurance.</p>
-                <a id="email-cta" class="form-submit-btn" href="mailto:info@uaeroyal.fund?subject=UAE%20Royal%20Foundation%20for%20Friendship%20-%20Position%20Applied%20%2B%20Full%20Name">Email Your Application</a>
+                <a id="email-cta" class="form-submit-btn secondary" href="mailto:info@uaeroyal.fund">Email Documents Instead</a>
             </div>
         </div>
     </div>
 
+    <script src="data/jobs-data.js"></script>
     <script>
         const hamburger = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
@@ -426,41 +338,119 @@
             navMenu.classList.remove('active');
         }
 
+        function buildList(items) {
+            return items.map((item) => `<li>${item}</li>`).join('');
+        }
+
+        function renderJobs() {
+            const jobsList = document.getElementById('jobs-list');
+            const jobs = window.siteJobs || [];
+            if (!jobsList || !jobs.length) return;
+
+            jobsList.innerHTML = jobs.map((job, index) => `
+                <div class="job-card" style="animation-delay: ${(index + 1) * 0.1}s;">
+                    <div class="job-header" onclick="toggleJob(this)">
+                        <div class="job-title">
+                            <h3>${job.title}</h3>
+                            <div class="job-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
+                                <span><i class="fa-solid ${job.icon || 'fa-briefcase'}"></i> ${job.department}</span>
+                                <span><i class="fa-solid fa-user-tie"></i> ${job.experience}</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-details-inner">
+                            <p>${job.summary}</p>
+                            <h4>Responsibilities</h4>
+                            <ul>${buildList(job.responsibilities || [])}</ul>
+                            <h4>Requirements</h4>
+                            <ul>${buildList(job.requirements || [])}</ul>
+                            <button class="apply-btn" onclick="openModal('${job.title.replace(/'/g, "\\'")}')">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         function toggleJob(header) {
             const card = header.parentElement;
             const details = card.querySelector('.job-details');
             card.classList.toggle('active');
-            if (card.classList.contains('active')) {
-                details.style.maxHeight = details.scrollHeight + 'px';
-            } else {
-                details.style.maxHeight = null;
-            }
+            details.style.maxHeight = card.classList.contains('active') ? details.scrollHeight + 'px' : null;
         }
 
         const modal = document.getElementById('applyModal');
         const modalPosition = document.getElementById('modal-position');
         const emailCTA = document.getElementById('email-cta');
         const subjectText = document.getElementById('mail-subject-text');
-        const applicationEmail = document.getElementById('application-email');
+        const docsList = document.getElementById('modal-docs-list');
+        const applicationForm = document.getElementById('application-form');
+        const applicationSubmit = document.getElementById('application-submit');
+        const applicationStatus = document.getElementById('application-status');
+        const applicationSubjectInput = document.getElementById('application-subject-input');
+        const applicationPositionInput = document.getElementById('application-position-input');
 
         function openModal(jobTitle) {
-            const subject = `UAE Royal Foundation for Friendship - ${jobTitle} - Full Name`;
+            const settings = window.applicationSettings || {};
+            const subject = `${settings.subjectPrefix || 'UAE Royal Foundation for Friendship'} - ${jobTitle} - Full Name`;
+            const recipient = settings.recipientEmail || settings.fallbackEmail || 'info@uaeroyal.fund';
+
             modal.style.display = 'block';
             modalPosition.textContent = jobTitle;
             subjectText.textContent = subject;
-            emailCTA.href = `mailto:info@uaeroyal.fund?subject=${encodeURIComponent(subject)}`;
-            applicationEmail.href = `mailto:info@uaeroyal.fund?subject=${encodeURIComponent(subject)}`;
+            applicationSubjectInput.value = subject;
+            applicationPositionInput.value = jobTitle;
+            applicationStatus.textContent = '';
+            docsList.innerHTML = buildList(settings.requiredDocuments || []);
+            emailCTA.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}`;
         }
 
         function closeModal() {
             modal.style.display = 'none';
         }
 
+        applicationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const settings = window.applicationSettings || {};
+            const endpoint = settings.formEndpoint;
+            if (!endpoint) {
+                applicationStatus.textContent = 'Application endpoint is not configured. Please use the email option.';
+                return;
+            }
+
+            const originalText = applicationSubmit.textContent;
+            applicationSubmit.textContent = 'Submitting...';
+            applicationSubmit.disabled = true;
+            applicationStatus.textContent = '';
+
+            fetch(endpoint, {
+                method: 'POST',
+                body: new FormData(applicationForm),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then((response) => {
+                if (!response.ok) throw new Error('Submission failed');
+                applicationForm.reset();
+                applicationStatus.textContent = 'Application received. Our recruitment team will review it shortly.';
+            })
+            .catch(() => {
+                applicationStatus.textContent = 'Online submission is temporarily unavailable. Please use the email option below.';
+            })
+            .finally(() => {
+                applicationSubmit.textContent = originalText;
+                applicationSubmit.disabled = false;
+            });
+        });
+
         window.onclick = function(event) {
             if (event.target === modal) {
                 closeModal();
             }
         }
+
+        renderJobs();
     </script>
 </body>
 </html>

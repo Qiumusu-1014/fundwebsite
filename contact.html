@@ -105,8 +105,7 @@
         .contact-map { 
             flex: 1; min-width: 350px; background: #0E1E35; position: relative; overflow: hidden;
         }
-        .contact-map img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
-        .contact-map:hover img { transform: scale(1.05); opacity: 0.8; }
+        .contact-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.95) contrast(1.02); }
         
         .map-overlay { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
@@ -262,7 +261,12 @@
         </div>
 
         <div class="contact-map">
-            <img src="https://images.unsplash.com/photo-1578559099885-3023e9a56c4d?q=80&w=1200&auto=format&fit=crop" alt="Dubai Map">
+            <iframe
+                title="Google Map - Business Village, Deira, Dubai"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Business%20Village%20Block%20B%20Deira%20Dubai%20United%20Arab%20Emirates&output=embed">
+            </iframe>
             <div class="map-overlay">
                 <i class="fa-solid fa-location-dot" style="font-size: 3rem; color: var(--royal-gold);"></i>
                 <h3>Dubai HQ</h3>
