@@ -131,6 +131,12 @@
         .news-title { font-family: var(--font-serif); font-size: 1.6rem; color: var(--deep-navy); margin: 0 0 1rem 0; line-height: 1.3; font-weight: 700; }
         .news-title a:hover { color: var(--royal-gold); }
         .news-excerpt { font-size: 1rem; color: #555; margin-bottom: 1.5rem; line-height: 1.6; }
+
+        .keyword-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.2rem; }
+        .keyword-tag {
+            background: rgba(197, 160, 89, 0.12); color: var(--deep-navy); border: 1px solid rgba(197, 160, 89, 0.22);
+            padding: 4px 9px; border-radius: 999px; font-size: 0.74rem; font-weight: 600;
+        }
         
         .read-more-link {
             display: inline-flex; align-items: center; gap: 8px; color: var(--deep-navy);
@@ -227,12 +233,17 @@
                 <span class="filter-btn active" data-category="All">All News</span>
                 <span class="filter-btn" data-category="Technology">Technology</span>
                 <span class="filter-btn" data-category="Economy">Economy</span>
+                <span class="filter-btn" data-category="Energy Policy">Energy Policy</span>
+                <span class="filter-btn" data-category="Trade">Trade</span>
+                <span class="filter-btn" data-category="Entrepreneurship">Entrepreneurship</span>
+                <span class="filter-btn" data-category="Macro Economy">Macro Economy</span>
+                <span class="filter-btn" data-category="Aviation">Aviation</span>
                 <span class="filter-btn" data-category="Royal Activities">Royal Activities</span>
                 <span class="filter-btn" data-category="Infrastructure">Infrastructure</span>
             </div>
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="search-input" placeholder="Search news titles...">
+                <input type="text" id="search-input" placeholder="Search keywords, source, title...">
             </div>
         </div>
 
@@ -271,8 +282,12 @@
         // --- 4. 筛选逻辑 ---
         function applyFilters() {
             filteredData = newsData.filter(item => {
-                const matchesCategory = currentCategory === 'All' || item.category === currentCategory || (currentCategory === 'Royal Activities' && item.category === 'Royal Activities');
-                const matchesSearch = `${item.title} ${item.excerpt} ${item.category}`.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesCategory = currentCategory === 'All' || item.category === currentCategory;
+                const keywords = (item.keywords || []).join(' ');
+                const source = item.source || '';
+                const searchableText = `${item.title} ${item.excerpt} ${item.category} ${keywords} ${source} ${item.displayDate}`.toLowerCase();
+                const searchTerms = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+                const matchesSearch = searchTerms.length === 0 || searchTerms.every(term => searchableText.includes(term));
                 return matchesCategory && matchesSearch;
             });
             currentPage = 1;
@@ -293,6 +308,7 @@
 
             pageData.forEach((item, index) => {
                 const delay = index * 0.1;
+                const keywordHtml = (item.keywords || []).slice(0, 4).map(keyword => `<span class="keyword-tag">${keyword}</span>`).join('');
                 const html = `
                     <article class="news-item" style="animation-delay: ${delay}s;">
                         <div class="news-thumb">
@@ -310,6 +326,7 @@
                                 <a href="${item.link}">${item.title}</a>
                             </h3>
                             <p class="news-excerpt">${item.excerpt}</p>
+                            <div class="keyword-tags">${keywordHtml}</div>
                             <a href="${item.link}" class="read-more-link">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>

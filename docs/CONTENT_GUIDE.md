@@ -11,12 +11,15 @@ Required fields:
 - `title`: article headline
 - `date`: sorting date in `YYYY-MM-DD`
 - `displayDate`: public date label
-- `category`: one of `Infrastructure`, `Royal Activities`, `Technology`, `Economy`
+- `category`: one of `Infrastructure`, `Royal Activities`, `Technology`, `Economy`, `Energy Policy`, `Trade`, `Entrepreneurship`, `Macro Economy`, `Aviation`
 - `image`: local path such as `images/new-photo.jpg` or a full image URL
 - `excerpt`: short summary
 - `link`: detail page path, usually `news_pages/news_new_11.html`
+- `keywords`: search keywords shown as chips on the news page
+- `featuredOnHome`: set to `true` for homepage news
+- `homeOrder`: homepage order when `featuredOnHome` is used
 
-The homepage automatically shows the latest 3 items by `date`. The news page automatically handles filtering, search, and pagination.
+The homepage shows up to 3 items marked with `featuredOnHome: true`, sorted by `homeOrder`. If no featured items are set, it falls back to the latest 3 items by `date`. The news page searches title, excerpt, category, source, display date, and `keywords`.
 
 ## Add Photos To The Scrolling Gallery
 
