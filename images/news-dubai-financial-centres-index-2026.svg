@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Dubai financial district and market index">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06111f"/><stop offset="0.56" stop-color="#123d63"/><stop offset="1" stop-color="#d2a34d"/></linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <g fill="#dce9ef" opacity="0.82">
+    <rect x="255" y="320" width="58" height="260"/><path d="M255 320 Q284 245 313 320Z"/>
+    <rect x="350" y="235" width="70" height="345"/><path d="M350 235 Q405 165 420 235Z"/>
+    <rect x="465" y="300" width="54" height="280"/>
+    <rect x="555" y="180" width="52" height="400"/><path d="M555 180 Q581 120 607 180Z"/>
+    <rect x="650" y="350" width="70" height="230"/>
+  </g>
+  <rect x="790" y="180" width="285" height="330" rx="10" fill="#081526" opacity="0.72" stroke="#d6a64d" stroke-width="3"/>
+  <g stroke="#83d3ff" stroke-width="5" fill="none" opacity="0.72">
+    <path d="M830 430 L875 385 L920 405 L965 320 L1010 350 L1040 275"/>
+    <path d="M830 245 H1045M830 315H1045M830 385H1045"/>
+  </g>
+  <g fill="#d6a64d" opacity="0.8">
+    <rect x="850" y="390" width="24" height="60"/><rect x="900" y="360" width="24" height="90"/>
+    <rect x="950" y="315" width="24" height="135"/><rect x="1000" y="285" width="24" height="165"/>
+  </g>
+  <path d="M0 620 C260 565 410 665 610 605 S900 585 1200 625 V760 H0Z" fill="#071426" opacity="0.44"/>
+</svg>

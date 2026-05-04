@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Dubai hospitality and destination growth">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1f35"/><stop offset="0.58" stop-color="#2c6988"/><stop offset="1" stop-color="#e0ad55"/></linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e9d2a1"/><stop offset="1" stop-color="#9f6f2b"/></linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#sky)"/>
+  <rect y="585" width="1200" height="175" fill="url(#sand)"/>
+  <g fill="#f3f0e6" opacity="0.78">
+    <rect x="130" y="405" width="120" height="180"/><path d="M130 405 Q190 330 250 405Z"/>
+    <rect x="290" y="345" width="80" height="240"/><path d="M290 345 Q330 285 370 345Z"/>
+    <rect x="420" y="300" width="65" height="285"/><path d="M420 300 Q452 230 485 300Z"/>
+    <rect x="560" y="260" width="78" height="325"/>
+    <rect x="705" y="380" width="95" height="205"/>
+  </g>
+  <g fill="none" stroke="#d6a64d" stroke-width="4" opacity="0.7">
+    <path d="M870 500 C930 370 1030 370 1090 500"/>
+    <path d="M900 500 C945 415 1015 415 1060 500"/>
+    <path d="M830 500 H1130"/>
+  </g>
+  <g fill="#d6a64d" opacity="0.72">
+    <circle cx="905" cy="312" r="22"/><circle cx="965" cy="282" r="16"/><circle cx="1028" cy="314" r="19"/>
+  </g>
+  <path d="M0 618 C210 560 385 640 570 596 S920 560 1200 628 V760 H0Z" fill="#071426" opacity="0.42"/>
+</svg>
