@@ -65,7 +65,7 @@
         date: "2026-01-02",
         displayDate: "Jan 02, 2026",
         category: "Infrastructure",
-        image: "images/news-al-maktoum-airport-2026.svg",
+        image: "images/news-al-maktoum-airport-2026-ai.png",
         excerpt: "His Highness Sheikh Mohammed bin Rashid Al Maktoum opens the new terminal wing, reinforcing Dubai's position as the world's aviation capital. The Foundation is a key investor in the adjacent logistics corridor.",
         keywords: ["airport", "Dubai", "infrastructure", "logistics"],
         source: "Dubai Aviation Sector Briefing",
