@@ -6,9 +6,12 @@ window.siteLeaders = [
 ];
 
 window.siteGallery = [
-    { image: "images/gallery-waterfront-ai.png", alt: "UAE waterfront skyline at golden hour" },
-    { image: "images/gallery-grand-mosque-ai.png", alt: "UAE cultural architecture and reflecting courtyard" },
-    { image: "images/gallery-solar-desert-ai.png", alt: "UAE desert dunes and sustainable solar infrastructure" },
-    { image: "images/gallery-port-logistics-ai.png", alt: "UAE port logistics and trade infrastructure" },
-    { image: "images/gallery-financial-district-ai.png", alt: "UAE financial district and modern investment skyline" }
+    { image: "images/royal1.jpg", alt: "Royal engagement event" },
+    { image: "images/royal2.jpg", alt: "Royal engagement event" },
+    { image: "images/royal3.jpg", alt: "Royal engagement event" },
+    { image: "images/royal4.jpg", alt: "Royal engagement event" },
+    { image: "images/royal5.jpg", alt: "Royal engagement event" },
+    { image: "images/royal6.jpg", alt: "Royal engagement event" },
+    { image: "images/royal7.jpg", alt: "Royal engagement event" },
+    { image: "images/royal8.jpg", alt: "Royal engagement event" }
 ];
