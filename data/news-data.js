@@ -1,5 +1,16 @@
 ﻿window.siteNews = [
     {
+        title: "Dubai Hosts Virtual Tourism Summit Connecting 250 Global Travel Leaders",
+        date: "2026-06-02",
+        displayDate: "Jun 02, 2026",
+        category: "Tourism",
+        image: "images/news-dubai-virtual-tourism-summit-2026.png",
+        excerpt: "Dubai is serving as the hub for Engage by Elevate, a virtual tourism summit linking more than 250 hotels, destination partners, travel agents and tour operators across global markets.",
+        keywords: ["Dubai", "tourism", "hospitality", "travel", "Elevate World", "MICE", "destination partners", "Middle East"],
+        source: "WAM / Aletihad / TradeArabia",
+        link: "news_pages/dubai-virtual-tourism-summit-2026.html"
+    },
+    {
         title: "UAE Air Traffic Returns to Normal After Precautionary Measures Lifted",
         date: "2026-05-02",
         displayDate: "May 02, 2026",
