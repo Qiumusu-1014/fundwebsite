@@ -1,5 +1,16 @@
 ﻿window.siteNews = [
     {
+        title: "Emirates Advances Closed-Loop Recycling Programme With 88,000 kg of Plastic Reused",
+        date: "2026-06-04",
+        displayDate: "Jun 04, 2026",
+        category: "Aviation",
+        image: "images/news-emirates-closed-loop-recycling-2026.png",
+        excerpt: "Emirates has repurposed more than 88,000 kilograms of inflight plastic meal-service items through a Dubai-based closed-loop recycling programme supported by an AED 50 million investment.",
+        keywords: ["Emirates", "aviation", "sustainability", "circular economy", "recycling", "Dubai", "deSter", "inflight dining"],
+        source: "Emirates / Dubai Media Office / Emirates 24|7",
+        link: "news_pages/emirates-closed-loop-recycling-2026.html"
+    },
+    {
         title: "Dubai Hosts Virtual Tourism Summit Connecting 250 Global Travel Leaders",
         date: "2026-06-02",
         displayDate: "Jun 02, 2026",
