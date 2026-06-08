@@ -4,7 +4,7 @@
         date: "2026-06-05",
         displayDate: "Jun 05, 2026",
         category: "Trade",
-        image: "images/news-dubai-south-africa-trade-meetings-2026.png",
+        image: "images/news-dubai-south-africa-trade-meetings-2026-image2.png",
         excerpt: "Dubai Chamber of Commerce coordinated 674 bilateral business meetings in Johannesburg and Cape Town during a South Africa trade mission featuring 24 Dubai-based companies.",
         keywords: ["Dubai Chamber", "South Africa", "trade", "investment", "B2B meetings", "New Horizons", "non-oil trade", "Africa", "Johannesburg", "Cape Town"],
         source: "Dubai Media Office / Mid-East.info / Gulf Today",
@@ -15,7 +15,7 @@
         date: "2026-06-04",
         displayDate: "Jun 04, 2026",
         category: "Entrepreneurship",
-        image: "images/news-dubai-sme-in-a-box-2026.png",
+        image: "images/news-dubai-sme-in-a-box-2026-image2.png",
         excerpt: "Dubai's Department of Economy and Tourism has launched SME in a Box, a platform bringing licensing, banking, payments, logistics and telecom services into one onboarding journey for founders.",
         keywords: ["Dubai SME", "SME in a Box", "entrepreneurship", "business setup", "D33", "banking", "payments", "logistics", "Dubai Founders HQ", "Invest in Dubai"],
         source: "Dubai Media Office / Gulf News / The National",
@@ -26,7 +26,7 @@
         date: "2026-06-04",
         displayDate: "Jun 04, 2026",
         category: "Aviation",
-        image: "images/news-emirates-closed-loop-recycling-2026.png",
+        image: "images/news-emirates-closed-loop-recycling-2026-image2.png",
         excerpt: "Emirates has repurposed more than 88,000 kilograms of inflight plastic meal-service items through a Dubai-based closed-loop recycling programme supported by an AED 50 million investment.",
         keywords: ["Emirates", "aviation", "sustainability", "circular economy", "recycling", "Dubai", "deSter", "inflight dining"],
         source: "Emirates / Dubai Media Office / Emirates 24|7",
@@ -37,7 +37,7 @@
         date: "2026-06-02",
         displayDate: "Jun 02, 2026",
         category: "Tourism",
-        image: "images/news-dubai-virtual-tourism-summit-2026.png",
+        image: "images/news-dubai-virtual-tourism-summit-2026-image2.png",
         excerpt: "Dubai is serving as the hub for Engage by Elevate, a virtual tourism summit linking more than 250 hotels, destination partners, travel agents and tour operators across global markets.",
         keywords: ["Dubai", "tourism", "hospitality", "travel", "Elevate World", "MICE", "destination partners", "Middle East"],
         source: "WAM / Aletihad / TradeArabia",
@@ -52,9 +52,7 @@
         excerpt: "The UAE's civil aviation authority confirmed that national air traffic has returned to normal after precautionary measures introduced amid regional tensions were lifted.",
         keywords: ["aviation", "air traffic", "Dubai", "Abu Dhabi", "logistics", "travel"],
         source: "Reuters",
-        link: "news_pages/uae-air-traffic-normal.html",
-        featuredOnHome: true,
-        homeOrder: 3
+        link: "news_pages/uae-air-traffic-normal.html"
     },
     {
         title: "UAE-Korea CEPA Enters Into Force, Unlocking Tariff Relief Across Trade and Services",
@@ -76,7 +74,9 @@
         excerpt: "The UAE announced that it will withdraw from OPEC and OPEC+ from May 1, emphasizing national production policy, long-term energy strategy and market stability.",
         keywords: ["OPEC", "OPEC+", "energy", "oil", "market stability", "Hormuz"],
         source: "WAM / Reuters",
-        link: "news_pages/uae-opec-exit.html"
+        link: "news_pages/uae-opec-exit.html",
+        featuredOnHome: true,
+        homeOrder: 1
     },
     {
         title: "UAE Ranks First Globally in Entrepreneurship Ecosystem for Fifth Consecutive Year",
@@ -87,9 +87,7 @@
         excerpt: "The Global Entrepreneurship Monitor 2025/2026 report ranked the UAE first globally for the fifth consecutive year, reinforcing its position as a global entrepreneurship capital.",
         keywords: ["GEM", "entrepreneurship", "startups", "SMEs", "innovation", "talent"],
         source: "WAM / GEM",
-        link: "news_pages/uae-entrepreneurship-leader.html",
-        featuredOnHome: true,
-        homeOrder: 1
+        link: "news_pages/uae-entrepreneurship-leader.html"
     },
     {
         title: "UAE Opens 2026 With Robust Economic Indicators Across Banking, Trade and Finance",
@@ -100,9 +98,7 @@
         excerpt: "Early 2026 indicators show continued momentum in UAE banking assets, credit, deposits, foreign trade and global financial-center rankings.",
         keywords: ["banking", "foreign trade", "credit rating", "Dubai", "financial center", "exports"],
         source: "WAM / Moody's / S&P Global Ratings",
-        link: "news_pages/uae-economic-indicators-2026.html",
-        featuredOnHome: true,
-        homeOrder: 2
+        link: "news_pages/uae-economic-indicators-2026.html"
     },
     {
         title: "Sheikh Mohammed Inaugurates Phase 1 of New Al Maktoum Airport Expansion",
@@ -124,7 +120,9 @@
         excerpt: "Dubai approved AED 1 billion in temporary economic incentives to support businesses, strengthen liquidity and reinforce confidence across key sectors.",
         keywords: ["Dubai", "economic incentives", "D33", "business support", "GDP"],
         source: "Emirates 24|7 / Dubai Media Office",
-        link: "news_pages/dubai-economic-incentives-2026.html"
+        link: "news_pages/dubai-economic-incentives-2026.html",
+        featuredOnHome: true,
+        homeOrder: 2
     },
     {
         title: "Dubai Climbs to Seventh Place in Global Financial Centres Index",
@@ -146,7 +144,9 @@
         excerpt: "Dubai's Roads and Transport Authority signed an agreement with The Boring Company to start the Dubai Loop passenger tunnel project, beginning with a 6.4 km pilot route.",
         keywords: ["Dubai Loop", "The Boring Company", "RTA", "mobility", "infrastructure", "Elon Musk"],
         source: "Dubai Media Office / The Boring Company",
-        link: "news_pages/dubai-loop-boring-company-2026.html"
+        link: "news_pages/dubai-loop-boring-company-2026.html",
+        featuredOnHome: true,
+        homeOrder: 3
     },
     {
         title: "Sheikh Hamdan Meets Elon Musk as Dubai Sharpens Its Technology Ambitions",
