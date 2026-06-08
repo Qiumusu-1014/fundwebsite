@@ -11,6 +11,17 @@
         link: "news_pages/dubai-south-africa-b2b-meetings-2026.html"
     },
     {
+        title: "Dubai Launches SME in a Box to Streamline Business Setup for Entrepreneurs",
+        date: "2026-06-04",
+        displayDate: "Jun 04, 2026",
+        category: "Entrepreneurship",
+        image: "images/news-dubai-sme-in-a-box-2026.png",
+        excerpt: "Dubai's Department of Economy and Tourism has launched SME in a Box, a platform bringing licensing, banking, payments, logistics and telecom services into one onboarding journey for founders.",
+        keywords: ["Dubai SME", "SME in a Box", "entrepreneurship", "business setup", "D33", "banking", "payments", "logistics", "Dubai Founders HQ", "Invest in Dubai"],
+        source: "Dubai Media Office / Gulf News / The National",
+        link: "news_pages/dubai-sme-in-a-box-2026.html"
+    },
+    {
         title: "Emirates Advances Closed-Loop Recycling Programme With 88,000 kg of Plastic Reused",
         date: "2026-06-04",
         displayDate: "Jun 04, 2026",
