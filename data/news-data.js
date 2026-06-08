@@ -1,5 +1,16 @@
 ﻿window.siteNews = [
     {
+        title: "Dubai Chamber of Commerce Organises 674 B2B Meetings to Strengthen Dubai-South Africa Trade",
+        date: "2026-06-05",
+        displayDate: "Jun 05, 2026",
+        category: "Trade",
+        image: "images/news-dubai-south-africa-trade-meetings-2026.png",
+        excerpt: "Dubai Chamber of Commerce coordinated 674 bilateral business meetings in Johannesburg and Cape Town during a South Africa trade mission featuring 24 Dubai-based companies.",
+        keywords: ["Dubai Chamber", "South Africa", "trade", "investment", "B2B meetings", "New Horizons", "non-oil trade", "Africa", "Johannesburg", "Cape Town"],
+        source: "Dubai Media Office / Mid-East.info / Gulf Today",
+        link: "news_pages/dubai-south-africa-b2b-meetings-2026.html"
+    },
+    {
         title: "Emirates Advances Closed-Loop Recycling Programme With 88,000 kg of Plastic Reused",
         date: "2026-06-04",
         displayDate: "Jun 04, 2026",
